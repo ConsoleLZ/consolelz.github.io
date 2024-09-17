@@ -16,14 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>MongoDB的安装与使用 - 小哲的博客</title>
+  <title>MongoDB的安装与使用 - 程序猿小哲的博客</title>
 
   
     <meta name="description" content="安装下载官网（社区版）：Download MongoDB Community Server | MongoDB   根据自己的操作系统下载即可 配置环境变量（方便后续的启动）找到系统环境变量的编辑界面   添加自己下载好的mongodb的bin路径即可  最后进行测试，输入mongod，没有报错说明配置成功（这个命令主要用来启动mongodb）  启动mongo服务在启动之前必须配置mongo服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB的安装与使用">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/01/10/53/index.html">
-<meta property="og:site_name" content="小哲的博客">
+<meta property="og:site_name" content="程序猿小哲的博客">
 <meta property="og:description" content="安装下载官网（社区版）：Download MongoDB Community Server | MongoDB   根据自己的操作系统下载即可 配置环境变量（方便后续的启动）找到系统环境变量的编辑界面   添加自己下载好的mongodb的bin路径即可  最后进行测试，输入mongod，没有报错说明配置成功（这个命令主要用来启动mongodb）  启动mongo服务在启动之前必须配置mongo服务">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/664dde63d9c307b7e9044d04.png">
@@ -51,11 +51,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -70,7 +74,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E6%96%B9%E4%BE%BF%E5%90%8E%E7%BB%AD%E7%9A%84%E5%90%AF%E5%8A%A8%EF%BC%89"><span class="toc-text">配置环境变量（方便后续的启动）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8mongo%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动mongo服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E8%BF%9E%E6%8E%A5mongoDB"><span class="toc-text">node连接mongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A8%A1%E5%9D%97%E4%B8%8B%E8%BD%BD"><span class="toc-text">1. 模块下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%9E%E6%8E%A5"><span class="toc-text">2. 连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9E%8B%EF%BC%88%E9%9C%80%E8%A6%81%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%A1%A8%EF%BC%89"><span class="toc-text">3. 创建模型（需要连接的表）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-text">修改</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88%E6%96%B9%E4%BE%BF%E5%90%8E%E7%BB%AD%E7%9A%84%E5%90%AF%E5%8A%A8%EF%BC%89"><span class="toc-text">配置环境变量（方便后续的启动）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8mongo%E6%9C%8D%E5%8A%A1"><span class="toc-text">启动mongo服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E8%BF%9E%E6%8E%A5mongoDB"><span class="toc-text">node连接mongoDB</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A8%A1%E5%9D%97%E4%B8%8B%E8%BD%BD"><span class="toc-text">1. 模块下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%9E%E6%8E%A5"><span class="toc-text">2. 连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%9E%8B%EF%BC%88%E9%9C%80%E8%A6%81%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%A1%A8%EF%BC%89"><span class="toc-text">3. 创建模型（需要连接的表）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9"><span class="toc-text">修改</span></a></li></ol></div></div></widget>
 
 
 
@@ -78,7 +82,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -103,7 +107,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载官网（社区版）：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">Download MongoDB Community Server | MongoDB</a></p>
+  </div><article class="md-text content slide-up"><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载官网（社区版）：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">Download MongoDB Community Server | MongoDB</a></p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dde63d9c307b7e9044d04.png"></p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dde63d9c307b7e9044d1c.png"></p>
 <p>根据自己的操作系统下载即可</p>
@@ -116,38 +120,80 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664ddf04d9c307b7e90581ff.png"></p>
 <h2 id="启动mongo服务"><a href="#启动mongo服务" class="headerlink" title="启动mongo服务"></a>启动mongo服务</h2><p>在启动之前必须配置mongo服务数据存放的文件夹，比如我在mongo安装的目录下，新建了一个db文件夹，用来存放数据库内容：D:\Database\MongoDB\db，</p>
 <p>启动方法</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath D:\Database\MongoDB\db</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell">mongod --dbpath D:\Database\MongoDB\db</code></pre>
 
 <p>启动后不能关闭终端，不然会中断mongo的服务</p>
 <h2 id="node连接mongoDB"><a href="#node连接mongoDB" class="headerlink" title="node连接mongoDB"></a>node连接mongoDB</h2><blockquote>
 <p>这里用express框架进行演示</p>
 </blockquote>
-<h4 id="1-模块下载"><a href="#1-模块下载" class="headerlink" title="1. 模块下载"></a>1. 模块下载</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i mongoose</span><br></pre></td></tr></table></figure>
+<h4 id="1-模块下载"><a href="#1-模块下载" class="headerlink" title="1. 模块下载"></a>1. 模块下载</h4><pre><code class="hljs shell">npm i mongoose</code></pre>
 
 <h4 id="2-连接"><a href="#2-连接" class="headerlink" title="2. 连接"></a>2. 连接</h4><p>建议放在单独的一个文件中，方便管理</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbURL = <span class="string">&#x27;mongodb://127.0.0.1:27017/managerCool&#x27;</span>;</span><br><span class="line"><span class="comment">// 连接数据库</span></span><br><span class="line">mongoose.<span class="title function_">connect</span>(dbURL);</span><br><span class="line"><span class="comment">// 绑定数据库连接监听</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;open&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        cosnole.<span class="title function_">log</span>(<span class="string">&quot;连接失败...&quot;</span>, err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;mongodb连接成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mongoose&#x27;</span>);
+
+<span class="hljs-keyword">const</span> dbURL = <span class="hljs-string">&#x27;mongodb://127.0.0.1:27017/managerCool&#x27;</span>;
+<span class="hljs-comment">// 连接数据库</span>
+mongoose.<span class="hljs-title function_">connect</span>(dbURL);
+<span class="hljs-comment">// 绑定数据库连接监听</span>
+mongoose.<span class="hljs-property">connection</span>.<span class="hljs-title function_">on</span>(<span class="hljs-string">&quot;open&quot;</span>, <span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (err) &#123;
+        cosnole.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;连接失败...&quot;</span>, err);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;mongodb连接成功&quot;</span>);
+    &#125;
+&#125;)</code></pre>
 
 <p>在入口文件中进行引入即可</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连接数据库</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;../connect_db/mongo&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 连接数据库</span>
+<span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../connect_db/mongo&#x27;</span>)</code></pre>
 
 <h4 id="3-创建模型（需要连接的表）"><a href="#3-创建模型（需要连接的表）" class="headerlink" title="3. 创建模型（需要连接的表）"></a>3. 创建模型（需要连接的表）</h4><p>上述步骤已经成功连接到了具体的数据库了，而大家都知道库中是不是有具体的表，这是mysql的称呼，在mongodb中称为模型，建议将所有的创建模型的文件单独存放到一个文件夹中</p>
 <blockquote>
 <p>比如我要连接introduction的模型</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">IntroductionType</span> = &#123;</span><br><span class="line">    <span class="attr">title</span>:<span class="title class_">String</span>,</span><br><span class="line">    <span class="attr">value</span>:<span class="title class_">String</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">IntroductionModel</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;introduction&#x27;</span>, <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(<span class="title class_">IntroductionType</span>))</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">IntroductionModel</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mongoose&#x27;</span>)
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">IntroductionType</span> = &#123;
+    <span class="hljs-attr">title</span>:<span class="hljs-title class_">String</span>,
+    <span class="hljs-attr">value</span>:<span class="hljs-title class_">String</span>
+&#125;
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">IntroductionModel</span> = mongoose.<span class="hljs-title function_">model</span>(<span class="hljs-string">&#x27;introduction&#x27;</span>, <span class="hljs-keyword">new</span> mongoose.<span class="hljs-title class_">Schema</span>(<span class="hljs-title class_">IntroductionType</span>))
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title class_">IntroductionModel</span></code></pre>
 
 <h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><blockquote>
 <p>比如我要查询introduction中的所有内容</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">IntroductionModel</span> = <span class="built_in">require</span>(<span class="string">&#x27;../model/IntroductionModel&#x27;</span>)</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    <span class="title class_">IntroductionModel</span>.<span class="title function_">find</span>().<span class="title function_">then</span>(<span class="function"><span class="params">data</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">    &#125;)</span><br><span class="line">    res.<span class="title function_">send</span>(&#123;</span><br><span class="line">        <span class="attr">ok</span>: <span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">IntroductionModel</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../model/IntroductionModel&#x27;</span>)
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) &#123;
+    <span class="hljs-title class_">IntroductionModel</span>.<span class="hljs-title function_">find</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">data</span>=&gt;</span>&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)
+    &#125;)
+    res.<span class="hljs-title function_">send</span>(&#123;
+        <span class="hljs-attr">ok</span>: <span class="hljs-number">1</span>
+    &#125;)
+&#125;);</code></pre>
 
 <h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><blockquote>
 <p>注意updateOne里面的第二个字段，对应的是new mongoose.Schema(IntroductionType))里面的字段，如果不对应的话是无法修改的哦</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/api/change/homeData/:id&#x27;</span>, <span class="function">(<span class="params">req, res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="title class_">IntroductionModel</span>.<span class="title function_">updateOne</span>(&#123;<span class="attr">_id</span>: req.<span class="property">body</span>.<span class="property">_id</span>&#125;,&#123;</span><br><span class="line">        <span class="attr">title</span>: req.<span class="property">body</span>.<span class="property">title</span>,</span><br><span class="line">        <span class="attr">value</span>: req.<span class="property">body</span>.<span class="property">value</span></span><br><span class="line">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">result</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(result)</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;<span class="attr">ok</span>:<span class="number">1</span>&#125;)</span><br><span class="line">    &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;<span class="attr">ok</span>:<span class="number">0</span>&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/api/change/homeData/:id&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>)=&gt;</span>&#123;
+    <span class="hljs-title class_">IntroductionModel</span>.<span class="hljs-title function_">updateOne</span>(&#123;<span class="hljs-attr">_id</span>: req.<span class="hljs-property">body</span>.<span class="hljs-property">_id</span>&#125;,&#123;
+        <span class="hljs-attr">title</span>: req.<span class="hljs-property">body</span>.<span class="hljs-property">title</span>,
+        <span class="hljs-attr">value</span>: req.<span class="hljs-property">body</span>.<span class="hljs-property">value</span>
+    &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">result</span>=&gt;</span>&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result)
+        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">ok</span>:<span class="hljs-number">1</span>&#125;)
+    &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)
+        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">ok</span>:<span class="hljs-number">0</span>&#125;)
+    &#125;)
+&#125;)</code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -155,14 +201,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/01/54/">js基础篇4</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/01/02/52/">js基础篇3</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/01/54/">js基础篇4</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/01/02/52/">js基础篇3</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -303,8 +349,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

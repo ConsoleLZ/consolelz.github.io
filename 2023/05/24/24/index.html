@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>留言板模块与文章评论开启 - 小哲的博客</title>
+  <title>留言板模块与文章评论开启 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="注册LeanCloud账号注册LeanCloud账号是为了给评论的数据提供云存储 首先来到LeanCloud的首页:https:&#x2F;&#x2F;www.leancloud.cn&#x2F;，点击右上角的控制台，按照指引进行注册即可 创建应用注册完成后,进行登录会进入这个页面： 点击创建应用，随后填写一些应用的基本信息后你的应用就创建成功啦🎉️ 创建留言板页面1hexo new page message  修改其目录下">
+    <meta name="description" content="注册LeanCloud账号注册LeanCloud账号是为了给评论的数据提供云存储 首先来到LeanCloud的首页:https:&#x2F;&#x2F;www.leancloud.cn&#x2F;，点击右上角的控制台，按照指引进行注册即可 创建应用注册完成后,进行登录会进入这个页面： 点击创建应用，随后填写一些应用的基本信息后你的应用就创建成功啦🎉️ 创建留言板页面hexo new page message  修改其目录下的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="留言板模块与文章评论开启">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/05/24/24/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="注册LeanCloud账号注册LeanCloud账号是为了给评论的数据提供云存储 首先来到LeanCloud的首页:https:&#x2F;&#x2F;www.leancloud.cn&#x2F;，点击右上角的控制台，按照指引进行注册即可 创建应用注册完成后,进行登录会进入这个页面： 点击创建应用，随后填写一些应用的基本信息后你的应用就创建成功啦🎉️ 创建留言板页面1hexo new page message  修改其目录下">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="注册LeanCloud账号注册LeanCloud账号是为了给评论的数据提供云存储 首先来到LeanCloud的首页:https:&#x2F;&#x2F;www.leancloud.cn&#x2F;，点击右上角的控制台，按照指引进行注册即可 创建应用注册完成后,进行登录会进入这个页面： 点击创建应用，随后填写一些应用的基本信息后你的应用就创建成功啦🎉️ 创建留言板页面hexo new page message  修改其目录下的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/664dd680d9c307b7e9fb67dd.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/664dd680d9c307b7e9fb67bd.png">
@@ -47,11 +47,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -66,7 +70,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8CLeanCloud%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册LeanCloud账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%95%99%E8%A8%80%E6%9D%BF%E9%A1%B5%E9%9D%A2"><span class="toc-text">创建留言板页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%8F%9C%E5%8D%95"><span class="toc-text">增加导航栏菜单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E7%9A%84%E5%BC%80%E5%90%AF"><span class="toc-text">文章评论功能的开启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bug%E8%A7%A3%E5%86%B3"><span class="toc-text">bug解决</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8CLeanCloud%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册LeanCloud账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%94%E7%94%A8"><span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%95%99%E8%A8%80%E6%9D%BF%E9%A1%B5%E9%9D%A2"><span class="toc-text">创建留言板页面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%8F%9C%E5%8D%95"><span class="toc-text">增加导航栏菜单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD%E7%9A%84%E5%BC%80%E5%90%AF"><span class="toc-text">文章评论功能的开启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bug%E8%A7%A3%E5%86%B3"><span class="toc-text">bug解决</span></a></li></ol></div></div></widget>
 
 
 
@@ -74,7 +78,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -99,35 +103,92 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="注册LeanCloud账号"><a href="#注册LeanCloud账号" class="headerlink" title="注册LeanCloud账号"></a>注册LeanCloud账号</h2><p>注册LeanCloud账号是为了给评论的数据提供云存储</p>
+  </div><article class="md-text content slide-up"><h2 id="注册LeanCloud账号"><a href="#注册LeanCloud账号" class="headerlink" title="注册LeanCloud账号"></a>注册LeanCloud账号</h2><p>注册LeanCloud账号是为了给评论的数据提供云存储</p>
 <p><strong>首先来到LeanCloud的首页:</strong><br><a target="_blank" rel="noopener" href="https://www.leancloud.cn/">https://www.leancloud.cn/</a>，<br>点击右上角的控制台，按照指引进行注册即可</p>
 <h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><p>注册完成后,进行登录会进入这个页面：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dd680d9c307b7e9fb67dd.png"><strong>点击创建应用</strong>，随后填写一些应用的基本信息后你的应用就创建成功啦🎉️</p>
-<h2 id="创建留言板页面"><a href="#创建留言板页面" class="headerlink" title="创建留言板页面"></a>创建留言板页面</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page message</span><br></pre></td></tr></table></figure>
+<h2 id="创建留言板页面"><a href="#创建留言板页面" class="headerlink" title="创建留言板页面"></a>创建留言板页面</h2><pre><code class="hljs sh">hexo new page message</code></pre>
 
 <p>修改其目录下的index.md为index.ejs,<em>增添如下内容：</em></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 留言板</span><br><span class="line">---</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;//unpkg.com/valine/dist/Valine.min.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;vcomments&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     <span class="keyword">new</span> <span class="title class_">Valine</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">el</span>: <span class="string">&#x27;#vcomments&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">appId</span>: <span class="string">&#x27;你的AppID&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">appKey</span>: <span class="string">&#x27;你的AppKey&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">placeholder</span>: <span class="string">&#x27;欢迎大家来到lazychild,如果有什么想说的话，请留言给作者哦，作者会尽量快速回复大家的哦😜😜，注意邮箱一定不能写错哦，不然你就收不到作者的回复了&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">avatar</span>: <span class="string">&#x27;wavatar&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pageSize</span>: <span class="number">4</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">requiredFields</span>: [<span class="string">&#x27;mail&#x27;</span>]</span></span><br><span class="line"><span class="language-javascript">        &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs html">---
+title: 留言板
+---
+<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;//unpkg.com/valine/dist/Valine.min.js&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;vcomments&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">     <span class="hljs-keyword">new</span> <span class="hljs-title class_">Valine</span>(&#123;</span>
+<span class="language-javascript">            <span class="hljs-attr">el</span>: <span class="hljs-string">&#x27;#vcomments&#x27;</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">appId</span>: <span class="hljs-string">&#x27;你的AppID&#x27;</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">appKey</span>: <span class="hljs-string">&#x27;你的AppKey&#x27;</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">placeholder</span>: <span class="hljs-string">&#x27;欢迎大家来到lazychild,如果有什么想说的话，请留言给作者哦，作者会尽量快速回复大家的哦😜😜，注意邮箱一定不能写错哦，不然你就收不到作者的回复了&#x27;</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">avatar</span>: <span class="hljs-string">&#x27;wavatar&#x27;</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">pageSize</span>: <span class="hljs-number">4</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">requiredFields</span>: [<span class="hljs-string">&#x27;mail&#x27;</span>]</span>
+<span class="language-javascript">        &#125;)</span>
+<span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
 <hr>
 <p><strong>AppID与AppKey的设置</strong>：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dd680d9c307b7e9fb67bd.png"><br>创建好LeanCloud应用后，找到左边设置的应用凭证即可找到自己的AppID与AppKey</p>
 <hr>
 <p>这里的评论系统使用的是基于基于LeanCloud的快速、简洁且高效的无后端评论系统————Valine，更多的Valine的配置请自主学习，请参考<a target="_blank" rel="noopener" href="https://valine.js.org/configuration.html">https://valine.js.org/configuration.html</a>👀️</p>
 <h2 id="增加导航栏菜单"><a href="#增加导航栏菜单" class="headerlink" title="增加导航栏菜单"></a>增加导航栏菜单</h2><p>最后自己在主题配置文件_config.yml中配置即可<br><strong>这是我的：</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="string">首页:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">icon-shouye2</span></span><br><span class="line">  <span class="string">文章</span> <span class="string">||</span> <span class="attr">icon-xiewenzhang:</span></span><br><span class="line">     <span class="string">归档:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">icon-guidang</span></span><br><span class="line">     <span class="string">标签:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">icon-biaoqian</span></span><br><span class="line">     <span class="string">分类:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">icon-fenlei</span></span><br><span class="line">     <span class="string">统计:</span> <span class="string">/statistics/</span> <span class="string">||</span> <span class="string">icon-tongjitu</span></span><br><span class="line">  <span class="string">友链:</span> <span class="string">/link/</span> <span class="string">||</span> <span class="string">icon-LINKS</span></span><br><span class="line">  <span class="string">我的:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">icon-gerenzhongxin_wodediqu</span></span><br><span class="line">  <span class="string">留言板:</span> <span class="string">/message/</span> <span class="string">||</span> <span class="string">icon-liuyanban</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-attr">menu:</span>
+  <span class="hljs-string">首页:</span> <span class="hljs-string">/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-shouye2</span>
+  <span class="hljs-string">文章</span> <span class="hljs-string">||</span> <span class="hljs-attr">icon-xiewenzhang:</span>
+     <span class="hljs-string">归档:</span> <span class="hljs-string">/archives/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-guidang</span>
+     <span class="hljs-string">标签:</span> <span class="hljs-string">/tags/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-biaoqian</span>
+     <span class="hljs-string">分类:</span> <span class="hljs-string">/categories/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-fenlei</span>
+     <span class="hljs-string">统计:</span> <span class="hljs-string">/statistics/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-tongjitu</span>
+  <span class="hljs-string">友链:</span> <span class="hljs-string">/link/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-LINKS</span>
+  <span class="hljs-string">我的:</span> <span class="hljs-string">/about/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-gerenzhongxin_wodediqu</span>
+  <span class="hljs-string">留言板:</span> <span class="hljs-string">/message/</span> <span class="hljs-string">||</span> <span class="hljs-string">icon-liuyanban</span></code></pre>
 
 <p>icon图标是我自己引入的，你不能照搬哦👀️ ，具体的引入方法请参考<a target="_blank" rel="noopener" href="https://xiao-zhe-is-not-lazy.gitee.io/hexo/2023/04/27/15/">菜单栏多色图标 | Lazychild&#39;s Blog (gitee.io)</a><br>到这里你就已经完成了留言板模块了<br>🎉️</p>
 <h2 id="文章评论功能的开启"><a href="#文章评论功能的开启" class="headerlink" title="文章评论功能的开启"></a>文章评论功能的开启</h2><p>在此之前小伙伴们肯定已经创建了一个LeanCloud应用了，<strong>这里请小伙伴们再创建一个LeanCloud应用，用来存放文章评论</strong></p>
 <hr>
 <p>创建成功后，找到主题配置文件_config.yml,修改：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Up to two comments system, the first will be shown as default</span></span><br><span class="line">  <span class="comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk</span></span><br><span class="line">  <span class="attr">use:</span> <span class="string">Valine</span></span><br><span class="line">  <span class="attr">text:</span> <span class="literal">true</span> <span class="comment"># Display the comment name next to the button</span></span><br><span class="line">  <span class="comment"># lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span></span><br><span class="line">  <span class="comment"># If you set it to true, the comment count will be invalid</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">count:</span> <span class="literal">true</span> <span class="comment"># Display comment count in post&#x27;s top_img</span></span><br><span class="line">  <span class="attr">card_post_count:</span> <span class="literal">true</span> <span class="comment"># Display comment count in Home Page</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-attr">comments:</span>
+  <span class="hljs-comment"># Up to two comments system, the first will be shown as default</span>
+  <span class="hljs-comment"># Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk</span>
+  <span class="hljs-attr">use:</span> <span class="hljs-string">Valine</span>
+  <span class="hljs-attr">text:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Display the comment name next to the button</span>
+  <span class="hljs-comment"># lazyload: The comment system will be load when comment element enters the browser&#x27;s viewport.</span>
+  <span class="hljs-comment"># If you set it to true, the comment count will be invalid</span>
+  <span class="hljs-attr">lazyload:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">count:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Display comment count in post&#x27;s top_img</span>
+  <span class="hljs-attr">card_post_count:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># Display comment count in Home Page</span></code></pre>
 
 <hr>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">appId:</span> <span class="string">你的AppID</span></span><br><span class="line">  <span class="attr">appKey:</span> <span class="string">你的AppKey</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">wavatar</span> <span class="comment"># gravatar style https://valine.js.org/#/avatar</span></span><br><span class="line">  <span class="attr">serverURLs:</span> <span class="comment"># This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span></span><br><span class="line">  <span class="attr">bg:</span> <span class="comment"># valine background</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">option:</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-attr">valine:</span>
+  <span class="hljs-attr">appId:</span> <span class="hljs-string">你的AppID</span>
+  <span class="hljs-attr">appKey:</span> <span class="hljs-string">你的AppKey</span>
+  <span class="hljs-attr">avatar:</span> <span class="hljs-string">wavatar</span> <span class="hljs-comment"># gravatar style https://valine.js.org/#/avatar</span>
+  <span class="hljs-attr">serverURLs:</span> <span class="hljs-comment"># This configuration is suitable for domestic custom domain name users, overseas version will be automatically detected (no need to manually fill in)</span>
+  <span class="hljs-attr">bg:</span> <span class="hljs-comment"># valine background</span>
+  <span class="hljs-attr">visitor:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">option:</span></code></pre>
 
 <h2 id="bug解决"><a href="#bug解决" class="headerlink" title="bug解决"></a>bug解决</h2><p>发现了一个bug，发现很多不需要用到评论的地方也有了评论功能，解决办法：<br><em>在自定义的js文件中增加如下内容：</em></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除多余的评论板块</span></span><br><span class="line"><span class="comment">// 解决留言板模块2次渲染问题导致评论区出现了2次</span></span><br><span class="line"><span class="keyword">if</span>(path[<span class="number">2</span>] == <span class="string">&#x27;message&#x27;</span> || path[<span class="number">2</span>] == <span class="string">&#x27;about&#x27;</span> || path[<span class="number">2</span>] == <span class="string">&#x27;tags&#x27;</span> || path[<span class="number">2</span>] == <span class="string">&#x27;categories&#x27;</span> || path[<span class="number">2</span>] == <span class="string">&#x27;statistics&#x27;</span> || path[<span class="number">2</span>] == <span class="string">&#x27;link&#x27;</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> postComment = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#post-comment&#x27;</span>) &amp;&amp; postComment.<span class="title function_">remove</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 删除多余的评论板块</span>
+<span class="hljs-comment">// 解决留言板模块2次渲染问题导致评论区出现了2次</span>
+<span class="hljs-keyword">if</span>(path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;message&#x27;</span> || path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;about&#x27;</span> || path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;tags&#x27;</span> || path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;categories&#x27;</span> || path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;statistics&#x27;</span> || path[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;link&#x27;</span>)&#123;
+    <span class="hljs-keyword">var</span> postComment = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#post-comment&#x27;</span>) &amp;&amp; postComment.<span class="hljs-title function_">remove</span>()
+&#125;</code></pre>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -135,14 +196,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/05/28/25/">hexo博客项目部署至vercel</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/23/23/">增加一个统计模块</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/05/28/25/">hexo博客项目部署至vercel</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/23/23/">增加一个统计模块</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -283,8 +344,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>Docker安装mysql - 小哲的博客</title>
+  <title>Docker安装mysql - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="要达到的目的 实现mysql安装，并且能让外部进行连接 实现数据卷的挂载，让容器被删除时，数据不会丢失 解决无法插入中文数据，或者中文乱码  1docker pull mysql  启动mysql1docker run -d -p 3306:3306 --privileged&#x3D;true -v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;v">
+    <meta name="description" content="要达到的目的 实现mysql安装，并且能让外部进行连接 实现数据卷的挂载，让容器被删除时，数据不会丢失 解决无法插入中文数据，或者中文乱码  docker pull mysql  启动mysqldocker run -d -p 3306:3306 --privileged&#x3D;true -v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;var">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker安装mysql">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/06/12/69/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="要达到的目的 实现mysql安装，并且能让外部进行连接 实现数据卷的挂载，让容器被删除时，数据不会丢失 解决无法插入中文数据，或者中文乱码  1docker pull mysql  启动mysql1docker run -d -p 3306:3306 --privileged&#x3D;true -v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;v">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="要达到的目的 实现mysql安装，并且能让外部进行连接 实现数据卷的挂载，让容器被删除时，数据不会丢失 解决无法插入中文数据，或者中文乱码  docker pull mysql  启动mysqldocker run -d -p 3306:3306 --privileged&#x3D;true -v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;var">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6669041fd9c307b7e9dfdc08.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6669063ed9c307b7e9e2991d.png">
@@ -53,11 +53,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -72,7 +76,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E8%BE%BE%E5%88%B0%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">要达到的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8mysql"><span class="toc-text">启动mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5mysql%E5%AE%B9%E5%99%A8"><span class="toc-text">进入mysql容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">外部连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%AD%E6%96%87%E6%95%B0%E6%8D%AE%E7%9C%8B%E7%9C%8B"><span class="toc-text">插入中文数据看看</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E8%BE%BE%E5%88%B0%E7%9A%84%E7%9B%AE%E7%9A%84"><span class="toc-text">要达到的目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8mysql"><span class="toc-text">启动mysql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5mysql%E5%AE%B9%E5%99%A8"><span class="toc-text">进入mysql容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">外部连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%AD%E6%96%87%E6%95%B0%E6%8D%AE%E7%9C%8B%E7%9C%8B"><span class="toc-text">插入中文数据看看</span></a></li></ol></div></div></widget>
 
 
 
@@ -80,7 +84,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -105,24 +109,24 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="要达到的目的"><a href="#要达到的目的" class="headerlink" title="要达到的目的"></a>要达到的目的</h2><ol>
+  </div><article class="md-text content slide-up"><h2 id="要达到的目的"><a href="#要达到的目的" class="headerlink" title="要达到的目的"></a>要达到的目的</h2><ol>
 <li>实现mysql安装，并且能让外部进行连接</li>
 <li>实现数据卷的挂载，让容器被删除时，数据不会丢失</li>
 <li>解决无法插入中文数据，或者中文乱码</li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker pull mysql</code></pre>
 
-<h2 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3306:3306 --privileged=<span class="literal">true</span> -v /root/mysql/log:/var/log/mysql -v /root/mysql/data:/var/lib/mysql -v /root/mysql/conf:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</span><br></pre></td></tr></table></figure>
+<h2 id="启动mysql"><a href="#启动mysql" class="headerlink" title="启动mysql"></a>启动mysql</h2><pre><code class="hljs sh">docker run -d -p 3306:3306 --privileged=<span class="hljs-literal">true</span> -v /root/mysql/log:/var/log/mysql -v /root/mysql/data:/var/lib/mysql -v /root/mysql/conf:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=123456 mysql:5.7</code></pre>
 
 <p>查看数据卷是否挂载成功</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6669041fd9c307b7e9dfdc08.png"></p>
-<h2 id="进入mysql容器"><a href="#进入mysql容器" class="headerlink" title="进入mysql容器"></a>进入mysql容器</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 49aecf50ef9c /bin/bash</span><br></pre></td></tr></table></figure>
+<h2 id="进入mysql容器"><a href="#进入mysql容器" class="headerlink" title="进入mysql容器"></a>进入mysql容器</h2><pre><code class="hljs sh">docker <span class="hljs-built_in">exec</span> -it 49aecf50ef9c /bin/bash</code></pre>
 
 <p>基础操作：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6669063ed9c307b7e9e2991d.png"></p>
 <h2 id="外部连接数据库"><a href="#外部连接数据库" class="headerlink" title="外部连接数据库"></a>外部连接数据库</h2><p>自己下载数据库连接工具，例如：Navicat</p>
 <p>查看本机地址</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">ip addr</code></pre>
 
 <p>使用navicat连接：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66690837d9c307b7e9e4e428.png"></p>
@@ -131,17 +135,21 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66690a13d9c307b7e9e77f00.png"></p>
 <p>原因：</p>
 <p>查看数据库默认字符集：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW VARIABLES LIKE <span class="string">&#x27;character_set_%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">SHOW VARIABLES LIKE <span class="hljs-string">&#x27;character_set_%&#x27;</span>;</code></pre>
 
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66692919d9c307b7e9172511.png"></p>
 <p>发现是latin1,而不是utf8</p>
 <p>将字符集修改为utf-8格式:</p>
 <p>修改配置文件（&#x2F;root&#x2F;mysql&#x2F;conf）：</p>
 <p>在&#x2F;root&#x2F;mysql&#x2F;conf 目录下新建一个my.cnf文件使用vim进行编辑：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default_character_set=utf8</span><br><span class="line">[mysqld]</span><br><span class="line">collation_server = utf8_general_ci</span><br><span class="line">character_set_server = utf8</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs plaintext">[client]
+default_character_set=utf8
+[mysqld]
+collation_server = utf8_general_ci
+character_set_server = utf8</code></pre>
 
 <p>然后重启mysql容器</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 容器<span class="built_in">id</span>/容器名</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker restart 容器<span class="hljs-built_in">id</span>/容器名</code></pre>
 
 <p>然后再新建数据库，不能在原有的数据库中测试</p>
 <p>再次查看数据库字符集：</p>
@@ -149,7 +157,7 @@
 <p>发现可以插入中文数据了：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66693636d9c307b7e92e0dfd.png"></p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -157,14 +165,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/13/71/">使用docker镜像nginx进行项目部署</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/12/70/">Dockerfile介绍</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/13/72/">使用three.js创建一个最基础的3d场景</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/12/70/">Dockerfile介绍</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -305,8 +313,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

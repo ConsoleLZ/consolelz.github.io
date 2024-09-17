@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>three.js常见知识点 - 小哲的博客</title>
+  <title>three.js常见知识点 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="添加三维坐标123const axesHelper &#x3D; new THREE.AxesHelper(5)axesHelper.position.y &#x3D; 1scene.add(axesHelper)  修改背景颜色1scene.background &#x3D; new THREE.Color(&quot;#9aa7b1&quot;)  雾12&#x2F;&#x2F; 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距">
+    <meta name="description" content="添加三维坐标const axesHelper &#x3D; new THREE.AxesHelper(5) axesHelper.position.y &#x3D; 1 scene.add(axesHelper)  修改背景颜色scene.background &#x3D; new THREE.Color(&quot;#9aa7b1&quot;)  雾&#x2F;&#x2F; 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离 sc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="three.js常见知识点">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/06/14/74/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="添加三维坐标123const axesHelper &#x3D; new THREE.AxesHelper(5)axesHelper.position.y &#x3D; 1scene.add(axesHelper)  修改背景颜色1scene.background &#x3D; new THREE.Color(&quot;#9aa7b1&quot;)  雾12&#x2F;&#x2F; 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="添加三维坐标const axesHelper &#x3D; new THREE.AxesHelper(5) axesHelper.position.y &#x3D; 1 scene.add(axesHelper)  修改背景颜色scene.background &#x3D; new THREE.Color(&quot;#9aa7b1&quot;)  雾&#x2F;&#x2F; 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离 sc">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6670e1fed9c307b7e976cf8f.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/6670f9e6d9c307b7e998b2b4.png">
@@ -47,11 +47,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -66,7 +70,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%B8%89%E7%BB%B4%E5%9D%90%E6%A0%87"><span class="toc-text">添加三维坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2"><span class="toc-text">修改背景颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%BE"><span class="toc-text">雾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">添加背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8%E8%B4%B4%E5%9B%BE"><span class="toc-text">材质贴图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%B4%B4%E5%9B%BE"><span class="toc-text">环境贴图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E7%89%A9%E4%BD%93%E5%8F%98%E4%B8%BA%E7%BA%BF%E6%A1%86%E6%9D%90%E8%B4%A8"><span class="toc-text">将物体变为线框材质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferGeometry%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%A0%E4%BD%95%E4%BD%93"><span class="toc-text">BufferGeometry自定义几何体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89uv%E5%9D%90%E6%A0%87"><span class="toc-text">自定义uv坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%85%89%E6%BA%90%E4%B8%8E%E7%82%B9%E5%85%89%E6%BA%90"><span class="toc-text">环境光源与点光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84"><span class="toc-text">组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GLTF%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%88GLTFLoader%EF%BC%89"><span class="toc-text">GLTF加载器（GLTFLoader）</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%B8%89%E7%BB%B4%E5%9D%90%E6%A0%87"><span class="toc-text">添加三维坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2"><span class="toc-text">修改背景颜色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%BE"><span class="toc-text">雾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="toc-text">添加背景图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%90%E8%B4%A8%E8%B4%B4%E5%9B%BE"><span class="toc-text">材质贴图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E8%B4%B4%E5%9B%BE"><span class="toc-text">环境贴图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E7%89%A9%E4%BD%93%E5%8F%98%E4%B8%BA%E7%BA%BF%E6%A1%86%E6%9D%90%E8%B4%A8"><span class="toc-text">将物体变为线框材质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BufferGeometry%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%A0%E4%BD%95%E4%BD%93"><span class="toc-text">BufferGeometry自定义几何体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89uv%E5%9D%90%E6%A0%87"><span class="toc-text">自定义uv坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%85%89%E6%BA%90%E4%B8%8E%E7%82%B9%E5%85%89%E6%BA%90"><span class="toc-text">环境光源与点光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84"><span class="toc-text">组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GLTF%E5%8A%A0%E8%BD%BD%E5%99%A8%EF%BC%88GLTFLoader%EF%BC%89"><span class="toc-text">GLTF加载器（GLTFLoader）</span></a></li></ol></div></div></widget>
 
 
 
@@ -74,7 +78,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -99,35 +103,66 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="添加三维坐标"><a href="#添加三维坐标" class="headerlink" title="添加三维坐标"></a>添加三维坐标</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axesHelper = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">AxesHelper</span>(<span class="number">5</span>)</span><br><span class="line">axesHelper.<span class="property">position</span>.<span class="property">y</span> = <span class="number">1</span></span><br><span class="line">scene.<span class="title function_">add</span>(axesHelper)</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="添加三维坐标"><a href="#添加三维坐标" class="headerlink" title="添加三维坐标"></a>添加三维坐标</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> axesHelper = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AxesHelper</span>(<span class="hljs-number">5</span>)
+axesHelper.<span class="hljs-property">position</span>.<span class="hljs-property">y</span> = <span class="hljs-number">1</span>
+scene.<span class="hljs-title function_">add</span>(axesHelper)</code></pre>
 
-<h2 id="修改背景颜色"><a href="#修改背景颜色" class="headerlink" title="修改背景颜色"></a>修改背景颜色</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scene.<span class="property">background</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Color</span>(<span class="string">&quot;#9aa7b1&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="修改背景颜色"><a href="#修改背景颜色" class="headerlink" title="修改背景颜色"></a>修改背景颜色</h2><pre><code class="hljs js">scene.<span class="hljs-property">background</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Color</span>(<span class="hljs-string">&quot;#9aa7b1&quot;</span>)</code></pre>
 
-<h2 id="雾"><a href="#雾" class="headerlink" title="雾"></a>雾</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离</span></span><br><span class="line">scene.<span class="property">fog</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Fog</span>(<span class="string">&quot;#f5f3f2&quot;</span>, <span class="number">10</span>, <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="雾"><a href="#雾" class="headerlink" title="雾"></a>雾</h2><pre><code class="hljs js"><span class="hljs-comment">// 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离</span>
+scene.<span class="hljs-property">fog</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Fog</span>(<span class="hljs-string">&quot;#f5f3f2&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">15</span>)</code></pre>
 
 <h2 id="添加背景图片"><a href="#添加背景图片" class="headerlink" title="添加背景图片"></a>添加背景图片</h2><p>素材网站：<a target="_blank" rel="noopener" href="https://polyhaven.com/zh">Poly Haven</a></p>
 <p>素材分割：<a target="_blank" rel="noopener" href="https://matheowis.github.io/HDRI-to-CubeMap/">HDRI to CubeMap (matheowis.github.io)</a></p>
 <blockquote>
 <p> 注意：必须使用正方形图片才能生效!!!</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个立方体纹理,左右上下前后</span></span><br><span class="line"><span class="keyword">const</span> cubeTexture = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">CubeTextureLoader</span>().<span class="title function_">setPath</span>(<span class="string">&#x27;/textures/&#x27;</span>).<span class="title function_">load</span>([</span><br><span class="line">    <span class="string">&quot;px.png&quot;</span>, <span class="string">&quot;nx.png&quot;</span>,</span><br><span class="line">    <span class="string">&quot;py.png&quot;</span>, <span class="string">&quot;ny.png&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pz.png&quot;</span>, <span class="string">&quot;nz.png&quot;</span></span><br><span class="line">])</span><br><span class="line">scene.<span class="property">background</span> = cubeTexture</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 创建一个立方体纹理,左右上下前后</span>
+<span class="hljs-keyword">const</span> cubeTexture = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">CubeTextureLoader</span>().<span class="hljs-title function_">setPath</span>(<span class="hljs-string">&#x27;/textures/&#x27;</span>).<span class="hljs-title function_">load</span>([
+    <span class="hljs-string">&quot;px.png&quot;</span>, <span class="hljs-string">&quot;nx.png&quot;</span>,
+    <span class="hljs-string">&quot;py.png&quot;</span>, <span class="hljs-string">&quot;ny.png&quot;</span>,
+    <span class="hljs-string">&quot;pz.png&quot;</span>, <span class="hljs-string">&quot;nz.png&quot;</span>
+])
+scene.<span class="hljs-property">background</span> = cubeTexture</code></pre>
 
 
 
-<h2 id="材质贴图"><a href="#材质贴图" class="headerlink" title="材质贴图"></a>材质贴图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个纹理</span></span><br><span class="line"><span class="keyword">const</span> texture = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">TextureLoader</span>().<span class="title function_">load</span>(<span class="string">&quot;/star.jpg&quot;</span>)</span><br><span class="line"><span class="comment">// 基础材质</span></span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;</span><br><span class="line">	<span class="attr">map</span>: texture</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="材质贴图"><a href="#材质贴图" class="headerlink" title="材质贴图"></a>材质贴图</h2><pre><code class="hljs js"><span class="hljs-comment">// 创建一个纹理</span>
+<span class="hljs-keyword">const</span> texture = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">TextureLoader</span>().<span class="hljs-title function_">load</span>(<span class="hljs-string">&quot;/star.jpg&quot;</span>)
+<span class="hljs-comment">// 基础材质</span>
+<span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshBasicMaterial</span>(&#123;
+    <span class="hljs-attr">map</span>: texture
+&#125;)</code></pre>
 
 
 
-<h2 id="环境贴图"><a href="#环境贴图" class="headerlink" title="环境贴图"></a>环境贴图</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//   创建一个立方体纹理,左右上下前后</span></span><br><span class="line"><span class="keyword">const</span> cubeTexture = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">CubeTextureLoader</span>().<span class="title function_">setPath</span>(<span class="string">&#x27;/textures/&#x27;</span>).<span class="title function_">load</span>([</span><br><span class="line">    <span class="string">&quot;px.png&quot;</span>, <span class="string">&quot;nx.png&quot;</span>,</span><br><span class="line">    <span class="string">&quot;py.png&quot;</span>, <span class="string">&quot;ny.png&quot;</span>,</span><br><span class="line">    <span class="string">&quot;pz.png&quot;</span>, <span class="string">&quot;nz.png&quot;</span></span><br><span class="line">])</span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>(&#123;</span><br><span class="line">	<span class="attr">envMap</span>: cubeTexture</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="环境贴图"><a href="#环境贴图" class="headerlink" title="环境贴图"></a>环境贴图</h2><pre><code class="hljs js"><span class="hljs-comment">//   创建一个立方体纹理,左右上下前后</span>
+<span class="hljs-keyword">const</span> cubeTexture = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">CubeTextureLoader</span>().<span class="hljs-title function_">setPath</span>(<span class="hljs-string">&#x27;/textures/&#x27;</span>).<span class="hljs-title function_">load</span>([
+    <span class="hljs-string">&quot;px.png&quot;</span>, <span class="hljs-string">&quot;nx.png&quot;</span>,
+    <span class="hljs-string">&quot;py.png&quot;</span>, <span class="hljs-string">&quot;ny.png&quot;</span>,
+    <span class="hljs-string">&quot;pz.png&quot;</span>, <span class="hljs-string">&quot;nz.png&quot;</span>
+])
+<span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshBasicMaterial</span>(&#123;
+    <span class="hljs-attr">envMap</span>: cubeTexture
+&#125;)</code></pre>
 
 
 
-<h2 id="将物体变为线框材质"><a href="#将物体变为线框材质" class="headerlink" title="将物体变为线框材质"></a>将物体变为线框材质</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">material.<span class="property">wireframe</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="将物体变为线框材质"><a href="#将物体变为线框材质" class="headerlink" title="将物体变为线框材质"></a>将物体变为线框材质</h2><pre><code class="hljs js">material.<span class="hljs-property">wireframe</span> = <span class="hljs-literal">true</span></code></pre>
 
 <h2 id="BufferGeometry自定义几何体"><a href="#BufferGeometry自定义几何体" class="headerlink" title="BufferGeometry自定义几何体"></a>BufferGeometry自定义几何体</h2><ol>
 <li>第一种方式</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferGeometry</span>()</span><br><span class="line"><span class="keyword">const</span> float32Array = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></span><br><span class="line">])</span><br><span class="line">geometry.<span class="title function_">setAttribute</span>(<span class="string">&quot;position&quot;</span>,<span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(float32Array,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferGeometry</span>()
+<span class="hljs-keyword">const</span> float32Array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+  <span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>
+])
+geometry.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;position&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferAttribute</span>(float32Array,<span class="hljs-number">3</span>))</code></pre>
 
 <p>预览：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6670e1fed9c307b7e976cf8f.png"></p>
@@ -135,59 +170,208 @@
 <li>第二种方式</li>
 </ol>
 <p>前面那种方式发现在绘制点的时候，会有一些重复的点，可以采用索引的方式进行绘制</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferGeometry</span>()</span><br><span class="line"><span class="keyword">const</span> float32Array = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 1,1,1,</span></span><br><span class="line">  <span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="comment">// 0,0,1</span></span><br><span class="line">])</span><br><span class="line">geometry.<span class="title function_">setAttribute</span>(<span class="string">&quot;position&quot;</span>,<span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(float32Array,<span class="number">3</span>))</span><br><span class="line"><span class="comment">// 创建一个索引</span></span><br><span class="line"><span class="keyword">const</span> indexs = <span class="keyword">new</span> <span class="title class_">Uint16Array</span>([</span><br><span class="line">  <span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">0</span></span><br><span class="line">])</span><br><span class="line">geometry.<span class="property">index</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(indexs,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferGeometry</span>()
+<span class="hljs-keyword">const</span> float32Array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+  <span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-comment">// 1,1,1,</span>
+  <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-comment">// 0,0,1</span>
+])
+geometry.<span class="hljs-title function_">setAttribute</span>(<span class="hljs-string">&quot;position&quot;</span>,<span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferAttribute</span>(float32Array,<span class="hljs-number">3</span>))
+<span class="hljs-comment">// 创建一个索引</span>
+<span class="hljs-keyword">const</span> indexs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Uint16Array</span>([
+  <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">0</span>
+])
+geometry.<span class="hljs-property">index</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferAttribute</span>(indexs,<span class="hljs-number">1</span>)</code></pre>
 
 <h2 id="自定义uv坐标"><a href="#自定义uv坐标" class="headerlink" title="自定义uv坐标"></a>自定义uv坐标</h2><p>如果你想要显示纹理图片的某一个部分，而不是全部显示，就可以考虑使用这个</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义uv像素的取值范围 左上 右上 左下 右下</span></span><br><span class="line"><span class="keyword">const</span> uv = <span class="keyword">new</span> <span class="title class_">Float32Array</span>([</span><br><span class="line">  <span class="number">0.5</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line">  <span class="number">0.5</span>,<span class="number">0</span>,</span><br><span class="line">  <span class="number">1</span>,<span class="number">0</span></span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">geometry.<span class="property">attributes</span>.<span class="property">uv</span> = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BufferAttribute</span>(uv,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 定义uv像素的取值范围 左上 右上 左下 右下</span>
+<span class="hljs-keyword">const</span> uv = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Float32Array</span>([
+  <span class="hljs-number">0.5</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">1</span>,
+  <span class="hljs-number">0.5</span>,<span class="hljs-number">0</span>,
+  <span class="hljs-number">1</span>,<span class="hljs-number">0</span>
+])
+
+geometry.<span class="hljs-property">attributes</span>.<span class="hljs-property">uv</span> = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BufferAttribute</span>(uv,<span class="hljs-number">2</span>)</code></pre>
 
 <h2 id="环境光源与点光源"><a href="#环境光源与点光源" class="headerlink" title="环境光源与点光源"></a>环境光源与点光源</h2><p>预览：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6670f9e6d9c307b7e998b2b4.png"></p>
 <ol>
 <li>添加环境光源</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 颜色，光照强度</span></span><br><span class="line"><span class="keyword">const</span> light = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">AmbientLight</span>(<span class="string">&quot;#ecf0f1&quot;</span>,<span class="number">1</span>)</span><br><span class="line">scene.<span class="title function_">add</span>(light)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 颜色，光照强度</span>
+<span class="hljs-keyword">const</span> light = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">AmbientLight</span>(<span class="hljs-string">&quot;#ecf0f1&quot;</span>,<span class="hljs-number">1</span>)
+scene.<span class="hljs-title function_">add</span>(light)</code></pre>
 
 <ol start="2">
 <li>添加点光源</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pointLight = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">PointLight</span>(<span class="string">&quot;#ffffff&quot;</span>,<span class="number">100</span>,<span class="number">100</span>)</span><br><span class="line">pointLight.<span class="property">position</span>.<span class="title function_">set</span>(<span class="number">5</span>,<span class="number">5</span>,<span class="number">5</span>)</span><br><span class="line">scene.<span class="title function_">add</span>(pointLight)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> pointLight = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">PointLight</span>(<span class="hljs-string">&quot;#ffffff&quot;</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>)
+pointLight.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>(<span class="hljs-number">5</span>,<span class="hljs-number">5</span>,<span class="hljs-number">5</span>)
+scene.<span class="hljs-title function_">add</span>(pointLight)</code></pre>
 
 <ol start="3">
 <li>设置阴影效果</li>
 </ol>
 <p>正方体的设置：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 物体接受光源</span></span><br><span class="line">mesh.<span class="property">receiveShadow</span> = <span class="literal">true</span></span><br><span class="line"><span class="comment">// 物体投射光源</span></span><br><span class="line">mesh.<span class="property">castShadow</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 物体接受光源</span>
+mesh.<span class="hljs-property">receiveShadow</span> = <span class="hljs-literal">true</span>
+<span class="hljs-comment">// 物体投射光源</span>
+mesh.<span class="hljs-property">castShadow</span> = <span class="hljs-literal">true</span></code></pre>
 
 <p>地面的设置：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">meshfloor.<span class="property">receiveShadow</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">meshfloor.<span class="hljs-property">receiveShadow</span> = <span class="hljs-literal">true</span></code></pre>
 
 <p>点光源的设置：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pointLight.<span class="property">castShadow</span> = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">pointLight.<span class="hljs-property">castShadow</span> = <span class="hljs-literal">true</span></code></pre>
 
 <p>渲染器的设置：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderer.<span class="property">shadowMap</span>.<span class="property">enabled</span>=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">renderer.<span class="hljs-property">shadowMap</span>.<span class="hljs-property">enabled</span>=<span class="hljs-literal">true</span></code></pre>
 
 <ol start="4">
 <li>全部代码</li>
 </ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;canvas&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;js&quot;&gt;</span><br><span class="line">import * as THREE from &#x27;three&#x27;;</span><br><span class="line">import &#123; onMounted &#125; from &quot;vue&quot;</span><br><span class="line">// 引入轨道控制器</span><br><span class="line">import &#123; OrbitControls &#125; from &#x27;@/assets/js/OrbitControls.js&#x27;</span><br><span class="line"></span><br><span class="line">const width = document.documentElement.clientWidth</span><br><span class="line">const height = document.documentElement.clientHeight</span><br><span class="line"></span><br><span class="line">// 创建3d场景</span><br><span class="line">const scene = new THREE.Scene()</span><br><span class="line"></span><br><span class="line">// 创建3维坐标</span><br><span class="line">const axesHelper = new THREE.AxesHelper(5)</span><br><span class="line">scene.add(axesHelper)</span><br><span class="line"></span><br><span class="line">// 创建相机</span><br><span class="line">const camera = new THREE.PerspectiveCamera(60, 2, 0.1, 500)</span><br><span class="line">camera.position.z = 7</span><br><span class="line">camera.position.y = 3</span><br><span class="line"></span><br><span class="line">// 创建正方体</span><br><span class="line">const geometry = new THREE.BoxGeometry(1,1,1)</span><br><span class="line">// 创建地面</span><br><span class="line">const geometryFloor = new THREE.PlaneGeometry(10,10)</span><br><span class="line"></span><br><span class="line">// 添加灯光效果</span><br><span class="line">// 环境光</span><br><span class="line">const light = new THREE.AmbientLight(&quot;#ecf0f1&quot;,1)</span><br><span class="line">scene.add(light)</span><br><span class="line">// 点光源</span><br><span class="line">const pointLight = new THREE.PointLight(&quot;#ffffff&quot;,100,100)</span><br><span class="line">pointLight.position.set(5,5,5)</span><br><span class="line">pointLight.castShadow = true</span><br><span class="line">scene.add(pointLight)</span><br><span class="line"></span><br><span class="line">// 基础材质</span><br><span class="line">const material = new THREE.MeshPhongMaterial(&#123;</span><br><span class="line">  color: &quot;#54a0ff&quot;,</span><br><span class="line">  // 灯光打到物体上的高亮程度，越高的值越闪亮</span><br><span class="line">  shininess: 500</span><br><span class="line">&#125;)</span><br><span class="line">// 基础材质</span><br><span class="line">const materialFloor = new THREE.MeshPhongMaterial(&#123;</span><br><span class="line">  color: &quot;#bdc3c7&quot;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 网格</span><br><span class="line">const mesh = new THREE.Mesh(geometry, material)</span><br><span class="line">const meshfloor = new THREE.Mesh(geometryFloor, materialFloor)</span><br><span class="line">mesh.position.set(0, 0.5, 0)</span><br><span class="line">// 物体接受光源</span><br><span class="line">mesh.receiveShadow = true</span><br><span class="line">// 物体投射光源</span><br><span class="line">mesh.castShadow = true</span><br><span class="line">meshfloor.rotation.x -= Math.PI / 2</span><br><span class="line">meshfloor.receiveShadow = true</span><br><span class="line">scene.add(mesh)</span><br><span class="line">scene.add(meshfloor)</span><br><span class="line"></span><br><span class="line">// 创建渲染器</span><br><span class="line">const renderer = new THREE.WebGLRenderer(&#123; antialias: true &#125;)</span><br><span class="line">// 调整渲染器大小</span><br><span class="line">renderer.setSize(width, height)</span><br><span class="line">// 阴影投射</span><br><span class="line">renderer.shadowMap.enabled=true</span><br><span class="line"></span><br><span class="line">onMounted(() =&gt; &#123;</span><br><span class="line">  // 添加动画</span><br><span class="line">  renderer.setAnimationLoop(animate)</span><br><span class="line">  document.querySelector(&#x27;#canvas&#x27;).appendChild(renderer.domElement)</span><br><span class="line">  // 添加轨道控制器</span><br><span class="line">  const controls = new OrbitControls(camera, renderer.domElement);</span><br><span class="line"></span><br><span class="line">  // 动画函数</span><br><span class="line">  function animate(time) &#123;</span><br><span class="line"></span><br><span class="line">    // mesh.rotation.x = time / 2000;</span><br><span class="line">    // mesh.rotation.y = time / 1000;</span><br><span class="line">    controls.update()</span><br><span class="line">    renderer.render(scene, camera);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">// 添加网格地面</span><br><span class="line">// const gridHelper = new THREE.GridHelper(10, 10)</span><br><span class="line">// scene.add(gridHelper)</span><br><span class="line"></span><br><span class="line">// 进行渲染</span><br><span class="line">renderer.render(scene, camera)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div id=&quot;canvas&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;js&quot;&gt;
+import * as THREE from &#x27;three&#x27;;
+import &#123; onMounted &#125; from &quot;vue&quot;
+// 引入轨道控制器
+import &#123; OrbitControls &#125; from &#x27;@/assets/js/OrbitControls.js&#x27;
+
+const width = document.documentElement.clientWidth
+const height = document.documentElement.clientHeight
+
+// 创建3d场景
+const scene = new THREE.Scene()
+
+// 创建3维坐标
+const axesHelper = new THREE.AxesHelper(5)
+scene.add(axesHelper)
+
+// 创建相机
+const camera = new THREE.PerspectiveCamera(60, 2, 0.1, 500)
+camera.position.z = 7
+camera.position.y = 3
+
+// 创建正方体
+const geometry = new THREE.BoxGeometry(1,1,1)
+// 创建地面
+const geometryFloor = new THREE.PlaneGeometry(10,10)
+
+// 添加灯光效果
+// 环境光
+const light = new THREE.AmbientLight(&quot;#ecf0f1&quot;,1)
+scene.add(light)
+// 点光源
+const pointLight = new THREE.PointLight(&quot;#ffffff&quot;,100,100)
+pointLight.position.set(5,5,5)
+pointLight.castShadow = true
+scene.add(pointLight)
+
+// 基础材质
+const material = new THREE.MeshPhongMaterial(&#123;
+  color: &quot;#54a0ff&quot;,
+  // 灯光打到物体上的高亮程度，越高的值越闪亮
+  shininess: 500
+&#125;)
+// 基础材质
+const materialFloor = new THREE.MeshPhongMaterial(&#123;
+  color: &quot;#bdc3c7&quot;
+&#125;)
+
+// 网格
+const mesh = new THREE.Mesh(geometry, material)
+const meshfloor = new THREE.Mesh(geometryFloor, materialFloor)
+mesh.position.set(0, 0.5, 0)
+// 物体接受光源
+mesh.receiveShadow = true
+// 物体投射光源
+mesh.castShadow = true
+meshfloor.rotation.x -= Math.PI / 2
+meshfloor.receiveShadow = true
+scene.add(mesh)
+scene.add(meshfloor)
+
+// 创建渲染器
+const renderer = new THREE.WebGLRenderer(&#123; antialias: true &#125;)
+// 调整渲染器大小
+renderer.setSize(width, height)
+// 阴影投射
+renderer.shadowMap.enabled=true
+
+onMounted(() =&gt; &#123;
+  // 添加动画
+  renderer.setAnimationLoop(animate)
+  document.querySelector(&#x27;#canvas&#x27;).appendChild(renderer.domElement)
+  // 添加轨道控制器
+  const controls = new OrbitControls(camera, renderer.domElement);
+
+  // 动画函数
+  function animate(time) &#123;
+
+    // mesh.rotation.x = time / 2000;
+    // mesh.rotation.y = time / 1000;
+    controls.update()
+    renderer.render(scene, camera);
+
+  &#125;
+&#125;)
+
+// 添加网格地面
+// const gridHelper = new THREE.GridHelper(10, 10)
+// scene.add(gridHelper)
+
+// 进行渲染
+renderer.render(scene, camera)
+
+
+
+&lt;/script&gt;
+
+&lt;style&gt;&lt;/style&gt;</code></pre>
 
 <h2 id="组"><a href="#组" class="headerlink" title="组"></a>组</h2><p>可以给一些物体进行统一的一个编组，方便对其进行统一的控制</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> geometry = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">BoxGeometry</span>( <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span> );</span><br><span class="line"><span class="keyword">const</span> material = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">MeshBasicMaterial</span>( &#123;<span class="attr">color</span>: <span class="number">0x00ff00</span>&#125; );</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cubeA = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>( geometry, material );</span><br><span class="line">cubeA.<span class="property">position</span>.<span class="title function_">set</span>( <span class="number">100</span>, <span class="number">100</span>, <span class="number">0</span> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cubeB = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Mesh</span>( geometry, material );</span><br><span class="line">cubeB.<span class="property">position</span>.<span class="title function_">set</span>( -<span class="number">100</span>, -<span class="number">100</span>, <span class="number">0</span> );</span><br><span class="line"></span><br><span class="line"><span class="comment">//create a group and add the two cubes</span></span><br><span class="line"><span class="comment">//These cubes can now be rotated / scaled etc as a group</span></span><br><span class="line"><span class="keyword">const</span> group = <span class="keyword">new</span> <span class="variable constant_">THREE</span>.<span class="title class_">Group</span>();</span><br><span class="line">group.<span class="title function_">add</span>( cubeA );</span><br><span class="line">group.<span class="title function_">add</span>( cubeB );</span><br><span class="line"></span><br><span class="line">scene.<span class="title function_">add</span>( group );</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> geometry = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">BoxGeometry</span>( <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span> );
+<span class="hljs-keyword">const</span> material = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">MeshBasicMaterial</span>( &#123;<span class="hljs-attr">color</span>: <span class="hljs-number">0x00ff00</span>&#125; );
+
+<span class="hljs-keyword">const</span> cubeA = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>( geometry, material );
+cubeA.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>( <span class="hljs-number">100</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span> );
+
+<span class="hljs-keyword">const</span> cubeB = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Mesh</span>( geometry, material );
+cubeB.<span class="hljs-property">position</span>.<span class="hljs-title function_">set</span>( -<span class="hljs-number">100</span>, -<span class="hljs-number">100</span>, <span class="hljs-number">0</span> );
+
+<span class="hljs-comment">//create a group and add the two cubes</span>
+<span class="hljs-comment">//These cubes can now be rotated / scaled etc as a group</span>
+<span class="hljs-keyword">const</span> group = <span class="hljs-keyword">new</span> <span class="hljs-variable constant_">THREE</span>.<span class="hljs-title class_">Group</span>();
+group.<span class="hljs-title function_">add</span>( cubeA );
+group.<span class="hljs-title function_">add</span>( cubeB );
+
+scene.<span class="hljs-title function_">add</span>( group );</code></pre>
 
 <h2 id="GLTF加载器（GLTFLoader）"><a href="#GLTF加载器（GLTFLoader）" class="headerlink" title="GLTF加载器（GLTFLoader）"></a>GLTF加载器（GLTFLoader）</h2><p><a target="_blank" rel="noopener" href="https://www.khronos.org/gltf">glTF</a>（gl传输格式）是一种开放格式的规范 （<a target="_blank" rel="noopener" href="https://github.com/KhronosGroup/glTF/tree/master/specification/2.0">open format specification</a>）， 用于更高效地传输、加载3D内容。该类文件以JSON（.gltf）格式或二进制（.glb）格式提供， 外部文件存储贴图（.jpg、.png）和额外的二进制数据（.bin）。一个glTF组件可传输一个或多个场景， 包括网格、材质、贴图、蒙皮、骨架、变形目标、动画、灯光以及摄像机</p>
 <ol>
 <li>导入</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">GLTFLoader</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three/addons/loaders/GLTFLoader.js&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">GLTFLoader</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;three/addons/loaders/GLTFLoader.js&#x27;</span>;</code></pre>
 
 <ol start="2">
 <li>使用</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个GTLF加载器</span></span><br><span class="line"><span class="keyword">const</span> loader = <span class="keyword">new</span> <span class="title class_">GLTFLoader</span>()</span><br><span class="line"><span class="comment">// 加载</span></span><br><span class="line">loader.<span class="title function_">load</span>(<span class="string">&quot;/xuefulan.glb&quot;</span>, <span class="function">(<span class="params">gltf</span>)=&gt;</span>&#123;</span><br><span class="line">    scene.<span class="title function_">add</span>(gltf.<span class="property">scene</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 创建一个GTLF加载器</span>
+<span class="hljs-keyword">const</span> loader = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GLTFLoader</span>()
+<span class="hljs-comment">// 加载</span>
+loader.<span class="hljs-title function_">load</span>(<span class="hljs-string">&quot;/xuefulan.glb&quot;</span>, <span class="hljs-function">(<span class="hljs-params">gltf</span>)=&gt;</span>&#123;
+    scene.<span class="hljs-title function_">add</span>(gltf.<span class="hljs-property">scene</span>)
+&#125;)</code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -195,14 +379,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/14/73/">three.js添加轨道控制器</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/13/72/">使用three.js创建一个最基础的3d场景</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/14/73/">three.js添加轨道控制器</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/13/71/">使用docker镜像nginx进行项目部署</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -343,8 +527,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

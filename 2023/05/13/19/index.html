@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>登录鉴权——JWT(前后端分离) - 小哲的博客</title>
+  <title>登录鉴权——JWT(前后端分离) - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能我用到的技术 express（基于node的后端） 数据库（我用的是Wampserver64） vue2 （前端） axios mysql2 jsonwebtoken  创建后台项目1express --view&#x3D;ejs nodeApp  下载依赖1npm i  测试能否成功访问开启本地服务器： 1node .&#x2F;bin">
+    <meta name="description" content="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能我用到的技术 express（基于node的后端） 数据库（我用的是Wampserver64） vue2 （前端） axios mysql2 jsonwebtoken  创建后台项目express --view&#x3D;ejs nodeApp  下载依赖npm i  测试能否成功访问开启本地服务器： node .&#x2F;bin&#x2F;ww">
 <meta property="og:type" content="article">
 <meta property="og:title" content="登录鉴权——JWT(前后端分离)">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/05/13/19/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能我用到的技术 express（基于node的后端） 数据库（我用的是Wampserver64） vue2 （前端） axios mysql2 jsonwebtoken  创建后台项目1express --view&#x3D;ejs nodeApp  下载依赖1npm i  测试能否成功访问开启本地服务器： 1node .&#x2F;bin">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能我用到的技术 express（基于node的后端） 数据库（我用的是Wampserver64） vue2 （前端） axios mysql2 jsonwebtoken  创建后台项目express --view&#x3D;ejs nodeApp  下载依赖npm i  测试能否成功访问开启本地服务器： node .&#x2F;bin&#x2F;ww">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-05-12T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.002Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E6%96%87%E7%AB%A0%E9%80%82%E5%90%88%E6%9C%89node%E5%9F%BA%E7%A1%80%E7%9A%84%E5%90%8C%E5%AD%A6%E4%BB%AC%E5%93%A6%EF%BC%81%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%AE%B0%E5%BD%95%E4%BA%86%E5%81%9A%E7%9A%84%E4%BB%BF%E5%8D%96%E5%BA%A7%E7%94%B5%E5%BD%B1%E7%9A%84%E4%B8%80%E4%B8%AA%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="toc-text">本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-text">我用到的技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建后台项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96"><span class="toc-text">下载依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%83%BD%E5%90%A6%E6%88%90%E5%8A%9F%E8%AE%BF%E9%97%AE"><span class="toc-text">测试能否成功访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E8%BD%BDmysql2"><span class="toc-text">后端根目录下载mysql2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%B8%8B%E8%BD%BDaxios"><span class="toc-text">前端下载axios</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">后端路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E8%AE%BE%E7%BD%AE%E8%B7%A8%E5%9F%9F"><span class="toc-text">express设置跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%A0%81"><span class="toc-text">前端请求代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDjsonwebtoken"><span class="toc-text">下载jsonwebtoken</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-text">导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1js%E6%96%87%E4%BB%B6"><span class="toc-text">创建一个公共js文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9express%E7%9A%84%E8%B7%AF%E7%94%B1"><span class="toc-text">更改express的路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8axios%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">使用axios拦截器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B0%E8%BF%99%E9%87%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E5%8F%AF%E8%83%BD%E6%8B%BF%E4%B8%8D%E5%88%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E9%83%A8"><span class="toc-text">到这里会发现可能拿不到自定义头部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0%E5%A4%B4%E9%83%A8%E5%B9%B6%E4%BF%9D%E5%AD%98%E6%9C%AC%E5%9C%B0"><span class="toc-text">拿到头部并保存本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%8F%E6%AC%A1%E5%90%91%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E9%83%BD%E5%B8%A6%E4%B8%8Atoken"><span class="toc-text">每次向后端请求都带上token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%BF%9B%E8%A1%8C%E6%8E%A5%E6%94%B6%E5%89%8D%E7%AB%AF%E5%8F%91%E8%BF%87%E6%9D%A5%E7%9A%84token%E8%BF%9B%E8%A1%8C%E6%A0%A1%E9%AA%8C"><span class="toc-text">后端进行接收前端发过来的token进行校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E6%96%87%E7%AB%A0%E9%80%82%E5%90%88%E6%9C%89node%E5%9F%BA%E7%A1%80%E7%9A%84%E5%90%8C%E5%AD%A6%E4%BB%AC%E5%93%A6%EF%BC%81%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%AE%B0%E5%BD%95%E4%BA%86%E5%81%9A%E7%9A%84%E4%BB%BF%E5%8D%96%E5%BA%A7%E7%94%B5%E5%BD%B1%E7%9A%84%E4%B8%80%E4%B8%AA%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="toc-text">本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%94%A8%E5%88%B0%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-text">我用到的技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE"><span class="toc-text">创建后台项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96"><span class="toc-text">下载依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%83%BD%E5%90%A6%E6%88%90%E5%8A%9F%E8%AE%BF%E9%97%AE"><span class="toc-text">测试能否成功访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E6%A0%B9%E7%9B%AE%E5%BD%95%E4%B8%8B%E8%BD%BDmysql2"><span class="toc-text">后端根目录下载mysql2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%B8%8B%E8%BD%BDaxios"><span class="toc-text">前端下载axios</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%B7%AF%E7%94%B1"><span class="toc-text">后端路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#express%E8%AE%BE%E7%BD%AE%E8%B7%A8%E5%9F%9F"><span class="toc-text">express设置跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82%E4%BB%A3%E7%A0%81"><span class="toc-text">前端请求代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDjsonwebtoken"><span class="toc-text">下载jsonwebtoken</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-text">导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1js%E6%96%87%E4%BB%B6"><span class="toc-text">创建一个公共js文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9express%E7%9A%84%E8%B7%AF%E7%94%B1"><span class="toc-text">更改express的路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8axios%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">使用axios拦截器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B0%E8%BF%99%E9%87%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E5%8F%AF%E8%83%BD%E6%8B%BF%E4%B8%8D%E5%88%B0%E8%87%AA%E5%AE%9A%E4%B9%89%E5%A4%B4%E9%83%A8"><span class="toc-text">到这里会发现可能拿不到自定义头部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%BF%E5%88%B0%E5%A4%B4%E9%83%A8%E5%B9%B6%E4%BF%9D%E5%AD%98%E6%9C%AC%E5%9C%B0"><span class="toc-text">拿到头部并保存本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%8F%E6%AC%A1%E5%90%91%E5%90%8E%E7%AB%AF%E8%AF%B7%E6%B1%82%E9%83%BD%E5%B8%A6%E4%B8%8Atoken"><span class="toc-text">每次向后端请求都带上token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E8%BF%9B%E8%A1%8C%E6%8E%A5%E6%94%B6%E5%89%8D%E7%AB%AF%E5%8F%91%E8%BF%87%E6%9D%A5%E7%9A%84token%E8%BF%9B%E8%A1%8C%E6%A0%A1%E9%AA%8C"><span class="toc-text">后端进行接收前端发过来的token进行校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,7 +100,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h3 id="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能"><a href="#本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能" class="headerlink" title="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能"></a>本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能</h3><h2 id="我用到的技术"><a href="#我用到的技术" class="headerlink" title="我用到的技术"></a>我用到的技术</h2><ol>
+  </div><article class="md-text content slide-up"><h3 id="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能"><a href="#本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能" class="headerlink" title="本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能"></a>本篇文章适合有node基础的同学们哦！这篇文章记录了做的仿卖座电影的一个登录功能</h3><h2 id="我用到的技术"><a href="#我用到的技术" class="headerlink" title="我用到的技术"></a>我用到的技术</h2><ol>
 <li>express（基于node的后端）</li>
 <li>数据库（我用的是Wampserver64）</li>
 <li>vue2 （前端）</li>
@@ -104,52 +108,170 @@
 <li>mysql2</li>
 <li>jsonwebtoken</li>
 </ol>
-<h2 id="创建后台项目"><a href="#创建后台项目" class="headerlink" title="创建后台项目"></a>创建后台项目</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express --view=ejs nodeApp</span><br></pre></td></tr></table></figure>
+<h2 id="创建后台项目"><a href="#创建后台项目" class="headerlink" title="创建后台项目"></a>创建后台项目</h2><pre><code class="hljs sh">express --view=ejs nodeApp</code></pre>
 
-<h2 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i</span><br></pre></td></tr></table></figure>
+<h2 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h2><pre><code class="hljs sh">npm i</code></pre>
 
 <h2 id="测试能否成功访问"><a href="#测试能否成功访问" class="headerlink" title="测试能否成功访问"></a>测试能否成功访问</h2><p>开启本地服务器：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node ./bin/www</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">node ./bin/www</code></pre>
 <p>访问<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a></p>
 <h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>打开Wampserver64, 如果是绿色则启动成功</p>
-<h2 id="后端根目录下载mysql2"><a href="#后端根目录下载mysql2" class="headerlink" title="后端根目录下载mysql2"></a>后端根目录下载mysql2</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i mysql2</span><br></pre></td></tr></table></figure>
+<h2 id="后端根目录下载mysql2"><a href="#后端根目录下载mysql2" class="headerlink" title="后端根目录下载mysql2"></a>后端根目录下载mysql2</h2><pre><code class="hljs sh">npm i mysql2</code></pre>
 
-<h2 id="前端下载axios"><a href="#前端下载axios" class="headerlink" title="前端下载axios"></a>前端下载axios</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i axios</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="后端路由"><a href="#后端路由" class="headerlink" title="后端路由"></a>后端路由</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> mysql2 = <span class="built_in">require</span>(<span class="string">&#x27;mysql2&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> router = express.<span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">/* GET home page. */</span></span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/login&#x27;</span>,<span class="keyword">async</span> <span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">    a=<span class="string">&#x27;users&#x27;</span></span><br><span class="line">    <span class="comment">// 创建连接池</span></span><br><span class="line">    <span class="keyword">const</span> config=<span class="title function_">handleConfig</span>()</span><br><span class="line">    <span class="keyword">const</span> promisePool=mysql2.<span class="title function_">createPool</span>(config).<span class="title function_">promise</span>()</span><br><span class="line">    <span class="keyword">let</span> users=<span class="keyword">await</span> promisePool.<span class="title function_">query</span>(<span class="string">`SELECT * FROM <span class="subst">$&#123;a&#125;</span> WHERE name=&#x27;<span class="subst">$&#123;req.body.username&#125;</span>&#x27; AND password=&#x27;<span class="subst">$&#123;req.body.password&#125;</span>&#x27;`</span>)  <span class="comment">//sql语句</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(users[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span>(users[<span class="number">0</span>].<span class="property">length</span>)&#123;</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;<span class="attr">ok</span>:<span class="number">1</span>&#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;<span class="attr">ok</span>:<span class="number">0</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数据库的基本配置</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleConfig</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        <span class="attr">host</span>:<span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">        <span class="attr">port</span>:<span class="number">3306</span>,</span><br><span class="line">        <span class="attr">user</span>:<span class="string">&quot;root&quot;</span>,</span><br><span class="line">        <span class="attr">password</span>:<span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">database</span>:<span class="string">&quot;maizuo&quot;</span>,</span><br><span class="line">        <span class="attr">connectLimit</span>:<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="express设置跨域"><a href="#express设置跨域" class="headerlink" title="express设置跨域"></a>express设置跨域</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置允许跨域访问该服务.</span></span><br><span class="line">app.<span class="title function_">all</span>(<span class="string">&#x27;*&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="string">&#x27;*&#x27;</span>);</span><br><span class="line">  res.<span class="title function_">header</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/json;charset=utf-8&#x27;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="前端下载axios"><a href="#前端下载axios" class="headerlink" title="前端下载axios"></a>前端下载axios</h2><pre><code class="hljs sh">npm i axios</code></pre>
 
 
+<h2 id="后端路由"><a href="#后端路由" class="headerlink" title="后端路由"></a>后端路由</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
+<span class="hljs-keyword">const</span> mysql2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql2&#x27;</span>)
+<span class="hljs-keyword">var</span> router = express.<span class="hljs-title class_">Router</span>();
 
-<h2 id="前端请求代码"><a href="#前端请求代码" class="headerlink" title="前端请求代码"></a>前端请求代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&#x27;http://localhost:3000/login&#x27;</span>,&#123;</span><br><span class="line">       <span class="attr">username</span>:values.<span class="property">username</span>,</span><br><span class="line">       <span class="attr">password</span>:values.<span class="property">password</span></span><br><span class="line">     &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">     &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure>
+<span class="hljs-comment">/* GET home page. */</span>
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>,<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)&#123;
+    a=<span class="hljs-string">&#x27;users&#x27;</span>
+    <span class="hljs-comment">// 创建连接池</span>
+    <span class="hljs-keyword">const</span> config=<span class="hljs-title function_">handleConfig</span>()
+    <span class="hljs-keyword">const</span> promisePool=mysql2.<span class="hljs-title function_">createPool</span>(config).<span class="hljs-title function_">promise</span>()
+    <span class="hljs-keyword">let</span> users=<span class="hljs-keyword">await</span> promisePool.<span class="hljs-title function_">query</span>(<span class="hljs-string">`SELECT * FROM <span class="hljs-subst">$&#123;a&#125;</span> WHERE name=&#x27;<span class="hljs-subst">$&#123;req.body.username&#125;</span>&#x27; AND password=&#x27;<span class="hljs-subst">$&#123;req.body.password&#125;</span>&#x27;`</span>)  <span class="hljs-comment">//sql语句</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(users[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">if</span>(users[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>)&#123;
+        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">ok</span>:<span class="hljs-number">1</span>&#125;)
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">ok</span>:<span class="hljs-number">0</span>&#125;)
+    &#125;
+&#125;)
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = router;
+
+
+<span class="hljs-comment">// 连接数据库的基本配置</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">handleConfig</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-keyword">return</span>&#123;
+        <span class="hljs-attr">host</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,
+        <span class="hljs-attr">port</span>:<span class="hljs-number">3306</span>,
+        <span class="hljs-attr">user</span>:<span class="hljs-string">&quot;root&quot;</span>,
+        <span class="hljs-attr">password</span>:<span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">database</span>:<span class="hljs-string">&quot;maizuo&quot;</span>,
+        <span class="hljs-attr">connectLimit</span>:<span class="hljs-number">1</span>
+    &#125;
+&#125;</code></pre>
+
+<h2 id="express设置跨域"><a href="#express设置跨域" class="headerlink" title="express设置跨域"></a>express设置跨域</h2><pre><code class="hljs js"><span class="hljs-comment">//设置允许跨域访问该服务.</span>
+app.<span class="hljs-title function_">all</span>(<span class="hljs-string">&#x27;*&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) &#123;
+  res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>);
+  res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Headers&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>);
+  res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Allow-Methods&#x27;</span>, <span class="hljs-string">&#x27;*&#x27;</span>);
+  res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Content-Type&#x27;</span>, <span class="hljs-string">&#x27;application/json;charset=utf-8&#x27;</span>);
+  <span class="hljs-title function_">next</span>();
+&#125;);</code></pre>
+
+
+
+<h2 id="前端请求代码"><a href="#前端请求代码" class="headerlink" title="前端请求代码"></a>前端请求代码</h2><pre><code class="hljs js">axios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;http://localhost:3000/login&#x27;</span>,&#123;
+       <span class="hljs-attr">username</span>:values.<span class="hljs-property">username</span>,
+       <span class="hljs-attr">password</span>:values.<span class="hljs-property">password</span>
+     &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res.<span class="hljs-property">data</span>)
+     &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;
+       <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)
+     &#125;)</code></pre>
 
 <p><font color='red'>到这里就完成最基本的登录鉴权了，接下来进入主题</font></p>
-<h2 id="下载jsonwebtoken"><a href="#下载jsonwebtoken" class="headerlink" title="下载jsonwebtoken"></a>下载jsonwebtoken</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i jsonwebtoken</span><br></pre></td></tr></table></figure>
+<h2 id="下载jsonwebtoken"><a href="#下载jsonwebtoken" class="headerlink" title="下载jsonwebtoken"></a>下载jsonwebtoken</h2><pre><code class="hljs sh">npm i jsonwebtoken</code></pre>
 
 
-<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)</code></pre>
 
 <h2 id="创建一个公共js文件"><a href="#创建一个公共js文件" class="headerlink" title="创建一个公共js文件"></a>创建一个公共js文件</h2><p>此文件用来存放jsonwebtoken的加密与解密函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; json &#125; = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">&#x27;jsonwebtoken&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> key = <span class="string">&#x27;maizuoc312asdpkj&#x27;</span>  <span class="comment">//秘钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj=&#123;</span><br><span class="line">    <span class="comment">// 加密</span></span><br><span class="line">    <span class="attr">sign</span>: <span class="keyword">function</span>(<span class="params">data,time</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> token=jwt.<span class="title function_">sign</span>(data, key, &#123; <span class="attr">expiresIn</span>: time &#125;)</span><br><span class="line">        <span class="keyword">return</span> token</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">verify</span>: <span class="keyword">function</span>(<span class="params">token</span>)&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> jwt.<span class="title function_">verify</span>(token, key)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=obj</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; json &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
+<span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)
+<span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;maizuoc312asdpkj&#x27;</span>  <span class="hljs-comment">//秘钥</span>
 
-<h2 id="更改express的路由"><a href="#更改express的路由" class="headerlink" title="更改express的路由"></a>更改express的路由</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">post</span>(<span class="string">&#x27;/login&#x27;</span>,<span class="keyword">async</span> <span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">    a=<span class="string">&#x27;users&#x27;</span></span><br><span class="line">    <span class="comment">// 创建连接池</span></span><br><span class="line">    <span class="keyword">const</span> config=<span class="title function_">handleConfig</span>()</span><br><span class="line">    <span class="keyword">const</span> promisePool=mysql2.<span class="title function_">createPool</span>(config).<span class="title function_">promise</span>()</span><br><span class="line">    <span class="keyword">let</span> users=<span class="keyword">await</span> promisePool.<span class="title function_">query</span>(<span class="string">`SELECT * FROM <span class="subst">$&#123;a&#125;</span> WHERE name=&#x27;<span class="subst">$&#123;req.body.username&#125;</span>&#x27; AND password=&#x27;<span class="subst">$&#123;req.body.password&#125;</span>&#x27;`</span>)  <span class="comment">//sql语句</span></span><br><span class="line">    <span class="keyword">if</span>(users[<span class="number">0</span>].<span class="property">length</span>)&#123;</span><br><span class="line">        mony=users[<span class="number">0</span>][<span class="number">0</span>].<span class="property">mony</span></span><br><span class="line">        name=users[<span class="number">0</span>][<span class="number">0</span>].<span class="property">name</span></span><br><span class="line">        <span class="comment">// 将token放在header中</span></span><br><span class="line">        <span class="keyword">const</span> token=jwtObj.<span class="title function_">sign</span>(users[<span class="number">0</span>][<span class="number">0</span>],<span class="string">&#x27;1h&#x27;</span>)</span><br><span class="line">        res.<span class="title function_">header</span>(<span class="string">&#x27;Autorization&#x27;</span>, token)</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;</span><br><span class="line">            <span class="attr">ok</span>:<span class="number">1</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.<span class="title function_">send</span>(&#123;<span class="attr">ok</span>:<span class="number">0</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<span class="hljs-keyword">const</span> obj=&#123;
+    <span class="hljs-comment">// 加密</span>
+    <span class="hljs-attr">sign</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data,time</span>)&#123;
+        <span class="hljs-keyword">const</span> token=jwt.<span class="hljs-title function_">sign</span>(data, key, &#123; <span class="hljs-attr">expiresIn</span>: time &#125;)
+        <span class="hljs-keyword">return</span> token
+    &#125;,
+    <span class="hljs-attr">verify</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">token</span>)&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">return</span> jwt.<span class="hljs-title function_">verify</span>(token, key)
+        &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>            
+        &#125;
+    &#125;
+&#125;
 
-<h2 id="使用axios拦截器"><a href="#使用axios拦截器" class="headerlink" title="使用axios拦截器"></a>使用axios拦截器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加请求拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="comment">// 在发送请求之前做些什么</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 对请求错误做些什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加响应拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// 2xx 范围内的状态码都会触发该函数。</span></span><br><span class="line">    <span class="comment">// 对响应数据做点什么</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 超出 2xx 范围的状态码都会触发该函数。</span></span><br><span class="line">    <span class="comment">// 对响应错误做点什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>=obj</code></pre>
+
+<h2 id="更改express的路由"><a href="#更改express的路由" class="headerlink" title="更改express的路由"></a>更改express的路由</h2><pre><code class="hljs js">router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>,<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>)&#123;
+    a=<span class="hljs-string">&#x27;users&#x27;</span>
+    <span class="hljs-comment">// 创建连接池</span>
+    <span class="hljs-keyword">const</span> config=<span class="hljs-title function_">handleConfig</span>()
+    <span class="hljs-keyword">const</span> promisePool=mysql2.<span class="hljs-title function_">createPool</span>(config).<span class="hljs-title function_">promise</span>()
+    <span class="hljs-keyword">let</span> users=<span class="hljs-keyword">await</span> promisePool.<span class="hljs-title function_">query</span>(<span class="hljs-string">`SELECT * FROM <span class="hljs-subst">$&#123;a&#125;</span> WHERE name=&#x27;<span class="hljs-subst">$&#123;req.body.username&#125;</span>&#x27; AND password=&#x27;<span class="hljs-subst">$&#123;req.body.password&#125;</span>&#x27;`</span>)  <span class="hljs-comment">//sql语句</span>
+    <span class="hljs-keyword">if</span>(users[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>)&#123;
+        mony=users[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].<span class="hljs-property">mony</span>
+        name=users[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].<span class="hljs-property">name</span>
+        <span class="hljs-comment">// 将token放在header中</span>
+        <span class="hljs-keyword">const</span> token=jwtObj.<span class="hljs-title function_">sign</span>(users[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>],<span class="hljs-string">&#x27;1h&#x27;</span>)
+        res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Autorization&#x27;</span>, token)
+        res.<span class="hljs-title function_">send</span>(&#123;
+            <span class="hljs-attr">ok</span>:<span class="hljs-number">1</span>
+        &#125;)
+    &#125;<span class="hljs-keyword">else</span>&#123;
+        res.<span class="hljs-title function_">send</span>(&#123;<span class="hljs-attr">ok</span>:<span class="hljs-number">0</span>&#125;)
+    &#125;
+&#125;)</code></pre>
+
+<h2 id="使用axios拦截器"><a href="#使用axios拦截器" class="headerlink" title="使用axios拦截器"></a>使用axios拦截器</h2><pre><code class="hljs js"><span class="hljs-comment">// 添加请求拦截器</span>
+axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) &#123;
+    <span class="hljs-comment">// 在发送请求之前做些什么</span>
+    <span class="hljs-keyword">return</span> config;
+  &#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+    <span class="hljs-comment">// 对请求错误做些什么</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);
+  &#125;);
+
+<span class="hljs-comment">// 添加响应拦截器</span>
+axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;
+    <span class="hljs-comment">// 2xx 范围内的状态码都会触发该函数。</span>
+    <span class="hljs-comment">// 对响应数据做点什么</span>
+    <span class="hljs-keyword">return</span> response;
+  &#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+    <span class="hljs-comment">// 超出 2xx 范围的状态码都会触发该函数。</span>
+    <span class="hljs-comment">// 对响应错误做点什么</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);
+  &#125;);</code></pre>
 
 <h2 id="到这里会发现可能拿不到自定义头部"><a href="#到这里会发现可能拿不到自定义头部" class="headerlink" title="到这里会发现可能拿不到自定义头部"></a>到这里会发现可能拿不到自定义头部</h2><p>在设置跨越那里加上</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">res.<span class="title function_">header</span>(<span class="string">&#x27;Access-Control-Expose-Headers&#x27;</span>, <span class="string">&#x27;Autorization&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Access-Control-Expose-Headers&#x27;</span>, <span class="hljs-string">&#x27;Autorization&#x27;</span>);</code></pre>
 <p>意思就是允许头部信息Autorization的显示</p>
-<h2 id="拿到头部并保存本地"><a href="#拿到头部并保存本地" class="headerlink" title="拿到头部并保存本地"></a>拿到头部并保存本地</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">      <span class="comment">// 2xx 范围内的状态码都会触发该函数。</span></span><br><span class="line">      <span class="comment">// 对响应数据做点什么</span></span><br><span class="line">      <span class="keyword">const</span> autorization = response.<span class="property">headers</span>.<span class="property">autorization</span></span><br><span class="line">      autorization &amp;&amp; <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;token&#x27;</span>,autorization)</span><br><span class="line">      <span class="keyword">return</span> response</span><br><span class="line">    &#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">      <span class="comment">// 超出 2xx 范围的状态码都会触发该函数。</span></span><br><span class="line">      <span class="comment">// 对响应错误做点什么</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="拿到头部并保存本地"><a href="#拿到头部并保存本地" class="headerlink" title="拿到头部并保存本地"></a>拿到头部并保存本地</h2><pre><code class="hljs js">axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;
+      <span class="hljs-comment">// 2xx 范围内的状态码都会触发该函数。</span>
+      <span class="hljs-comment">// 对响应数据做点什么</span>
+      <span class="hljs-keyword">const</span> autorization = response.<span class="hljs-property">headers</span>.<span class="hljs-property">autorization</span>
+      autorization &amp;&amp; <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>,autorization)
+      <span class="hljs-keyword">return</span> response
+    &#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+      <span class="hljs-comment">// 超出 2xx 范围的状态码都会触发该函数。</span>
+      <span class="hljs-comment">// 对响应错误做点什么</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);
+    &#125;);</code></pre>
 
-<h2 id="每次向后端请求都带上token"><a href="#每次向后端请求都带上token" class="headerlink" title="每次向后端请求都带上token"></a>每次向后端请求都带上token</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">      <span class="comment">// 在发送请求之前做些什么</span></span><br><span class="line">      <span class="keyword">const</span> token=<span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;token&#x27;</span>)</span><br><span class="line">      config.<span class="property">headers</span>.<span class="property">Authorization</span> = <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span></span><br><span class="line">      <span class="keyword">return</span> config</span><br><span class="line">    &#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">      <span class="comment">// 对请求错误做些什么</span></span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="每次向后端请求都带上token"><a href="#每次向后端请求都带上token" class="headerlink" title="每次向后端请求都带上token"></a>每次向后端请求都带上token</h2><pre><code class="hljs js">axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">request</span>.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">config</span>) &#123;
+      <span class="hljs-comment">// 在发送请求之前做些什么</span>
+      <span class="hljs-keyword">const</span> token=<span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>)
+      config.<span class="hljs-property">headers</span>.<span class="hljs-property">Authorization</span> = <span class="hljs-string">`Bearer <span class="hljs-subst">$&#123;token&#125;</span>`</span>
+      <span class="hljs-keyword">return</span> config
+    &#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+      <span class="hljs-comment">// 对请求错误做些什么</span>
+      <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);
+    &#125;);</code></pre>
 
-<h2 id="后端进行接收前端发过来的token进行校验"><a href="#后端进行接收前端发过来的token进行校验" class="headerlink" title="后端进行接收前端发过来的token进行校验"></a>后端进行接收前端发过来的token进行校验</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> examineToken = jwtObj.<span class="title function_">verify</span>(req.<span class="property">headers</span>.<span class="property">authorization</span>.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="后端进行接收前端发过来的token进行校验"><a href="#后端进行接收前端发过来的token进行校验" class="headerlink" title="后端进行接收前端发过来的token进行校验"></a>后端进行接收前端发过来的token进行校验</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> examineToken = jwtObj.<span class="hljs-title function_">verify</span>(req.<span class="hljs-property">headers</span>.<span class="hljs-property">authorization</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27; &#x27;</span>)[<span class="hljs-number">1</span>])</code></pre>
 <p>然后就可以对校验的结果进行自己相关的逻辑处理</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>就是前端输入登录账号与密码，后端进行判断，如果成功，就向前端通过header发送token的值<br>前端接收到token后就存在本地，然后每次向后端发送请求时就带上这个token，后端进行校验后<br>返回值给前端，前端根据后端返回的值再进行业务逻辑的一个处理</p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -157,14 +279,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/05/16/20/">首页轮播功能的实现</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/12/18/">登录鉴权——Cookie与Session(适合后台嵌套模板)</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/05/16/20/">首页轮播功能的实现</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/12/18/">登录鉴权——Cookie与Session(适合后台嵌套模板)</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -305,8 +427,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>js基础篇2 - 小哲的博客</title>
+  <title>js基础篇2 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="获取dom节点尺寸123456var omw&#x3D;document.querySelector(&#x27;#box&#x27;)&#x2F;&#x2F; 获取宽高console.log(omw.offsetWidth,omw.offsetHeight)&#x2F;&#x2F; 获取宽高（不计算边框）console.log(omw.clientWidth,omw.clientHeight)  获取dom节点偏移量1234var a&#x3D;docu">
+    <meta name="description" content="获取dom节点尺寸var omw&#x3D;document.querySelector(&#x27;#box&#x27;) &#x2F;&#x2F; 获取宽高 console.log(omw.offsetWidth,omw.offsetHeight)  &#x2F;&#x2F; 获取宽高（不计算边框） console.log(omw.clientWidth,omw.clientHeight)  获取dom节点偏移量var a&#x3D;document.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js基础篇2">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/12/10/51/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="获取dom节点尺寸123456var omw&#x3D;document.querySelector(&#x27;#box&#x27;)&#x2F;&#x2F; 获取宽高console.log(omw.offsetWidth,omw.offsetHeight)&#x2F;&#x2F; 获取宽高（不计算边框）console.log(omw.clientWidth,omw.clientHeight)  获取dom节点偏移量1234var a&#x3D;docu">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="获取dom节点尺寸var omw&#x3D;document.querySelector(&#x27;#box&#x27;) &#x2F;&#x2F; 获取宽高 console.log(omw.offsetWidth,omw.offsetHeight)  &#x2F;&#x2F; 获取宽高（不计算边框） console.log(omw.clientWidth,omw.clientHeight)  获取dom节点偏移量var a&#x3D;document.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-09T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.013Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96dom%E8%8A%82%E7%82%B9%E5%B0%BA%E5%AF%B8"><span class="toc-text">获取dom节点尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96dom%E8%8A%82%E7%82%B9%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="toc-text">获取dom节点偏移量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%A7%86%E7%AA%97%E5%8F%A3%E5%B0%BA%E5%AF%B8"><span class="toc-text">获取可视窗口尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">基本事件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1%EF%BC%88event%EF%BC%89"><span class="toc-text">常用鼠标事件对象（event）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD"><span class="toc-text">阻止事件传播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="toc-text">阻止默认行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-text">this指向问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95"><span class="toc-text">数学方法</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96dom%E8%8A%82%E7%82%B9%E5%B0%BA%E5%AF%B8"><span class="toc-text">获取dom节点尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96dom%E8%8A%82%E7%82%B9%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="toc-text">获取dom节点偏移量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%AF%E8%A7%86%E7%AA%97%E5%8F%A3%E5%B0%BA%E5%AF%B8"><span class="toc-text">获取可视窗口尺寸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BA%8B%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">基本事件类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1%EF%BC%88event%EF%BC%89"><span class="toc-text">常用鼠标事件对象（event）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E4%BC%A0%E6%92%AD"><span class="toc-text">阻止事件传播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%BB%E6%AD%A2%E9%BB%98%E8%AE%A4%E8%A1%8C%E4%B8%BA"><span class="toc-text">阻止默认行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-text">this指向问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E6%96%B9%E6%B3%95"><span class="toc-text">数学方法</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,11 +100,23 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="获取dom节点尺寸"><a href="#获取dom节点尺寸" class="headerlink" title="获取dom节点尺寸"></a>获取dom节点尺寸</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> omw=<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#box&#x27;</span>)</span><br><span class="line"><span class="comment">// 获取宽高</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(omw.<span class="property">offsetWidth</span>,omw.<span class="property">offsetHeight</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取宽高（不计算边框）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(omw.<span class="property">clientWidth</span>,omw.<span class="property">clientHeight</span>)</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="获取dom节点尺寸"><a href="#获取dom节点尺寸" class="headerlink" title="获取dom节点尺寸"></a>获取dom节点尺寸</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> omw=<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#box&#x27;</span>)
+<span class="hljs-comment">// 获取宽高</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(omw.<span class="hljs-property">offsetWidth</span>,omw.<span class="hljs-property">offsetHeight</span>)
 
-<h2 id="获取dom节点偏移量"><a href="#获取dom节点偏移量" class="headerlink" title="获取dom节点偏移量"></a>获取dom节点偏移量</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.box&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取节点相对于父节点的偏移量（要求父节点要设置position），否则根据整个页面进行计算</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a.<span class="property">offsetLeft</span>,a.<span class="property">offsetTop</span>)</span><br></pre></td></tr></table></figure>
+<span class="hljs-comment">// 获取宽高（不计算边框）</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(omw.<span class="hljs-property">clientWidth</span>,omw.<span class="hljs-property">clientHeight</span>)</code></pre>
 
-<h2 id="获取可视窗口尺寸"><a href="#获取可视窗口尺寸" class="headerlink" title="获取可视窗口尺寸"></a>获取可视窗口尺寸</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 包括滚动条</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(innerWidth,innerHeight)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不包括滚动条</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span>,<span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="获取dom节点偏移量"><a href="#获取dom节点偏移量" class="headerlink" title="获取dom节点偏移量"></a>获取dom节点偏移量</h2><pre><code class="hljs js"><span class="hljs-keyword">var</span> a=<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.box&#x27;</span>)
+
+<span class="hljs-comment">// 获取节点相对于父节点的偏移量（要求父节点要设置position），否则根据整个页面进行计算</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-property">offsetLeft</span>,a.<span class="hljs-property">offsetTop</span>)</code></pre>
+
+<h2 id="获取可视窗口尺寸"><a href="#获取可视窗口尺寸" class="headerlink" title="获取可视窗口尺寸"></a>获取可视窗口尺寸</h2><pre><code class="hljs js"><span class="hljs-comment">// 包括滚动条</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(innerWidth,innerHeight)
+
+<span class="hljs-comment">// 不包括滚动条</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span>,<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>)</code></pre>
 
 <h2 id="基本事件类型"><a href="#基本事件类型" class="headerlink" title="基本事件类型"></a>基本事件类型</h2><ol>
 <li>单击：click</li>
@@ -125,13 +141,33 @@
 <li>触摸结束：touchend</li>
 <li>触摸移动：touchmove</li>
 </ol>
-<h2 id="常用鼠标事件对象（event）"><a href="#常用鼠标事件对象（event）" class="headerlink" title="常用鼠标事件对象（event）"></a>常用鼠标事件对象（event）</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span><br><span class="line">    <span class="comment">//距离可视窗口的位置</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(evt.<span class="property">clientX</span>, evt.<span class="property">clientY</span>) </span><br><span class="line">	<span class="comment">//距离整个页面的位置，不受滚动条影响</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(evt.<span class="property">pageX</span>, evt.<span class="property">pageY</span>) </span><br><span class="line">	<span class="comment">//距离自己左上角的位置</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(evt.<span class="property">offsetX</span>, evt.<span class="property">offsetY</span>)  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="常用鼠标事件对象（event）"><a href="#常用鼠标事件对象（event）" class="headerlink" title="常用鼠标事件对象（event）"></a>常用鼠标事件对象（event）</h2><pre><code class="hljs js">box.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">evt</span>) &#123;
+    <span class="hljs-comment">//距离可视窗口的位置</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(evt.<span class="hljs-property">clientX</span>, evt.<span class="hljs-property">clientY</span>) 
+    <span class="hljs-comment">//距离整个页面的位置，不受滚动条影响</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(evt.<span class="hljs-property">pageX</span>, evt.<span class="hljs-property">pageY</span>) 
+    <span class="hljs-comment">//距离自己左上角的位置</span>
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(evt.<span class="hljs-property">offsetX</span>, evt.<span class="hljs-property">offsetY</span>)  
+&#125;</code></pre>
 
-<h2 id="阻止事件传播"><a href="#阻止事件传播" class="headerlink" title="阻止事件传播"></a>阻止事件传播</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ob.<span class="property">onclick</span>=<span class="keyword">function</span>(<span class="params">evt</span>)&#123;</span><br><span class="line">    evt.<span class="title function_">stopPropagation</span>()  <span class="comment">//阻止这个按钮事件往下传播</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="阻止事件传播"><a href="#阻止事件传播" class="headerlink" title="阻止事件传播"></a>阻止事件传播</h2><pre><code class="hljs js">ob.<span class="hljs-property">onclick</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>)&#123;
+    evt.<span class="hljs-title function_">stopPropagation</span>()  <span class="hljs-comment">//阻止这个按钮事件往下传播</span>
+&#125;</code></pre>
 
 
 
-<h2 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dom0的方式</span></span><br><span class="line"><span class="comment">// document.oncontextmenu=function()&#123;</span></span><br><span class="line"><span class="comment">//     console.log(&quot;自定义右键菜单&quot;)</span></span><br><span class="line"><span class="comment">//     return false</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//dom2的方式</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;contextmenu&#x27;</span>,<span class="keyword">function</span>(<span class="params">evt</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;自定义右键菜单&quot;</span>)</span><br><span class="line">    evt.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+<h2 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h2><pre><code class="hljs js"><span class="hljs-comment">// dom0的方式</span>
+<span class="hljs-comment">// document.oncontextmenu=function()&#123;</span>
+<span class="hljs-comment">//     console.log(&quot;自定义右键菜单&quot;)</span>
+<span class="hljs-comment">//     return false</span>
+<span class="hljs-comment">// &#125;</span>
+
+
+<span class="hljs-comment">//dom2的方式</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;contextmenu&#x27;</span>,<span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;自定义右键菜单&quot;</span>)
+    evt.<span class="hljs-title function_">preventDefault</span>()
+&#125;)</code></pre>
 
 
 
@@ -181,7 +217,12 @@
 <li><p>懒惰性，解决：使用全局标识符g</p>
 </li>
 <li><p>贪婪 可以加个？，变成非贪婪</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg1=<span class="regexp">/\d&#123;1,4&#125;/</span>      <span class="comment">//贪婪</span></span><br><span class="line"><span class="keyword">var</span> reg2=<span class="regexp">/\d&#123;1,4&#125;?/</span>     <span class="comment">//非贪婪</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg1.<span class="title function_">exec</span>(<span class="string">&#x27;ab1234d&#x27;</span>)[<span class="number">0</span>])</span><br><span class="line"><span class="comment">// 1234</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg2.<span class="title function_">exec</span>(<span class="string">&#x27;ab1234d&#x27;</span>)[<span class="number">0</span>])</span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> reg1=<span class="hljs-regexp">/\d&#123;1,4&#125;/</span>      <span class="hljs-comment">//贪婪</span>
+<span class="hljs-keyword">var</span> reg2=<span class="hljs-regexp">/\d&#123;1,4&#125;?/</span>     <span class="hljs-comment">//非贪婪</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(reg1.<span class="hljs-title function_">exec</span>(<span class="hljs-string">&#x27;ab1234d&#x27;</span>)[<span class="hljs-number">0</span>])
+<span class="hljs-comment">// 1234</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(reg2.<span class="hljs-title function_">exec</span>(<span class="hljs-string">&#x27;ab1234d&#x27;</span>)[<span class="hljs-number">0</span>])
+<span class="hljs-comment">// 1</span></code></pre></li>
 </ol>
 <h2 id="this指向问题"><a href="#this指向问题" class="headerlink" title="this指向问题"></a>this指向问题</h2><ol>
 <li><p>call</p>
@@ -191,17 +232,82 @@
 <li><p>bind</p>
 <p>call  与 apply都会自动执行函数，区别：传入参数的形式不同</p>
 <p>bind不会自动执行函数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">obj1=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;obj1&#x27;</span>,</span><br><span class="line">    <span class="attr">getName</span>:<span class="keyword">function</span>(<span class="params">a,b,c</span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getName1&#x27;</span>,<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;参数&#x27;</span>,a,b,c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj2=&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;obj2&#x27;</span>,</span><br><span class="line">    <span class="attr">getName</span>:<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getName2&#x27;</span>,<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj1.<span class="property">getName</span>.<span class="title function_">call</span>(obj2,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment">// getName1 obj2</span></span><br><span class="line"><span class="comment">// 参数 1 2 3</span></span><br><span class="line"></span><br><span class="line">obj1.<span class="property">getName</span>.<span class="title function_">apply</span>(obj2,[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="comment">// getName1 obj2</span></span><br><span class="line"><span class="comment">// 参数 1 2 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fun= obj1.<span class="property">getName</span>.<span class="title function_">bind</span>(obj2,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="title function_">fun</span>()</span><br><span class="line"><span class="comment">// getName1 obj2</span></span><br><span class="line"><span class="comment">// 参数 1 2 3</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs js">obj1=&#123;
+    <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;obj1&#x27;</span>,
+    <span class="hljs-attr">getName</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params">a,b,c</span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;getName1&#x27;</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>)
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;参数&#x27;</span>,a,b,c)
+    &#125;
+&#125;
+obj2=&#123;
+    <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;obj2&#x27;</span>,
+    <span class="hljs-attr">getName</span>:<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;getName2&#x27;</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>)
+    &#125;
+&#125;
+
+obj1.<span class="hljs-property">getName</span>.<span class="hljs-title function_">call</span>(obj2,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+<span class="hljs-comment">// getName1 obj2</span>
+<span class="hljs-comment">// 参数 1 2 3</span>
+
+obj1.<span class="hljs-property">getName</span>.<span class="hljs-title function_">apply</span>(obj2,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>])
+<span class="hljs-comment">// getName1 obj2</span>
+<span class="hljs-comment">// 参数 1 2 3</span>
+
+<span class="hljs-keyword">var</span> fun= obj1.<span class="hljs-property">getName</span>.<span class="hljs-title function_">bind</span>(obj2,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>)
+<span class="hljs-title function_">fun</span>()
+<span class="hljs-comment">// getName1 obj2</span>
+<span class="hljs-comment">// 参数 1 2 3</span></code></pre></li>
 </ol>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><blockquote>
 <p>1</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name,age</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">myname</span>=name</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">myage</span>=age</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">mysay</span>=<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="variable language_">this</span>.<span class="property">myname</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Student</span>(<span class="params">name,age,grade</span>)&#123;</span><br><span class="line">        <span class="comment">// 继承</span></span><br><span class="line">    <span class="title class_">Person</span>.<span class="title function_">apply</span>(<span class="variable language_">this</span>,[name,age])</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">grade</span>=grade</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型的继承</span></span><br><span class="line"><span class="title class_">Student</span>.<span class="property"><span class="keyword">prototype</span></span>=<span class="keyword">new</span> <span class="title class_">Person</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> stu=<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&#x27;pig&#x27;</span>,<span class="number">14</span>,<span class="number">100</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(stu)</span><br><span class="line"><span class="comment">// &#123;myname: &#x27;pig&#x27;, myage: 14, grade: 100&#125;</span></span><br><span class="line"></span><br><span class="line">stu.<span class="title function_">mysay</span>()</span><br><span class="line"><span class="comment">// hello pig</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Person</span>(<span class="hljs-params">name,age</span>)&#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">myname</span>=name
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">myage</span>=age
+&#125;
+<span class="hljs-title class_">Person</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">mysay</span>=<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;hello&#x27;</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">myname</span>)
+&#125;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Student</span>(<span class="hljs-params">name,age,grade</span>)&#123;
+        <span class="hljs-comment">// 继承</span>
+    <span class="hljs-title class_">Person</span>.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>,[name,age])
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">grade</span>=grade
+&#125;
+<span class="hljs-comment">// 原型的继承</span>
+<span class="hljs-title class_">Student</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>()
+
+<span class="hljs-keyword">let</span> stu=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&#x27;pig&#x27;</span>,<span class="hljs-number">14</span>,<span class="hljs-number">100</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stu)
+<span class="hljs-comment">// &#123;myname: &#x27;pig&#x27;, myage: 14, grade: 100&#125;</span>
+
+stu.<span class="hljs-title function_">mysay</span>()
+<span class="hljs-comment">// hello pig</span></code></pre>
 
 <blockquote>
 <p>2</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">myname</span> = name</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span> = age</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">mysay</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>,<span class="variable language_">this</span>.<span class="property">myname</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name, age, grade</span>)&#123;</span><br><span class="line">        <span class="variable language_">super</span>(name, age)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">grade</span> = grade</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> stu = <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&#x27;xz&#x27;</span>,<span class="number">18</span>,<span class="number">99</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(stu)</span><br><span class="line"><span class="comment">// &#123;myname: &#x27;xz&#x27;, age: 18, grade: 99&#125;</span></span><br><span class="line"></span><br><span class="line">stu.<span class="title function_">mysay</span>()</span><br><span class="line"><span class="comment">// hello xz</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>&#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, age</span>)&#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">myname</span> = name
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age
+    &#125;
+    <span class="hljs-title function_">mysay</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;hello&#x27;</span>,<span class="hljs-variable language_">this</span>.<span class="hljs-property">myname</span>)
+    &#125;
+&#125;
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Person</span>&#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, age, grade</span>)&#123;
+        <span class="hljs-variable language_">super</span>(name, age)
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">grade</span> = grade
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> stu = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Student</span>(<span class="hljs-string">&#x27;xz&#x27;</span>,<span class="hljs-number">18</span>,<span class="hljs-number">99</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(stu)
+<span class="hljs-comment">// &#123;myname: &#x27;xz&#x27;, age: 18, grade: 99&#125;</span>
+
+stu.<span class="hljs-title function_">mysay</span>()
+<span class="hljs-comment">// hello xz</span></code></pre>
 
 
 
@@ -235,7 +341,7 @@ console.log(num.toFixed(3))
 </li>
 </ol>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -243,14 +349,14 @@ console.log(num.toFixed(3))
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/02/52/">js基础篇3</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/11/27/50/">处理yaml文件</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/02/52/">js基础篇3</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/11/27/50/">处理yaml文件</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -391,8 +497,8 @@ console.log(num.toFixed(3))
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>LeanCloud云数据库基本操作 - 小哲的博客</title>
+  <title>LeanCloud云数据库基本操作 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="官网LeanCloud: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库 下面将以vue2案例向大家介绍如何使用leanCloud进行数据的储存, 带大家写一个最常用的登录验证的例子吧 创建一个最简单的vue2项目吧1vue create 项目名称  之前有介绍， 这里就不详细说明了 创建好后，建立两个页面，一个登录页面，还有一个登录跳转后的页面 先自己将路由写好， 能够访问">
+    <meta name="description" content="官网LeanCloud: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库 下面将以vue2案例向大家介绍如何使用leanCloud进行数据的储存, 带大家写一个最常用的登录验证的例子吧 创建一个最简单的vue2项目吧vue create 项目名称  之前有介绍， 这里就不详细说明了 创建好后，建立两个页面，一个登录页面，还有一个登录跳转后的页面 先自己将路由写好， 能够访问这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeanCloud云数据库基本操作">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/07/23/32/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="官网LeanCloud: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库 下面将以vue2案例向大家介绍如何使用leanCloud进行数据的储存, 带大家写一个最常用的登录验证的例子吧 创建一个最简单的vue2项目吧1vue create 项目名称  之前有介绍， 这里就不详细说明了 创建好后，建立两个页面，一个登录页面，还有一个登录跳转后的页面 先自己将路由写好， 能够访问">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="官网LeanCloud: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库 下面将以vue2案例向大家介绍如何使用leanCloud进行数据的储存, 带大家写一个最常用的登录验证的例子吧 创建一个最简单的vue2项目吧vue create 项目名称  之前有介绍， 这里就不详细说明了 创建好后，建立两个页面，一个登录页面，还有一个登录跳转后的页面 先自己将路由写好， 能够访问这">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-22T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.007Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E7%BD%91"><span class="toc-text">官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84vue2%E9%A1%B9%E7%9B%AE%E5%90%A7"><span class="toc-text">创建一个最简单的vue2项目吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">下载必要的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">在登录页面引入模块并初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="toc-text">我的项目页面展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%9A"><span class="toc-text">登录界面：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E9%9C%80%E8%A6%81%E5%BC%95%E7%94%A8%E7%9A%84js%EF%BC%88%E9%AA%8C%E8%AF%81%E7%A0%81%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%89"><span class="toc-text">登录页面需要引用的js（验证码的生成）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E5%A5%96%E9%A1%B5%E9%9D%A2"><span class="toc-text">抽奖页面</span></a></li></ol></li></ol></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E7%BD%91"><span class="toc-text">官网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84vue2%E9%A1%B9%E7%9B%AE%E5%90%A7"><span class="toc-text">创建一个最简单的vue2项目吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E8%A6%81%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">下载必要的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%B9%B6%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">在登录页面引入模块并初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="toc-text">我的项目页面展示</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%EF%BC%9A"><span class="toc-text">登录界面：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E9%A1%B5%E9%9D%A2%E9%9C%80%E8%A6%81%E5%BC%95%E7%94%A8%E7%9A%84js%EF%BC%88%E9%AA%8C%E8%AF%81%E7%A0%81%E7%9A%84%E7%94%9F%E6%88%90%EF%BC%89"><span class="toc-text">登录页面需要引用的js（验证码的生成）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E5%A5%96%E9%A1%B5%E9%9D%A2"><span class="toc-text">抽奖页面</span></a></li></ol></li></ol></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,32 +100,460 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud</a>: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库</p>
+  </div><article class="md-text content slide-up"><h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a target="_blank" rel="noopener" href="https://www.leancloud.cn/">LeanCloud</a>: 在这里你可以注册leanCloud的账号，并且创建你的应用，即数据库</p>
 <p>下面将以vue2案例向大家介绍如何使用leanCloud进行数据的储存, 带大家写一个最常用的登录验证的例子吧</p>
-<h2 id="创建一个最简单的vue2项目吧"><a href="#创建一个最简单的vue2项目吧" class="headerlink" title="创建一个最简单的vue2项目吧"></a>创建一个最简单的vue2项目吧</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create 项目名称</span><br></pre></td></tr></table></figure>
+<h2 id="创建一个最简单的vue2项目吧"><a href="#创建一个最简单的vue2项目吧" class="headerlink" title="创建一个最简单的vue2项目吧"></a>创建一个最简单的vue2项目吧</h2><pre><code class="hljs sh">vue create 项目名称</code></pre>
 
 <p>之前有介绍， 这里就不详细说明了</p>
 <p>创建好后，建立两个页面，一个登录页面，还有一个登录跳转后的页面</p>
 <p>先自己将路由写好， 能够访问这两个页面即可</p>
 <h2 id="下载必要的模块"><a href="#下载必要的模块" class="headerlink" title="下载必要的模块"></a>下载必要的模块</h2><p><code>npm install leancloud-storage</code></p>
-<h2 id="在登录页面引入模块并初始化"><a href="#在登录页面引入模块并初始化" class="headerlink" title="在登录页面引入模块并初始化"></a>在登录页面引入模块并初始化</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">AV</span> = <span class="built_in">require</span>(<span class="string">&quot;leancloud-storage&quot;</span>);</span><br><span class="line"><span class="comment">//  初始化 LeanCloud</span></span><br><span class="line"><span class="variable constant_">AV</span>.<span class="title function_">init</span>(&#123;</span><br><span class="line">  <span class="attr">appId</span>: <span class="string">&quot;你的应用的appId&quot;</span>,</span><br><span class="line">  <span class="attr">appKey</span>: <span class="string">&quot;你的应用的appKey&quot;</span>,</span><br><span class="line">  <span class="attr">serverURL</span>: <span class="string">&quot;https://ysyeflyc.lc-cn-n1-shared.com&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="在登录页面引入模块并初始化"><a href="#在登录页面引入模块并初始化" class="headerlink" title="在登录页面引入模块并初始化"></a>在登录页面引入模块并初始化</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">AV</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;leancloud-storage&quot;</span>);
+<span class="hljs-comment">//  初始化 LeanCloud</span>
+<span class="hljs-variable constant_">AV</span>.<span class="hljs-title function_">init</span>(&#123;
+  <span class="hljs-attr">appId</span>: <span class="hljs-string">&quot;你的应用的appId&quot;</span>,
+  <span class="hljs-attr">appKey</span>: <span class="hljs-string">&quot;你的应用的appKey&quot;</span>,
+  <span class="hljs-attr">serverURL</span>: <span class="hljs-string">&quot;https://ysyeflyc.lc-cn-n1-shared.com&quot;</span>,
+&#125;);</code></pre>
 
 <p>用户的登录验证</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户登录</span></span><br><span class="line"><span class="variable constant_">AV</span>.<span class="property">User</span>.<span class="title function_">logIn</span>(username, password).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">user</span>) &#123;</span><br><span class="line">  <span class="comment">// 登录成功，跳转页面</span></span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">error</span>) &#123;</span><br><span class="line">  <span class="comment">// 登录失败</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 用户登录</span>
+<span class="hljs-variable constant_">AV</span>.<span class="hljs-property">User</span>.<span class="hljs-title function_">logIn</span>(username, password).<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">user</span>) &#123;
+  <span class="hljs-comment">// 登录成功，跳转页面</span>
+&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) &#123;
+  <span class="hljs-comment">// 登录失败</span>
+&#125;);</code></pre>
 
 <p>vue2的路由守卫的书写，防止用户未登录就能访问登录后的页面</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">beforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> token = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;AV/YsYeflyCpiGJrcfPnYM80d43-gzGzoHsz/currentUser&#x27;</span>)</span><br><span class="line">      <span class="keyword">var</span> tokenObj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(token)</span><br><span class="line">      <span class="variable constant_">AV</span>.<span class="property">User</span>.<span class="title function_">become</span>(tokenObj?.<span class="property">_sessionToken</span>)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">user</span>) &#123;</span><br><span class="line">          <span class="comment">// token 验证成功，user 是验证后返回的用户对象</span></span><br><span class="line">          <span class="title function_">next</span>()</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">          <span class="comment">// token 验证失败</span></span><br><span class="line">          location.<span class="property">href</span> = <span class="string">&quot;http://xiao-zhe-is-not-lazy.gitee.io/chou/#/login&quot;</span></span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-attr">beforeEnter</span>: <span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> &#123;
+      <span class="hljs-keyword">var</span> token = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;AV/YsYeflyCpiGJrcfPnYM80d43-gzGzoHsz/currentUser&#x27;</span>)
+      <span class="hljs-keyword">var</span> tokenObj = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(token)
+      <span class="hljs-variable constant_">AV</span>.<span class="hljs-property">User</span>.<span class="hljs-title function_">become</span>(tokenObj?.<span class="hljs-property">_sessionToken</span>)
+        .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">user</span>) &#123;
+          <span class="hljs-comment">// token 验证成功，user 是验证后返回的用户对象</span>
+          <span class="hljs-title function_">next</span>()
+        &#125;)
+        .<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+          <span class="hljs-comment">// token 验证失败</span>
+          location.<span class="hljs-property">href</span> = <span class="hljs-string">&quot;http://xiao-zhe-is-not-lazy.gitee.io/chou/#/login&quot;</span>
+        &#125;);
+
+    &#125;</code></pre>
 
 <p>用户属性的更改，将awordNumber改为0</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentUser = <span class="variable constant_">AV</span>.<span class="property">User</span>.<span class="title function_">current</span>();</span><br><span class="line">      currentUser.<span class="title function_">set</span>(<span class="string">&quot;awordNumber&quot;</span>, <span class="number">0</span>);</span><br><span class="line">      currentUser</span><br><span class="line">        .<span class="title function_">save</span>()</span><br><span class="line">        .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">updatedUser</span>) &#123;</span><br><span class="line">          <span class="comment">// 更新成功</span></span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;更新成功&quot;</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">          <span class="comment">// 更新失败</span></span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> currentUser = <span class="hljs-variable constant_">AV</span>.<span class="hljs-property">User</span>.<span class="hljs-title function_">current</span>();
+      currentUser.<span class="hljs-title function_">set</span>(<span class="hljs-string">&quot;awordNumber&quot;</span>, <span class="hljs-number">0</span>);
+      currentUser
+        .<span class="hljs-title function_">save</span>()
+        .<span class="hljs-title function_">then</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">updatedUser</span>) &#123;
+          <span class="hljs-comment">// 更新成功</span>
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;更新成功&quot;</span>);
+        &#125;)
+        .<span class="hljs-title function_">catch</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;
+          <span class="hljs-comment">// 更新失败</span>
+        &#125;);</code></pre>
 
 <h2 id="我的项目页面展示"><a href="#我的项目页面展示" class="headerlink" title="我的项目页面展示"></a>我的项目页面展示</h2><p>我主要是写了一个抽奖的项目，一个用户登录后只能抽一次奖</p>
-<h4 id="登录界面："><a href="#登录界面：" class="headerlink" title="登录界面："></a>登录界面：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;cover&quot; v-if=&quot;isShow&quot;&gt;登录失败&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">      &lt;!-- span标签作为背景的圆形图案 --&gt;</span><br><span class="line">      &lt;div class=&quot;bg&quot;&gt;</span><br><span class="line">        &lt;span&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span&gt;&lt;/span&gt;</span><br><span class="line">        &lt;span&gt;&lt;/span&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;div class=&quot;text&quot;&gt;</span><br><span class="line">        云亦音乐</span><br><span class="line">        &lt;span</span><br><span class="line">          style=&quot;</span><br><span class="line">            font-size: 12px;</span><br><span class="line">            line-height: 50px;</span><br><span class="line">            margin-left: 5px;</span><br><span class="line">            color: gray;</span><br><span class="line">          &quot;</span><br><span class="line">          &gt;周年庆抽奖活动火热进行中!&lt;/span</span><br><span class="line">        &gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; placeholder=&quot;账号&quot; id=&quot;username&quot; /&gt;</span><br><span class="line">      &lt;input type=&quot;password&quot; placeholder=&quot;密码&quot; id=&quot;password&quot; /&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; placeholder=&quot;验证码&quot; id=&quot;code&quot; /&gt;</span><br><span class="line">      &lt;div class=&quot;code&quot;&gt;</span><br><span class="line">        &lt;div&gt;验证码:&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&#123;&#123; code &#125;&#125;&lt;/div&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;button @click=&quot;btn&quot;&gt;→&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import codeFun from &#x27;@/assets/code&#x27;</span><br><span class="line">const AV = require(&quot;leancloud-storage&quot;);</span><br><span class="line">//  初始化 LeanCloud</span><br><span class="line">AV.init(&#123;</span><br><span class="line">  appId: &quot;隐藏&quot;,</span><br><span class="line">  appKey: &quot;隐藏&quot;,</span><br><span class="line">  serverURL: &quot;https://ysyeflyc.lc-cn-n1-shared.com&quot;,</span><br><span class="line">&#125;);</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      isShow: false,</span><br><span class="line">      code: &quot;1234&quot;,</span><br><span class="line">      timer: null,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created()&#123;</span><br><span class="line">    this.code = codeFun()</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btn() &#123;</span><br><span class="line">      clearTimeout(this.timer);</span><br><span class="line">      if (code.value == this.code) &#123;</span><br><span class="line">        AV.User.logIn(username.value, password.value)</span><br><span class="line">          .then((user) =&gt; &#123;</span><br><span class="line">            // 登录成功</span><br><span class="line">            this.$router.push(&quot;/chou&quot;);</span><br><span class="line">          &#125;)</span><br><span class="line">          .catch(() =&gt; &#123;</span><br><span class="line">            // 登录失败（可能是密码错误）</span><br><span class="line">            this.isShow = true;</span><br><span class="line">            this.timer = setTimeout(() =&gt; &#123;</span><br><span class="line">              this.isShow = false;</span><br><span class="line">            &#125;, 2000);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        this.code = codeFun()</span><br><span class="line">        this.isShow = true;</span><br><span class="line">        this.timer = setTimeout(() =&gt; &#123;</span><br><span class="line">          this.isShow = false;</span><br><span class="line">        &#125;, 2000);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">  &lt;style scoped&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  background-color: rgba(0, 0, 0);</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  z-index: -2;</span><br><span class="line">&#125;</span><br><span class="line">.container &#123;</span><br><span class="line">  width: 80vw;</span><br><span class="line">  height: 65vh;</span><br><span class="line">  margin: 20vh auto;</span><br><span class="line">  background-color: rgba(255, 255, 255, 0.1);</span><br><span class="line">  border-radius: 20px;</span><br><span class="line">  position: relative;</span><br><span class="line">  box-shadow: inset 1px 1px 6px rgba(255, 255, 255, 0.3),</span><br><span class="line">    2px 2px 15px rgba(0, 0, 0, 0.5);</span><br><span class="line">&#125;</span><br><span class="line">input &#123;</span><br><span class="line">  background: transparent;</span><br><span class="line">  outline: none;</span><br><span class="line">  border: none;</span><br><span class="line">  border-bottom: 1px solid #666;</span><br><span class="line">  width: 80%;</span><br><span class="line">  height: 45px;</span><br><span class="line">  font-size: 18px;</span><br><span class="line">  margin-left: 30px;</span><br><span class="line">  margin-top: 40px;</span><br><span class="line">  color: white;</span><br><span class="line">&#125;</span><br><span class="line">.text &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  font-size: 26px;</span><br><span class="line">  margin-left: 34px;</span><br><span class="line">  margin-top: 50px;</span><br><span class="line">  color: #eee;</span><br><span class="line">&#125;</span><br><span class="line">button &#123;</span><br><span class="line">  border: none;</span><br><span class="line">  width: 70px;</span><br><span class="line">  height: 70px;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  font-size: 26px;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">  margin-left: calc(50% - 35px);</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  background-color: rgba(255, 255, 255, 0.1);</span><br><span class="line">  color: white;</span><br><span class="line">  text-align: center;</span><br><span class="line">  box-shadow: 0 2px 10px #111;</span><br><span class="line">&#125;</span><br><span class="line">button:hover &#123;</span><br><span class="line">  color: greenyellow;</span><br><span class="line">  background-color: rgba(255, 255, 255, 0.2);</span><br><span class="line">&#125;</span><br><span class="line">span &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  box-shadow: 1px 1px 50px #000;</span><br><span class="line">  z-index: -1;</span><br><span class="line">&#125;</span><br><span class="line">.bg &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  z-index: -1;</span><br><span class="line">  animation: am2 ease-out 1s;</span><br><span class="line">&#125;</span><br><span class="line">.bg span:nth-child(1) &#123;</span><br><span class="line">  width: 80px;</span><br><span class="line">  height: 80px;</span><br><span class="line">  top: -30px;</span><br><span class="line">  left: -30px;</span><br><span class="line">  background-color: purple;</span><br><span class="line">  animation: am1 ease-in-out 3s infinite alternate;</span><br><span class="line">&#125;</span><br><span class="line">.bg span:nth-child(2) &#123;</span><br><span class="line">  width: 40px;</span><br><span class="line">  height: 40px;</span><br><span class="line">  top: 40px;</span><br><span class="line">  right: 40px;</span><br><span class="line">  background-color: orange;</span><br><span class="line">  animation: am1 ease-in-out 4s infinite alternate-reverse;</span><br><span class="line">&#125;</span><br><span class="line">.bg span:nth-child(3) &#123;</span><br><span class="line">  width: 120px;</span><br><span class="line">  height: 120px;</span><br><span class="line">  bottom: -60px;</span><br><span class="line">  right: -25px;</span><br><span class="line">  background-color: cyan;</span><br><span class="line">  animation: am1 ease-in-out 2.5s 0.5s infinite alternate;</span><br><span class="line">&#125;</span><br><span class="line">/* 动画 */</span><br><span class="line">@keyframes am1 &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: translateY(0);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: translateY(-30px);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes am2 &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: scale(0, 0) rotateZ(60deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: scale(1, 1) rotateZ(0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">.cover &#123;</span><br><span class="line">  width: 90vw;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 10vh;</span><br><span class="line">  left: 5vw;</span><br><span class="line">  text-align: center;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">  color: #e10b0b;</span><br><span class="line">  border-radius: 20px;</span><br><span class="line">&#125;</span><br><span class="line">/* 验证码 */</span><br><span class="line">.code &#123;</span><br><span class="line">  color: #c2a3a3;</span><br><span class="line">  display: flex;</span><br><span class="line">  margin-left: 10%;</span><br><span class="line">  margin-top: 10px;</span><br><span class="line">&#125;</span><br><span class="line">.code div:nth-child(2) &#123;</span><br><span class="line">  width: 70px;</span><br><span class="line">  height: 30px;</span><br><span class="line">  text-align: center;</span><br><span class="line">  line-height: 30px;</span><br><span class="line">  margin-left: 10px;</span><br><span class="line">  background-color: #353743;</span><br><span class="line">  border: 1px solid white;</span><br><span class="line">  font-size: 20px;</span><br><span class="line">  border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="登录页面需要引用的js（验证码的生成）"><a href="#登录页面需要引用的js（验证码的生成）" class="headerlink" title="登录页面需要引用的js（验证码的生成）"></a>登录页面需要引用的js（验证码的生成）</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">codeFun</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> code1 = <span class="title class_">String</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">10</span>))</span><br><span class="line">    <span class="keyword">var</span> code2 = <span class="title class_">String</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">10</span>))</span><br><span class="line">    <span class="keyword">var</span> code3 = <span class="title class_">String</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">10</span>))</span><br><span class="line">    <span class="keyword">var</span> code4 = <span class="title class_">String</span>(<span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">10</span>))</span><br><span class="line">    <span class="keyword">return</span> code1 + code2 + code3 + code4</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> codeFun</span><br></pre></td></tr></table></figure>
+<h4 id="登录界面："><a href="#登录界面：" class="headerlink" title="登录界面："></a>登录界面：</h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;div class=&quot;cover&quot; v-if=&quot;isShow&quot;&gt;登录失败&lt;/div&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;!-- span标签作为背景的圆形图案 --&gt;
+      &lt;div class=&quot;bg&quot;&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+        &lt;span&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;text&quot;&gt;
+        云亦音乐
+        &lt;span
+          style=&quot;
+            font-size: 12px;
+            line-height: 50px;
+            margin-left: 5px;
+            color: gray;
+          &quot;
+          &gt;周年庆抽奖活动火热进行中!&lt;/span
+        &gt;
+      &lt;/div&gt;
+      &lt;input type=&quot;text&quot; placeholder=&quot;账号&quot; id=&quot;username&quot; /&gt;
+      &lt;input type=&quot;password&quot; placeholder=&quot;密码&quot; id=&quot;password&quot; /&gt;
+      &lt;input type=&quot;text&quot; placeholder=&quot;验证码&quot; id=&quot;code&quot; /&gt;
+      &lt;div class=&quot;code&quot;&gt;
+        &lt;div&gt;验证码:&lt;/div&gt;
+        &lt;div&gt;&#123;&#123; code &#125;&#125;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button @click=&quot;btn&quot;&gt;→&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+import codeFun from &#x27;@/assets/code&#x27;
+const AV = require(&quot;leancloud-storage&quot;);
+//  初始化 LeanCloud
+AV.init(&#123;
+  appId: &quot;隐藏&quot;,
+  appKey: &quot;隐藏&quot;,
+  serverURL: &quot;https://ysyeflyc.lc-cn-n1-shared.com&quot;,
+&#125;);
+export default &#123;
+  data() &#123;
+    return &#123;
+      isShow: false,
+      code: &quot;1234&quot;,
+      timer: null,
+    &#125;;
+  &#125;,
+  created()&#123;
+    this.code = codeFun()
+  &#125;,
+  methods: &#123;
+    btn() &#123;
+      clearTimeout(this.timer);
+      if (code.value == this.code) &#123;
+        AV.User.logIn(username.value, password.value)
+          .then((user) =&gt; &#123;
+            // 登录成功
+            this.$router.push(&quot;/chou&quot;);
+          &#125;)
+          .catch(() =&gt; &#123;
+            // 登录失败（可能是密码错误）
+            this.isShow = true;
+            this.timer = setTimeout(() =&gt; &#123;
+              this.isShow = false;
+            &#125;, 2000);
+          &#125;);
+      &#125; else &#123;
+        this.code = codeFun()
+        this.isShow = true;
+        this.timer = setTimeout(() =&gt; &#123;
+          this.isShow = false;
+        &#125;, 2000);
+      &#125;
+    &#125;,
+  &#125;,
+&#125;;
+&lt;/script&gt;
+  &lt;style scoped&gt;
+.box &#123;
+  background-color: rgba(0, 0, 0);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+&#125;
+.container &#123;
+  width: 80vw;
+  height: 65vh;
+  margin: 20vh auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: inset 1px 1px 6px rgba(255, 255, 255, 0.3),
+    2px 2px 15px rgba(0, 0, 0, 0.5);
+&#125;
+input &#123;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #666;
+  width: 80%;
+  height: 45px;
+  font-size: 18px;
+  margin-left: 30px;
+  margin-top: 40px;
+  color: white;
+&#125;
+.text &#123;
+  display: inline-block;
+  font-size: 26px;
+  margin-left: 34px;
+  margin-top: 50px;
+  color: #eee;
+&#125;
+button &#123;
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 26px;
+  margin-top: 60px;
+  margin-left: calc(50% - 35px);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 10px #111;
+&#125;
+button:hover &#123;
+  color: greenyellow;
+  background-color: rgba(255, 255, 255, 0.2);
+&#125;
+span &#123;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 1px 1px 50px #000;
+  z-index: -1;
+&#125;
+.bg &#123;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  animation: am2 ease-out 1s;
+&#125;
+.bg span:nth-child(1) &#123;
+  width: 80px;
+  height: 80px;
+  top: -30px;
+  left: -30px;
+  background-color: purple;
+  animation: am1 ease-in-out 3s infinite alternate;
+&#125;
+.bg span:nth-child(2) &#123;
+  width: 40px;
+  height: 40px;
+  top: 40px;
+  right: 40px;
+  background-color: orange;
+  animation: am1 ease-in-out 4s infinite alternate-reverse;
+&#125;
+.bg span:nth-child(3) &#123;
+  width: 120px;
+  height: 120px;
+  bottom: -60px;
+  right: -25px;
+  background-color: cyan;
+  animation: am1 ease-in-out 2.5s 0.5s infinite alternate;
+&#125;
+/* 动画 */
+@keyframes am1 &#123;
+  0% &#123;
+    transform: translateY(0);
+  &#125;
+  100% &#123;
+    transform: translateY(-30px);
+  &#125;
+&#125;
+@keyframes am2 &#123;
+  0% &#123;
+    transform: scale(0, 0) rotateZ(60deg);
+  &#125;
+  100% &#123;
+    transform: scale(1, 1) rotateZ(0);
+  &#125;
+&#125;
+.cover &#123;
+  width: 90vw;
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  text-align: center;
+  opacity: 0.9;
+  color: #e10b0b;
+  border-radius: 20px;
+&#125;
+/* 验证码 */
+.code &#123;
+  color: #c2a3a3;
+  display: flex;
+  margin-left: 10%;
+  margin-top: 10px;
+&#125;
+.code div:nth-child(2) &#123;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin-left: 10px;
+  background-color: #353743;
+  border: 1px solid white;
+  font-size: 20px;
+  border-radius: 3px;
+&#125;
+&lt;/style&gt;</code></pre>
+<h4 id="登录页面需要引用的js（验证码的生成）"><a href="#登录页面需要引用的js（验证码的生成）" class="headerlink" title="登录页面需要引用的js（验证码的生成）"></a>登录页面需要引用的js（验证码的生成）</h4><pre><code class="hljs js"><span class="hljs-keyword">let</span> <span class="hljs-title function_">codeFun</span> = (<span class="hljs-params"></span>) =&gt; &#123;
+    <span class="hljs-keyword">var</span> code1 = <span class="hljs-title class_">String</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span>))
+    <span class="hljs-keyword">var</span> code2 = <span class="hljs-title class_">String</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span>))
+    <span class="hljs-keyword">var</span> code3 = <span class="hljs-title class_">String</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span>))
+    <span class="hljs-keyword">var</span> code4 = <span class="hljs-title class_">String</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(<span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>() * <span class="hljs-number">10</span>))
+    <span class="hljs-keyword">return</span> code1 + code2 + code3 + code4
+&#125;
 
-<h4 id="抽奖页面"><a href="#抽奖页面" class="headerlink" title="抽奖页面"></a>抽奖页面</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div @click=&quot;btn2()&quot; class=&quot;box&quot;&gt;</span><br><span class="line">    &lt;audio src=&quot;@/assets/music.mp3&quot; autoplay&gt;&lt;/audio&gt;</span><br><span class="line">    &lt;!-- 抽中奖品后的遮罩层 --&gt;</span><br><span class="line">    &lt;div class=&quot;cover&quot; v-if=&quot;isShow&quot;&gt;</span><br><span class="line">      &#123;&#123; selectedPrize?.name &#125;&#125;</span><br><span class="line">      &lt;span&gt;恭喜你获得：&#123;&#123; selectedPrize?.describe &#125;&#125;&lt;/span&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;button @click.once=&quot;btn&quot;&gt;抽奖&lt;/button&gt;</span><br><span class="line">    &lt;div&gt;剩余的抽奖次数: &#123;&#123; currentUser?.attributes.awordNumber &#125;&#125;&lt;/div&gt;</span><br><span class="line">    &lt;footer&gt;</span><br><span class="line">      &lt;h3&gt;奖品详情：&lt;/h3&gt;</span><br><span class="line">      &lt;div v-for=&quot;(data, index) in prizes&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">        &lt;span&gt; &#123;&#123; data.name &#125;&#125; : &lt;/span&gt;</span><br><span class="line">        &lt;span&gt;&#123;&#123; data.describe &#125;&#125;&lt;/span&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/footer&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">const AV = require(&quot;leancloud-storage&quot;);</span><br><span class="line">// 声明 class</span><br><span class="line">const Todo = AV.Object.extend(&quot;Todo&quot;);</span><br><span class="line">// 构建对象</span><br><span class="line">const todo = new Todo();</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      prizes: [</span><br><span class="line">        &#123; name: &quot;一等奖&quot;, describe: &quot;免费体验课&quot;, probability: 0 &#125;,</span><br><span class="line">        &#123; name: &quot;二等奖&quot;, describe: &quot;尤克里里一个&quot;, probability: 0 &#125;,</span><br><span class="line">        &#123; name: &quot;三等奖&quot;, describe: &quot;小玩具一个&quot;, probability: 0.05 &#125;,</span><br><span class="line">        &#123; name: &quot;四等奖&quot;, describe: &quot;免费来撸猫&quot;, probability: 0.15 &#125;,</span><br><span class="line">        &#123; name: &quot;鼓励奖&quot;, describe: &quot;抱抱&quot;, probability: 1 &#125;,</span><br><span class="line">      ],</span><br><span class="line">      selectedPrize: null,</span><br><span class="line">      isShow: false,</span><br><span class="line">      currentUser: null,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    this.currentUser = AV.User.current();</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    btn(event) &#123;</span><br><span class="line">      if (this.currentUser.attributes.awordNumber === 0) &#123;</span><br><span class="line">        alert(&quot;抽奖次数已用完&quot;);</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      this.isRote = true;</span><br><span class="line">      this.currentUser.attributes.awordNumber -= 1;</span><br><span class="line">      // 生成一个随机的概率值</span><br><span class="line">      var randomProbability = Math.random();</span><br><span class="line">      for (var i = 0; i &lt; this.prizes.length; i++) &#123;</span><br><span class="line">        var prize = this.prizes[i];</span><br><span class="line">        if (randomProbability &lt; prize.probability) &#123;</span><br><span class="line">          this.selectedPrize = prize;</span><br><span class="line">          // 为属性赋值</span><br><span class="line">          todo.set(this.currentUser.attributes.username, prize.describe);</span><br><span class="line">          break;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          this.selectedPrize = &#123; name: &quot;空&quot;, describe: &quot;什么都没有&quot; &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      // 更新后台</span><br><span class="line">      this.currentUser.set(</span><br><span class="line">        &quot;awordNumber&quot;,</span><br><span class="line">        this.currentUser.attributes.awordNumber</span><br><span class="line">      );</span><br><span class="line">      this.currentUser</span><br><span class="line">        .save()</span><br><span class="line">        .then(function (updatedUser) &#123;</span><br><span class="line">          // 更新成功</span><br><span class="line">          console.log(&quot;更新成功&quot;);</span><br><span class="line">        &#125;)</span><br><span class="line">        .catch(function (error) &#123;</span><br><span class="line">          // 更新失败</span><br><span class="line">          console.log(&quot;更新失败&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">      // 用户奖品的数据储存</span><br><span class="line">      // 将对象保存到云端</span><br><span class="line">      todo.save().then(</span><br><span class="line">        (todo) =&gt; &#123;</span><br><span class="line">          // 成功保存之后，执行其他逻辑</span><br><span class="line">          console.log(`奖品数据保存成功`);</span><br><span class="line">        &#125;,</span><br><span class="line">        (error) =&gt; &#123;</span><br><span class="line">          // 异常处理</span><br><span class="line">          console.log(`奖品数据保存失败`);</span><br><span class="line">        &#125;</span><br><span class="line">      );</span><br><span class="line">      this.isShow = true;</span><br><span class="line">      //   阻止冒泡</span><br><span class="line">      event.stopPropagation();</span><br><span class="line">    &#125;,</span><br><span class="line">    btn2() &#123;</span><br><span class="line">      this.isShow = false;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.box &#123;</span><br><span class="line">  height: 100vh;</span><br><span class="line">  background: no-repeat url(&quot;@/assets/bg.png&quot;);</span><br><span class="line">  background-size: cover;</span><br><span class="line">&#125;</span><br><span class="line">button &#123;</span><br><span class="line">  border: none;</span><br><span class="line">  width: 70px;</span><br><span class="line">  height: 70px;</span><br><span class="line">  border-radius: 50%;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  font-size: 26px;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">  margin-left: calc(50% - 35px);</span><br><span class="line">  cursor: pointer;</span><br><span class="line">  background-color: rgba(255, 255, 255, 0.1);</span><br><span class="line">  text-align: center;</span><br><span class="line">  box-shadow: 0 2px 10px #111;</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">  width: 80px;</span><br><span class="line">  height: 80px;</span><br><span class="line">  background-color: rgba(0, 0, 0, 0.8);</span><br><span class="line">  margin: 20px;</span><br><span class="line">  color: #fff;</span><br><span class="line">  line-height: 80px;</span><br><span class="line">  text-align: center;</span><br><span class="line">  border-radius: 10px;</span><br><span class="line">  font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">.cover &#123;</span><br><span class="line">  width: 90vw;</span><br><span class="line">  height: 30vh;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 35vh;</span><br><span class="line">  left: 5vw;</span><br><span class="line">  text-align: center;</span><br><span class="line">  line-height: 30vh;</span><br><span class="line">  background-color: black;</span><br><span class="line">  opacity: 0.9;</span><br><span class="line">  color: #eee;</span><br><span class="line">  border-radius: 20px;</span><br><span class="line">&#125;</span><br><span class="line">footer &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  position: absolute;</span><br><span class="line">  left: 0;</span><br><span class="line">  bottom: 0;</span><br><span class="line">  font-size: 15px;</span><br><span class="line">  background-color: rgba(0, 0, 0, 0.4);</span><br><span class="line">  color: white;</span><br><span class="line">  font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line">footer span &#123;</span><br><span class="line">  margin-bottom: 5px;</span><br><span class="line">&#125;</span><br><span class="line">@keyframes am1 &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    transform: rotate(0deg);</span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    transform: rotate(360deg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> codeFun</code></pre>
 
-<div class="article-footer fs14">
+<h4 id="抽奖页面"><a href="#抽奖页面" class="headerlink" title="抽奖页面"></a>抽奖页面</h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div @click=&quot;btn2()&quot; class=&quot;box&quot;&gt;
+    &lt;audio src=&quot;@/assets/music.mp3&quot; autoplay&gt;&lt;/audio&gt;
+    &lt;!-- 抽中奖品后的遮罩层 --&gt;
+    &lt;div class=&quot;cover&quot; v-if=&quot;isShow&quot;&gt;
+      &#123;&#123; selectedPrize?.name &#125;&#125;
+      &lt;span&gt;恭喜你获得：&#123;&#123; selectedPrize?.describe &#125;&#125;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button @click.once=&quot;btn&quot;&gt;抽奖&lt;/button&gt;
+    &lt;div&gt;剩余的抽奖次数: &#123;&#123; currentUser?.attributes.awordNumber &#125;&#125;&lt;/div&gt;
+    &lt;footer&gt;
+      &lt;h3&gt;奖品详情：&lt;/h3&gt;
+      &lt;div v-for=&quot;(data, index) in prizes&quot; :key=&quot;index&quot;&gt;
+        &lt;span&gt; &#123;&#123; data.name &#125;&#125; : &lt;/span&gt;
+        &lt;span&gt;&#123;&#123; data.describe &#125;&#125;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+const AV = require(&quot;leancloud-storage&quot;);
+// 声明 class
+const Todo = AV.Object.extend(&quot;Todo&quot;);
+// 构建对象
+const todo = new Todo();
+export default &#123;
+  data() &#123;
+    return &#123;
+      prizes: [
+        &#123; name: &quot;一等奖&quot;, describe: &quot;免费体验课&quot;, probability: 0 &#125;,
+        &#123; name: &quot;二等奖&quot;, describe: &quot;尤克里里一个&quot;, probability: 0 &#125;,
+        &#123; name: &quot;三等奖&quot;, describe: &quot;小玩具一个&quot;, probability: 0.05 &#125;,
+        &#123; name: &quot;四等奖&quot;, describe: &quot;免费来撸猫&quot;, probability: 0.15 &#125;,
+        &#123; name: &quot;鼓励奖&quot;, describe: &quot;抱抱&quot;, probability: 1 &#125;,
+      ],
+      selectedPrize: null,
+      isShow: false,
+      currentUser: null,
+    &#125;;
+  &#125;,
+  created() &#123;
+    this.currentUser = AV.User.current();
+  &#125;,
+  methods: &#123;
+    btn(event) &#123;
+      if (this.currentUser.attributes.awordNumber === 0) &#123;
+        alert(&quot;抽奖次数已用完&quot;);
+        return;
+      &#125;
+      this.isRote = true;
+      this.currentUser.attributes.awordNumber -= 1;
+      // 生成一个随机的概率值
+      var randomProbability = Math.random();
+      for (var i = 0; i &lt; this.prizes.length; i++) &#123;
+        var prize = this.prizes[i];
+        if (randomProbability &lt; prize.probability) &#123;
+          this.selectedPrize = prize;
+          // 为属性赋值
+          todo.set(this.currentUser.attributes.username, prize.describe);
+          break;
+        &#125; else &#123;
+          this.selectedPrize = &#123; name: &quot;空&quot;, describe: &quot;什么都没有&quot; &#125;;
+        &#125;
+      &#125;
+      // 更新后台
+      this.currentUser.set(
+        &quot;awordNumber&quot;,
+        this.currentUser.attributes.awordNumber
+      );
+      this.currentUser
+        .save()
+        .then(function (updatedUser) &#123;
+          // 更新成功
+          console.log(&quot;更新成功&quot;);
+        &#125;)
+        .catch(function (error) &#123;
+          // 更新失败
+          console.log(&quot;更新失败&quot;);
+        &#125;);
+      // 用户奖品的数据储存
+      // 将对象保存到云端
+      todo.save().then(
+        (todo) =&gt; &#123;
+          // 成功保存之后，执行其他逻辑
+          console.log(`奖品数据保存成功`);
+        &#125;,
+        (error) =&gt; &#123;
+          // 异常处理
+          console.log(`奖品数据保存失败`);
+        &#125;
+      );
+      this.isShow = true;
+      //   阻止冒泡
+      event.stopPropagation();
+    &#125;,
+    btn2() &#123;
+      this.isShow = false;
+    &#125;,
+  &#125;,
+&#125;;
+&lt;/script&gt;
+&lt;style scoped&gt;
+.box &#123;
+  height: 100vh;
+  background: no-repeat url(&quot;@/assets/bg.png&quot;);
+  background-size: cover;
+&#125;
+button &#123;
+  border: none;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 26px;
+  margin-top: 60px;
+  margin-left: calc(50% - 35px);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  box-shadow: 0 2px 10px #111;
+&#125;
+.item &#123;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 20px;
+  color: #fff;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 14px;
+&#125;
+.cover &#123;
+  width: 90vw;
+  height: 30vh;
+  position: absolute;
+  top: 35vh;
+  left: 5vw;
+  text-align: center;
+  line-height: 30vh;
+  background-color: black;
+  opacity: 0.9;
+  color: #eee;
+  border-radius: 20px;
+&#125;
+footer &#123;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 30px;
+&#125;
+footer span &#123;
+  margin-bottom: 5px;
+&#125;
+@keyframes am1 &#123;
+  0% &#123;
+    transform: rotate(0deg);
+  &#125;
+  100% &#123;
+    transform: rotate(360deg);
+  &#125;
+&#125;
+&lt;/style&gt;</code></pre>
+
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -129,14 +561,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/27/33/">chart.js的使用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/19/31/">Aseprite汉化教程</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/27/33/">chart.js的使用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/19/31/">Aseprite汉化教程</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -277,8 +709,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

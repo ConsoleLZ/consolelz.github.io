@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>js设计模式 - 小哲的博客</title>
+  <title>js设计模式 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="工厂模式12345678910111213141516171819202122232425262728293031&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt; &#x2F;&#x2F; 饭店方法function restaurant(menu) &#123;    switch (menu) &#123;        case &#x27;鱼香肉丝&#x27;:">
+    <meta name="description" content="工厂模式&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt;  &#x2F;&#x2F; 饭店方法 function restaurant(menu) &#123;     switch (menu) &#123;         case &#x27;鱼香肉丝&#x27;:             return new YuXiangRouSi();         ca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js设计模式">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/03/10/59/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="工厂模式12345678910111213141516171819202122232425262728293031&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt; &#x2F;&#x2F; 饭店方法function restaurant(menu) &#123;    switch (menu) &#123;        case &#x27;鱼香肉丝&#x27;:">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="工厂模式&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt;  &#x2F;&#x2F; 饭店方法 function restaurant(menu) &#123;     switch (menu) &#123;         case &#x27;鱼香肉丝&#x27;:             return new YuXiangRouSi();         ca">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-09T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.015Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">发布订阅模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">适配器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">装饰器模式</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">建造者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">发布订阅模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">适配器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-text">装饰器模式</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,20 +100,243 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt;</span><br><span class="line"> <span class="comment">// 饭店方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">restaurant</span>(<span class="params">menu</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (menu) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;鱼香肉丝&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">YuXiangRouSi</span>();</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;宫保鸡丁&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">GongBaoJiDin</span>();</span><br><span class="line">        <span class="attr">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;这个菜本店没有&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鱼香肉丝类 </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">YuXiangRouSi</span>(<span class="params"></span>) &#123; <span class="variable language_">this</span>.<span class="property">type</span> = <span class="string">&#x27;鱼香肉丝&#x27;</span> &#125;;</span><br><span class="line"><span class="title class_">YuXiangRouSi</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">eat</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span> + <span class="string">&#x27; 真香&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 宫保鸡丁类 </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">GongBaoJiDin</span>(<span class="params"></span>) &#123; <span class="variable language_">this</span>.<span class="property">type</span> = <span class="string">&#x27;宫保鸡丁&#x27;</span> &#125;;</span><br><span class="line"><span class="title class_">GongBaoJiDin</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">eat</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span> + <span class="string">&#x27; 让我想起了外婆做的菜~&#x27;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dish1 = <span class="title function_">restaurant</span>(<span class="string">&#x27;鱼香肉丝&#x27;</span>);</span><br><span class="line">dish1.<span class="title function_">eat</span>();</span><br><span class="line"><span class="comment">// 鱼香肉丝 真香</span></span><br><span class="line"><span class="keyword">const</span> dish2 = <span class="title function_">restaurant</span>(<span class="string">&#x27;红烧排骨&#x27;</span>);</span><br><span class="line"><span class="comment">// Error 这个菜本店没有</span></span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><pre><code class="hljs js">&lt;!-- 工厂模式：根据不同的输入返回不同类的实例，一般用来创建同一类对象。 --&gt;
+ <span class="hljs-comment">// 饭店方法</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">restaurant</span>(<span class="hljs-params">menu</span>) &#123;
+    <span class="hljs-keyword">switch</span> (menu) &#123;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;鱼香肉丝&#x27;</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">YuXiangRouSi</span>();
+        <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;宫保鸡丁&#x27;</span>:
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GongBaoJiDin</span>();
+        <span class="hljs-attr">default</span>:
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;这个菜本店没有&#x27;</span>);
+    &#125;
+&#125;;
 
-<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建造者，汽车部件厂家，提供具体零部件的生产</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CarBuilder</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">&#123; color = <span class="string">&#x27;white&#x27;</span>, weight = <span class="number">0</span> &#125;</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">color</span> = color;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">weight</span> = weight;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生产部件，轮胎</span></span><br><span class="line">    <span class="title function_">buildTyre</span>(<span class="params">type</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> tyre = &#123;&#125;</span><br><span class="line">        <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;small&#x27;</span>:</span><br><span class="line">                tyre.<span class="property">tyreType</span> = <span class="string">&#x27;小号轮胎&#x27;</span></span><br><span class="line">                tyre.<span class="property">tyreIntro</span> = <span class="string">&#x27;正在使用小号轮胎&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;normal&#x27;</span>:</span><br><span class="line">                tyre.<span class="property">tyreType</span> = <span class="string">&#x27;中号轮胎&#x27;</span></span><br><span class="line">                tyre.<span class="property">tyreIntro</span> = <span class="string">&#x27;正在使用中号轮胎&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;big&#x27;</span>:</span><br><span class="line">                tyre.<span class="property">tyreType</span> = <span class="string">&#x27;大号轮胎&#x27;</span></span><br><span class="line">                tyre.<span class="property">tyreIntro</span> = <span class="string">&#x27;正在使用大号轮胎&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">tyre</span> = tyre;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生产部件，发动机</span></span><br><span class="line">    <span class="title function_">buildEngine</span>(<span class="params">type</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> engine = &#123;&#125;</span><br><span class="line">        <span class="keyword">switch</span> (type) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;small&#x27;</span>:</span><br><span class="line">                engine.<span class="property">engineType</span> = <span class="string">&#x27;小马力发动机&#x27;</span></span><br><span class="line">                engine.<span class="property">engineIntro</span> = <span class="string">&#x27;正在使用小马力发动机&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;normal&#x27;</span>:</span><br><span class="line">                engine.<span class="property">engineType</span> = <span class="string">&#x27;中马力发动机&#x27;</span></span><br><span class="line">                engine.<span class="property">engineIntro</span> = <span class="string">&#x27;正在使用中马力发动机&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">case</span> <span class="string">&#x27;big&#x27;</span>:</span><br><span class="line">                engine.<span class="property">engineType</span> = <span class="string">&#x27;大马力发动机&#x27;</span></span><br><span class="line">                engine.<span class="property">engineIntro</span> = <span class="string">&#x27;正在使用大马力发动机&#x27;</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">engine</span> = engine</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 指挥者，负责最终汽车产品的装配</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BenChiDirector</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">tyre, engine, param</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> car = <span class="keyword">new</span> <span class="title class_">CarBuilder</span>(param);</span><br><span class="line">        car.<span class="title function_">buildTyre</span>(tyre);</span><br><span class="line">        car.<span class="title function_">buildEngine</span>(engine);</span><br><span class="line">        <span class="keyword">return</span> car;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获得产品实例</span></span><br><span class="line"><span class="keyword">const</span> benchi = <span class="keyword">new</span> <span class="title class_">BenChiDirector</span>(<span class="string">&#x27;small&#x27;</span>, <span class="string">&#x27;big&#x27;</span>, &#123; <span class="attr">color</span>: <span class="string">&#x27;red&#x27;</span>, <span class="attr">weight</span>: <span class="string">&#x27;1600kg&#x27;</span> &#125;);</span><br></pre></td></tr></table></figure>
+<span class="hljs-comment">// 鱼香肉丝类 </span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">YuXiangRouSi</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-variable language_">this</span>.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;鱼香肉丝&#x27;</span> &#125;;
+<span class="hljs-title class_">YuXiangRouSi</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">eat</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">type</span> + <span class="hljs-string">&#x27; 真香&#x27;</span>);
+&#125;;
 
-<h2 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 发布、订阅中心</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PubSub</span>&#123;</span><br><span class="line">    #list = []</span><br><span class="line">    <span class="comment">// 订阅</span></span><br><span class="line">    <span class="title function_">subscribe</span>(<span class="params">sub</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.#list.<span class="title function_">push</span>(sub)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 发布</span></span><br><span class="line">    <span class="title function_">publish</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.#list.<span class="title function_">forEach</span>(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">            item.<span class="title function_">update</span>()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 退订</span></span><br><span class="line">    <span class="title function_">unsubscribe</span>(<span class="params">sub</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.#list = <span class="variable language_">this</span>.#list.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span>=&gt;</span>item!==sub)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 订阅者</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Subscriber</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 主要逻辑</span></span><br><span class="line">    <span class="title function_">update</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">name</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">const</span> pubsub = <span class="keyword">new</span> <span class="title class_">PubSub</span>()</span><br><span class="line"><span class="keyword">let</span> subscriber1 = <span class="keyword">new</span> <span class="title class_">Subscriber</span>(<span class="string">&#x27;xiaoming&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> subscriber2 = <span class="keyword">new</span> <span class="title class_">Subscriber</span>(<span class="string">&#x27;tiechui&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始订阅</span></span><br><span class="line">pubsub.<span class="title function_">subscribe</span>(subscriber1)</span><br><span class="line">pubsub.<span class="title function_">subscribe</span>(subscriber2)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 退订</span></span><br><span class="line"><span class="comment">// pubsub.unsubscribe(subscriber1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当符合情况时，进行发布</span></span><br><span class="line">pubsub.<span class="title function_">publish</span>()</span><br></pre></td></tr></table></figure>
-
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Single</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name, age</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="title class_">Single</span>.<span class="property">instance</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">            <span class="title class_">Single</span>.<span class="property">instance</span> = <span class="variable language_">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Single</span>.<span class="property">instance</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="title class_">Single</span>(<span class="string">&quot;tom&quot;</span>, <span class="number">18</span>);</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="title class_">Single</span>(<span class="string">&quot;tiechui&quot;</span>, <span class="number">28</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a)</span><br><span class="line"><span class="comment">// Single &#123;name: &#x27;tom&#x27;, age: 18&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line"><span class="comment">// Single &#123;name: &#x27;tom&#x27;, age: 18&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将一个类(对象)的接口(方法、属性)转化为用户需要的另一个接口。解决类(对象)之间接口不兼容的问题</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TencentMap</span>&#123;</span><br><span class="line">    <span class="title function_">show</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;开始渲染腾讯地图&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BaiduMap</span>&#123;</span><br><span class="line">    <span class="title function_">display</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;开始渲染百度地图&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 百度的适配器</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BaiduAdapator</span> <span class="keyword">extends</span> <span class="title class_ inherited__">BaiduMap</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">super</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">show</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">display</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 只支持腾讯地图，所以要给百度写一个适配器</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">renderMap</span>(<span class="params">map</span>)&#123;</span><br><span class="line">    map.<span class="title function_">show</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">renderMap</span>(<span class="keyword">new</span> <span class="title class_">TencentMap</span>());</span><br><span class="line"><span class="title function_">renderMap</span>(<span class="keyword">new</span> <span class="title class_">BaiduAdapator</span>());</span><br></pre></td></tr></table></figure>
-
-<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 前置函数</span></span><br><span class="line"><span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">before</span> = <span class="keyword">function</span> (<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 先进行前置函数的调用</span></span><br><span class="line">        fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">        <span class="comment">// 再调用原函数</span></span><br><span class="line">        <span class="keyword">return</span> _this.<span class="title function_">apply</span>(_this, <span class="variable language_">arguments</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 后置函数</span></span><br><span class="line"><span class="title class_">Function</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">after</span> = <span class="keyword">function</span> (<span class="params">fn</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// 先调用原函数</span></span><br><span class="line">        <span class="keyword">var</span> result = _this.<span class="title function_">apply</span>(_this, <span class="variable language_">arguments</span>);</span><br><span class="line">        <span class="comment">// 再进行后置函数的调用</span></span><br><span class="line">        fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(params);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test1 = test.<span class="title function_">before</span>(<span class="keyword">function</span> (<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;前置函数&#x27;</span>);</span><br><span class="line">    params.<span class="property">token</span> = <span class="string">&#x27;ajsbasczxc&#x27;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> test2 = test.<span class="title function_">after</span>(<span class="keyword">function</span> (<span class="params">params</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;后置函数&#x27;</span>);</span><br><span class="line">    params.<span class="property">date</span> = <span class="keyword">new</span> <span class="title class_">Date</span>()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title function_">test1</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;zhe&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">前置函数</span></span><br><span class="line"><span class="comment">index.html:32 &#123;name: &#x27;zhe&#x27;, token: &#x27;ajsbasczxc&#x27;&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">test2</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;zhe&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;name: &#x27;zhe&#x27;&#125;</span></span><br><span class="line"><span class="comment">index.html:39 后置函数</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<span class="hljs-comment">// 宫保鸡丁类 </span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">GongBaoJiDin</span>(<span class="hljs-params"></span>) &#123; <span class="hljs-variable language_">this</span>.<span class="hljs-property">type</span> = <span class="hljs-string">&#x27;宫保鸡丁&#x27;</span> &#125;;
+<span class="hljs-title class_">GongBaoJiDin</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">eat</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">type</span> + <span class="hljs-string">&#x27; 让我想起了外婆做的菜~&#x27;</span>);
+&#125;;
 
 
-<div class="article-footer fs14">
+<span class="hljs-keyword">const</span> dish1 = <span class="hljs-title function_">restaurant</span>(<span class="hljs-string">&#x27;鱼香肉丝&#x27;</span>);
+dish1.<span class="hljs-title function_">eat</span>();
+<span class="hljs-comment">// 鱼香肉丝 真香</span>
+<span class="hljs-keyword">const</span> dish2 = <span class="hljs-title function_">restaurant</span>(<span class="hljs-string">&#x27;红烧排骨&#x27;</span>);
+<span class="hljs-comment">// Error 这个菜本店没有</span></code></pre>
+
+<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><pre><code class="hljs js"><span class="hljs-comment">// 建造者，汽车部件厂家，提供具体零部件的生产</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CarBuilder</span> &#123;
+
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">&#123; color = <span class="hljs-string">&#x27;white&#x27;</span>, weight = <span class="hljs-number">0</span> &#125;</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">color</span> = color;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">weight</span> = weight;
+    &#125;
+
+    <span class="hljs-comment">// 生产部件，轮胎</span>
+    <span class="hljs-title function_">buildTyre</span>(<span class="hljs-params">type</span>) &#123;
+        <span class="hljs-keyword">const</span> tyre = &#123;&#125;
+        <span class="hljs-keyword">switch</span> (type) &#123;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;small&#x27;</span>:
+                tyre.<span class="hljs-property">tyreType</span> = <span class="hljs-string">&#x27;小号轮胎&#x27;</span>
+                tyre.<span class="hljs-property">tyreIntro</span> = <span class="hljs-string">&#x27;正在使用小号轮胎&#x27;</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;normal&#x27;</span>:
+                tyre.<span class="hljs-property">tyreType</span> = <span class="hljs-string">&#x27;中号轮胎&#x27;</span>
+                tyre.<span class="hljs-property">tyreIntro</span> = <span class="hljs-string">&#x27;正在使用中号轮胎&#x27;</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;big&#x27;</span>:
+                tyre.<span class="hljs-property">tyreType</span> = <span class="hljs-string">&#x27;大号轮胎&#x27;</span>
+                tyre.<span class="hljs-property">tyreIntro</span> = <span class="hljs-string">&#x27;正在使用大号轮胎&#x27;</span>
+                <span class="hljs-keyword">break</span>
+        &#125;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">tyre</span> = tyre;
+    &#125;
+
+    <span class="hljs-comment">// 生产部件，发动机</span>
+    <span class="hljs-title function_">buildEngine</span>(<span class="hljs-params">type</span>) &#123;
+        <span class="hljs-keyword">const</span> engine = &#123;&#125;
+        <span class="hljs-keyword">switch</span> (type) &#123;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;small&#x27;</span>:
+                engine.<span class="hljs-property">engineType</span> = <span class="hljs-string">&#x27;小马力发动机&#x27;</span>
+                engine.<span class="hljs-property">engineIntro</span> = <span class="hljs-string">&#x27;正在使用小马力发动机&#x27;</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;normal&#x27;</span>:
+                engine.<span class="hljs-property">engineType</span> = <span class="hljs-string">&#x27;中马力发动机&#x27;</span>
+                engine.<span class="hljs-property">engineIntro</span> = <span class="hljs-string">&#x27;正在使用中马力发动机&#x27;</span>
+                <span class="hljs-keyword">break</span>
+            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;big&#x27;</span>:
+                engine.<span class="hljs-property">engineType</span> = <span class="hljs-string">&#x27;大马力发动机&#x27;</span>
+                engine.<span class="hljs-property">engineIntro</span> = <span class="hljs-string">&#x27;正在使用大马力发动机&#x27;</span>
+                <span class="hljs-keyword">break</span>
+        &#125;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">engine</span> = engine
+    &#125;
+&#125;;
+
+
+<span class="hljs-comment">// 指挥者，负责最终汽车产品的装配</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BenChiDirector</span> &#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">tyre, engine, param</span>) &#123;
+        <span class="hljs-keyword">const</span> car = <span class="hljs-keyword">new</span> <span class="hljs-title class_">CarBuilder</span>(param);
+        car.<span class="hljs-title function_">buildTyre</span>(tyre);
+        car.<span class="hljs-title function_">buildEngine</span>(engine);
+        <span class="hljs-keyword">return</span> car;
+    &#125;
+&#125;;
+
+<span class="hljs-comment">// 获得产品实例</span>
+<span class="hljs-keyword">const</span> benchi = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BenChiDirector</span>(<span class="hljs-string">&#x27;small&#x27;</span>, <span class="hljs-string">&#x27;big&#x27;</span>, &#123; <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-attr">weight</span>: <span class="hljs-string">&#x27;1600kg&#x27;</span> &#125;);</code></pre>
+
+<h2 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h2><pre><code class="hljs js"><span class="hljs-comment">// 发布、订阅中心</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">PubSub</span>&#123;
+    #list = []
+    <span class="hljs-comment">// 订阅</span>
+    <span class="hljs-title function_">subscribe</span>(<span class="hljs-params">sub</span>)&#123;
+        <span class="hljs-variable language_">this</span>.#list.<span class="hljs-title function_">push</span>(sub)
+    &#125;
+    <span class="hljs-comment">// 发布</span>
+    <span class="hljs-title function_">publish</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">this</span>.#list.<span class="hljs-title function_">forEach</span>(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>&#123;
+            item.<span class="hljs-title function_">update</span>()
+        &#125;)
+    &#125;
+    <span class="hljs-comment">// 退订</span>
+    <span class="hljs-title function_">unsubscribe</span>(<span class="hljs-params">sub</span>)&#123;
+        <span class="hljs-variable language_">this</span>.#list = <span class="hljs-variable language_">this</span>.#list.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">item</span>=&gt;</span>item!==sub)
+    &#125;
+&#125;
+<span class="hljs-comment">// 订阅者</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Subscriber</span>&#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name</span>)&#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name
+    &#125;
+    <span class="hljs-comment">// 主要逻辑</span>
+    <span class="hljs-title function_">update</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span>)
+    &#125;
+&#125;
+
+<span class="hljs-comment">// </span>
+<span class="hljs-keyword">const</span> pubsub = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PubSub</span>()
+<span class="hljs-keyword">let</span> subscriber1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subscriber</span>(<span class="hljs-string">&#x27;xiaoming&#x27;</span>)
+<span class="hljs-keyword">let</span> subscriber2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subscriber</span>(<span class="hljs-string">&#x27;tiechui&#x27;</span>)
+
+<span class="hljs-comment">// 开始订阅</span>
+pubsub.<span class="hljs-title function_">subscribe</span>(subscriber1)
+pubsub.<span class="hljs-title function_">subscribe</span>(subscriber2)
+
+<span class="hljs-comment">// 退订</span>
+<span class="hljs-comment">// pubsub.unsubscribe(subscriber1)</span>
+
+<span class="hljs-comment">// 当符合情况时，进行发布</span>
+pubsub.<span class="hljs-title function_">publish</span>()</code></pre>
+
+<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Single</span>&#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, age</span>)&#123;
+        <span class="hljs-keyword">if</span>(!<span class="hljs-title class_">Single</span>.<span class="hljs-property">instance</span>)&#123;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+            <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;
+            <span class="hljs-title class_">Single</span>.<span class="hljs-property">instance</span> = <span class="hljs-variable language_">this</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-title class_">Single</span>.<span class="hljs-property">instance</span>;
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Single</span>(<span class="hljs-string">&quot;tom&quot;</span>, <span class="hljs-number">18</span>);
+<span class="hljs-keyword">let</span> b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Single</span>(<span class="hljs-string">&quot;tiechui&quot;</span>, <span class="hljs-number">28</span>);
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)
+<span class="hljs-comment">// Single &#123;name: &#x27;tom&#x27;, age: 18&#125;</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b)
+<span class="hljs-comment">// Single &#123;name: &#x27;tom&#x27;, age: 18&#125;</span></code></pre>
+
+<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><pre><code class="hljs js"><span class="hljs-comment">// 将一个类(对象)的接口(方法、属性)转化为用户需要的另一个接口。解决类(对象)之间接口不兼容的问题</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">TencentMap</span>&#123;
+    <span class="hljs-title function_">show</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;开始渲染腾讯地图&#x27;</span>);
+    &#125;
+&#125;
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BaiduMap</span>&#123;
+    <span class="hljs-title function_">display</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;开始渲染百度地图&#x27;</span>);
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 百度的适配器</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">BaiduAdapator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">BaiduMap</span>&#123;
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">super</span>();
+    &#125;
+    <span class="hljs-title function_">show</span>(<span class="hljs-params"></span>)&#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">display</span>()
+    &#125;
+&#125;
+<span class="hljs-comment">// 只支持腾讯地图，所以要给百度写一个适配器</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">renderMap</span>(<span class="hljs-params">map</span>)&#123;
+    map.<span class="hljs-title function_">show</span>();
+&#125;
+<span class="hljs-title function_">renderMap</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">TencentMap</span>());
+<span class="hljs-title function_">renderMap</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">BaiduAdapator</span>());</code></pre>
+
+<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><pre><code class="hljs js"> <span class="hljs-comment">// 前置函数</span>
+<span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">before</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) &#123;
+    <span class="hljs-keyword">var</span> _this = <span class="hljs-variable language_">this</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+        <span class="hljs-comment">// 先进行前置函数的调用</span>
+        fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);
+        <span class="hljs-comment">// 再调用原函数</span>
+        <span class="hljs-keyword">return</span> _this.<span class="hljs-title function_">apply</span>(_this, <span class="hljs-variable language_">arguments</span>);
+    &#125;
+&#125;
+<span class="hljs-comment">// 后置函数</span>
+<span class="hljs-title class_">Function</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">after</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) &#123;
+    <span class="hljs-keyword">var</span> _this = <span class="hljs-variable language_">this</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+        <span class="hljs-comment">// 先调用原函数</span>
+        <span class="hljs-keyword">var</span> result = _this.<span class="hljs-title function_">apply</span>(_this, <span class="hljs-variable language_">arguments</span>);
+        <span class="hljs-comment">// 再进行后置函数的调用</span>
+        fn.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, <span class="hljs-variable language_">arguments</span>);
+        <span class="hljs-keyword">return</span> result;
+    &#125;
+&#125;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">params</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(params);
+&#125;
+<span class="hljs-keyword">var</span> test1 = test.<span class="hljs-title function_">before</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;前置函数&#x27;</span>);
+    params.<span class="hljs-property">token</span> = <span class="hljs-string">&#x27;ajsbasczxc&#x27;</span>;
+&#125;);
+<span class="hljs-keyword">var</span> test2 = test.<span class="hljs-title function_">after</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">params</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;后置函数&#x27;</span>);
+    params.<span class="hljs-property">date</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()
+&#125;);
+
+
+<span class="hljs-title function_">test1</span>(&#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;zhe&#x27;</span>
+&#125;)
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">前置函数</span>
+<span class="hljs-comment">index.html:32 &#123;name: &#x27;zhe&#x27;, token: &#x27;ajsbasczxc&#x27;&#125;</span>
+<span class="hljs-comment">*/</span>
+
+<span class="hljs-title function_">test2</span>(&#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;zhe&#x27;</span>
+&#125;)
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">&#123;name: &#x27;zhe&#x27;&#125;</span>
+<span class="hljs-comment">index.html:39 后置函数</span>
+<span class="hljs-comment">*/</span></code></pre>
+
+
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -117,14 +344,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/03/15/60/">sass基础知识</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/03/02/58/">vue3基础知识3</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/03/15/60/">sass基础知识</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/03/02/58/">vue3基础知识3</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -265,8 +492,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

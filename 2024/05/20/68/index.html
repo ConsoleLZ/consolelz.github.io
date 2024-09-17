@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>react易忘知识点 - 小哲的博客</title>
+  <title>react易忘知识点 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="组件通信1.父传子123456789101112131415161718function Children(props)&#123;  return(    &lt;div&gt;我是孩子:&#123;props.msg&#125;&lt;&#x2F;div&gt;  )&#125;function App()&#123;  const msg &#x3D; &#x27;传递给孩子的东西&#x27;  return(">
+    <meta name="description" content="组件通信1.父传子function Children(props)&#123;   return(     &lt;div&gt;我是孩子:&#123;props.msg&#125;&lt;&#x2F;div&gt;   ) &#125;   function App()&#123;   const msg &#x3D; &#x27;传递给孩子的东西&#x27;   return(     &lt;div&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react易忘知识点">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/05/20/68/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="组件通信1.父传子123456789101112131415161718function Children(props)&#123;  return(    &lt;div&gt;我是孩子:&#123;props.msg&#125;&lt;&#x2F;div&gt;  )&#125;function App()&#123;  const msg &#x3D; &#x27;传递给孩子的东西&#x27;  return(">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="组件通信1.父传子function Children(props)&#123;   return(     &lt;div&gt;我是孩子:&#123;props.msg&#125;&lt;&#x2F;div&gt;   ) &#125;   function App()&#123;   const msg &#x3D; &#x27;传递给孩子的东西&#x27;   return(     &lt;div&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-19T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-11T08:58:46.983Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-text">组件通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%88%B6%E4%BC%A0%E5%AD%90"><span class="toc-text">1.父传子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%90%E4%BC%A0%E7%88%B6"><span class="toc-text">2.子传父</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8createContext-%E8%BF%9B%E8%A1%8C%E8%B7%A8%E7%BA%A7%E9%80%9A%E4%BF%A1"><span class="toc-text">3.使用createContext()进行跨级通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redux%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">redux的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%9F%A5%E8%AF%86"><span class="toc-text">路由知识</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-text">组件通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%88%B6%E4%BC%A0%E5%AD%90"><span class="toc-text">1.父传子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AD%90%E4%BC%A0%E7%88%B6"><span class="toc-text">2.子传父</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8createContext-%E8%BF%9B%E8%A1%8C%E8%B7%A8%E7%BA%A7%E9%80%9A%E4%BF%A1"><span class="toc-text">3.使用createContext()进行跨级通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redux%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">redux的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%9F%A5%E8%AF%86"><span class="toc-text">路由知识</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,41 +100,211 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h4 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Children</span>(<span class="params">props</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>我是孩子:&#123;props.msg&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">&#x27;传递给孩子的东西&#x27;</span></span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Children</span> <span class="attr">msg</span>=<span class="string">&#123;msg&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Children</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h4 id="1-父传子"><a href="#1-父传子" class="headerlink" title="1.父传子"></a>1.父传子</h4><pre><code class="hljs jsx"><span class="hljs-keyword">function</span> <span class="hljs-title function_">Children</span>(<span class="hljs-params">props</span>)&#123;
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我是孩子:&#123;props.msg&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-string">&#x27;传递给孩子的东西&#x27;</span>
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Children</span> <span class="hljs-attr">msg</span>=<span class="hljs-string">&#123;msg&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Children</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span></code></pre>
 
 <h4 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2.子传父"></a>2.子传父</h4><p>就是在传递props的时候，传递一个函数</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Children</span>(<span class="params">props</span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">&#x27;传递给父亲的东西&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> &#123;onMsg&#125; = props</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="title function_">onMsg</span>(msg)</span><br><span class="line">  &#125;,[])</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>我是孩子:<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> [data, setData] = <span class="title function_">useState</span>()</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">msg</span> = (<span class="params">value</span>)=&gt;&#123;</span><br><span class="line">    <span class="title function_">setData</span>(value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Children</span> <span class="attr">onMsg</span>=<span class="string">&#123;msg&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Children</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h6</span>&gt;</span>&#123;data&#125;<span class="tag">&lt;/<span class="name">h6</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; useEffect &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>
+<span class="hljs-keyword">import</span> &#123; useState &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>
 
-<h4 id="3-使用createContext-进行跨级通信"><a href="#3-使用createContext-进行跨级通信" class="headerlink" title="3.使用createContext()进行跨级通信"></a>3.使用<em>createContext</em>()进行跨级通信</h4><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createContext &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useContext &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MsgContext</span> = <span class="title function_">createContext</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Demo1</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>demo1</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Demo2</span>&gt;</span><span class="tag">&lt;/<span class="name">Demo2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Demo2</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="title function_">useContext</span>(<span class="title class_">MsgContext</span>)</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>demo2:&#123;msg&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> msg = <span class="string">&quot;我是父组件&quot;</span></span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">MsgContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;msg&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        this is App</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Demo1</span>&gt;</span><span class="tag">&lt;/<span class="name">Demo1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">MsgContext.Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Children</span>(<span class="hljs-params">props</span>)&#123;
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-string">&#x27;传递给父亲的东西&#x27;</span>
+  <span class="hljs-keyword">const</span> &#123;onMsg&#125; = props
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">()=&gt;</span>&#123;
+    <span class="hljs-title function_">onMsg</span>(msg)
+  &#125;,[])
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>我是孩子:<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">let</span> [data, setData] = <span class="hljs-title function_">useState</span>()
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">msg</span> = (<span class="hljs-params">value</span>)=&gt;&#123;
+    <span class="hljs-title function_">setData</span>(value)
+  &#125;
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Children</span> <span class="hljs-attr">onMsg</span>=<span class="hljs-string">&#123;msg&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Children</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span>&#123;data&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h6</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span></code></pre>
+
+<h4 id="3-使用createContext-进行跨级通信"><a href="#3-使用createContext-进行跨级通信" class="headerlink" title="3.使用createContext()进行跨级通信"></a>3.使用<em>createContext</em>()进行跨级通信</h4><pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; createContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>
+<span class="hljs-keyword">import</span> &#123; useContext &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">MsgContext</span> = <span class="hljs-title function_">createContext</span>()
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Demo1</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>demo1</span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Demo2</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Demo2</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">Demo2</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MsgContext</span>)
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>demo2:&#123;msg&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">const</span> msg = <span class="hljs-string">&quot;我是父组件&quot;</span>
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">MsgContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#123;msg&#125;</span>&gt;</span></span>
+<span class="language-xml">        this is App</span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Demo1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Demo1</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">MsgContext.Provider</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span></code></pre>
 
 <h2 id="redux的使用"><a href="#redux的使用" class="headerlink" title="redux的使用"></a>redux的使用</h2><p>首先安装依赖：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-redux @reduxjs/toolkit</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">npm i react-redux @reduxjs/toolkit</code></pre>
 
 <p>创建store文件夹，用于配置redux</p>
 <p>创建modules目录，用于存放具体模块，创建index.js文件用于集中导出</p>
 <p>例如创建一个counterStore.js用于存放计数信息</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createSlice &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counterStore = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;counter&quot;</span>,</span><br><span class="line">    <span class="comment">// 初始化state</span></span><br><span class="line">    <span class="attr">initialState</span>: &#123;</span><br><span class="line">        <span class="attr">count</span>: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 修改状态的方法</span></span><br><span class="line">    <span class="attr">reducers</span>: &#123;</span><br><span class="line">        <span class="title function_">inscrement</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">count</span>++</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">descrement</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">count</span>--</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构actions</span></span><br><span class="line"><span class="keyword">const</span> &#123;inscrement,descrement&#125; = counterStore.<span class="property">actions</span></span><br><span class="line"><span class="comment">// 获取reducer</span></span><br><span class="line"><span class="keyword">const</span> reducer = counterStore.<span class="property">reducer</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出</span></span><br><span class="line"><span class="keyword">export</span> &#123;inscrement,descrement&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> reducer</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; createSlice &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@reduxjs/toolkit&quot;</span>;
+
+<span class="hljs-keyword">const</span> counterStore = <span class="hljs-title function_">createSlice</span>(&#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;counter&quot;</span>,
+    <span class="hljs-comment">// 初始化state</span>
+    <span class="hljs-attr">initialState</span>: &#123;
+        <span class="hljs-attr">count</span>: <span class="hljs-number">0</span>
+    &#125;,
+    <span class="hljs-comment">// 修改状态的方法</span>
+    <span class="hljs-attr">reducers</span>: &#123;
+        <span class="hljs-title function_">inscrement</span>(<span class="hljs-params">state</span>)&#123;
+            state.<span class="hljs-property">count</span>++
+        &#125;,
+        <span class="hljs-title function_">descrement</span>(<span class="hljs-params">state</span>)&#123;
+            state.<span class="hljs-property">count</span>--
+        &#125;,
+    &#125;
+&#125;)
+
+<span class="hljs-comment">// 解构actions</span>
+<span class="hljs-keyword">const</span> &#123;inscrement,descrement&#125; = counterStore.<span class="hljs-property">actions</span>
+<span class="hljs-comment">// 获取reducer</span>
+<span class="hljs-keyword">const</span> reducer = counterStore.<span class="hljs-property">reducer</span>
+
+<span class="hljs-comment">// 导出</span>
+<span class="hljs-keyword">export</span> &#123;inscrement,descrement&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> reducer</code></pre>
 
 <p>index.js:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; configureStore &#125; <span class="keyword">from</span> <span class="string">&quot;@reduxjs/toolkit&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> counterReducer <span class="keyword">from</span> <span class="string">&quot;./modules/counterStore&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">    <span class="attr">reducer</span>: &#123;</span><br><span class="line">        <span class="attr">counter</span>: counterReducer</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; configureStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@reduxjs/toolkit&quot;</span>;
+<span class="hljs-keyword">import</span> counterReducer <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./modules/counterStore&quot;</span>
+
+<span class="hljs-keyword">const</span> store = <span class="hljs-title function_">configureStore</span>(&#123;
+    <span class="hljs-attr">reducer</span>: &#123;
+        <span class="hljs-attr">counter</span>: counterReducer
+    &#125;
+&#125;)
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store</code></pre>
 
 <p>入口文件main.jsx:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.jsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">&#x27;./store/index.js&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Provider</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-redux&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)).<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom/client&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.jsx&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./index.css&#x27;</span>
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./store/index.js&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Provider</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-redux&#x27;</span>
+
+<span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">createRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)).<span class="hljs-title function_">render</span>(
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.StrictMode</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">&#123;store&#125;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">React.StrictMode</span>&gt;</span></span>,
+)</code></pre>
 
 <p>使用：</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useSelector,useDispatch &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span></span><br><span class="line"><span class="keyword">import</span> &#123; inscrement,descrement &#125; <span class="keyword">from</span> <span class="string">&quot;./store/modules/counterStore&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;count&#125; = <span class="title function_">useSelector</span>(<span class="function"><span class="params">state</span>=&gt;</span>state.<span class="property">counter</span>)</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>使用redux进行状态管理<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>当前状态&#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">style</span>=<span class="string">&#123;&#123;marginRight:10&#125;&#125;</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>dispatch(inscrement())&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>dispatch(descrement())&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> &#123; useSelector,useDispatch &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-redux&quot;</span>
+<span class="hljs-keyword">import</span> &#123; inscrement,descrement &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./store/modules/counterStore&quot;</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">App</span>(<span class="hljs-params"></span>)&#123;
+  <span class="hljs-keyword">const</span> &#123;count&#125; = <span class="hljs-title function_">useSelector</span>(<span class="hljs-function"><span class="hljs-params">state</span>=&gt;</span>state.<span class="hljs-property">counter</span>)
+  <span class="hljs-keyword">const</span> dispatch = <span class="hljs-title function_">useDispatch</span>()
+  
+  <span class="hljs-keyword">return</span>(
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>使用redux进行状态管理<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>当前状态&#123;count&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#123;&#123;marginRight:10&#125;&#125;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span>=&gt;</span>dispatch(inscrement())&#125;&gt;+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;()</span>=&gt;</span>dispatch(descrement())&#125;&gt;-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  )
+&#125;
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">App</span></code></pre>
 
 <h2 id="路由知识"><a href="#路由知识" class="headerlink" title="路由知识"></a>路由知识</h2><p>安装依赖：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-router-dom</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">npm i react-router-dom</code></pre>
 
 <p>新建一个router目录,再新建一个index.js文件用以配置路由</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createBrowserRouter&#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&quot;../pages/Home&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&quot;../pages/About&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createBrowserRouter</span>([</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Home</span>/&gt;</span></span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;/about&quot;</span>,</span><br><span class="line">        <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">About</span>/&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123;createBrowserRouter&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Home</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/Home&quot;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">About</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../pages/About&quot;</span>
+
+<span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createBrowserRouter</span>([
+    &#123;
+        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/&quot;</span>,
+        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Home</span>/&gt;</span></span>
+    &#125;,
+    &#123;
+        <span class="hljs-attr">path</span>: <span class="hljs-string">&quot;/about&quot;</span>,
+        <span class="hljs-attr">element</span>: <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">About</span>/&gt;</span></span>
+    &#125;
+])
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router</code></pre>
 
 <p>main.jsx:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123;<span class="title class_">RouterProvider</span>&#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&quot;./router&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;root&#x27;</span>)).<span class="title function_">render</span>(</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">RouterProvider</span> <span class="attr">router</span>=<span class="string">&#123;router&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">React.StrictMode</span>&gt;</span></span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs jsx"><span class="hljs-keyword">import</span> <span class="hljs-title class_">React</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ReactDOM</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react-dom/client&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./index.css&#x27;</span>
+<span class="hljs-keyword">import</span> &#123;<span class="hljs-title class_">RouterProvider</span>&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-router-dom&quot;</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./router&quot;</span>
+
+<span class="hljs-title class_">ReactDOM</span>.<span class="hljs-title function_">createRoot</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&#x27;root&#x27;</span>)).<span class="hljs-title function_">render</span>(
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">React.StrictMode</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">RouterProvider</span> <span class="hljs-attr">router</span>=<span class="hljs-string">&#123;router&#125;</span> /&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">React.StrictMode</span>&gt;</span></span>
+)</code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -138,14 +312,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/05/20/62/">vue3扩展学习</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/02/61/">webpack基础知识</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/05/20/62/">vue3扩展学习</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/04/02/61/">webpack基础知识</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -286,8 +460,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

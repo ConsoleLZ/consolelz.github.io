@@ -16,14 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>chart.js的使用 - 小哲的博客</title>
+  <title>chart.js的使用 - 程序猿小哲的博客</title>
 
   
     <meta name="description" content="先导之前使用canvaJS已经写过了一个统计页面，但是我觉得样式不够好看，于是又去找图表框架，发现chart.js还挺好看，这里就不说怎么创建一个统计页面了，我不可能所有文章都从最最最基础的讲起的，作者也开始摆烂咯，哈哈哈哈！！！（主要是写教程没经济来源） 找到教程教程：Chart.js · GitBook (bootcss.com) 本教程会使用到webpack, 不知道什么是webpack的，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="chart.js的使用">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/07/27/33/index.html">
-<meta property="og:site_name" content="小哲的博客">
+<meta property="og:site_name" content="程序猿小哲的博客">
 <meta property="og:description" content="先导之前使用canvaJS已经写过了一个统计页面，但是我觉得样式不够好看，于是又去找图表框架，发现chart.js还挺好看，这里就不说怎么创建一个统计页面了，我不可能所有文章都从最最最基础的讲起的，作者也开始摆烂咯，哈哈哈哈！！！（主要是写教程没经济来源） 找到教程教程：Chart.js · GitBook (bootcss.com) 本教程会使用到webpack, 不知道什么是webpack的，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-26T16:00:00.000Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%AF%BC"><span class="toc-text">先导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E6%95%99%E7%A8%8B"><span class="toc-text">找到教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85webpack"><span class="toc-text">安装webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85chart-js"><span class="toc-text">安装chart.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAsrc%E7%9B%AE%E5%BD%95"><span class="toc-text">新建一个src目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEwebpack%E7%9A%84%E6%89%93%E5%8C%85%E4%BF%A1%E6%81%AF"><span class="toc-text">配置webpack的打包信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAhtml%E9%A1%B5%E9%9D%A2"><span class="toc-text">创建html页面</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%AF%BC"><span class="toc-text">先导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%BE%E5%88%B0%E6%95%99%E7%A8%8B"><span class="toc-text">找到教程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85webpack"><span class="toc-text">安装webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85chart-js"><span class="toc-text">安装chart.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAsrc%E7%9B%AE%E5%BD%95"><span class="toc-text">新建一个src目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEwebpack%E7%9A%84%E6%89%93%E5%8C%85%E4%BF%A1%E6%81%AF"><span class="toc-text">配置webpack的打包信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAhtml%E9%A1%B5%E9%9D%A2"><span class="toc-text">创建html页面</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,31 +100,90 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="先导"><a href="#先导" class="headerlink" title="先导"></a>先导</h2><p>之前使用canvaJS已经写过了一个统计页面，但是我觉得样式不够好看，于是又去找图表框架，发现chart.js还挺好看，这里就不说怎么创建一个统计页面了，我不可能所有文章都从最最最基础的讲起的，作者也开始摆烂咯，哈哈哈哈！！！（主要是写教程没经济来源）</p>
+  </div><article class="md-text content slide-up"><h2 id="先导"><a href="#先导" class="headerlink" title="先导"></a>先导</h2><p>之前使用canvaJS已经写过了一个统计页面，但是我觉得样式不够好看，于是又去找图表框架，发现chart.js还挺好看，这里就不说怎么创建一个统计页面了，我不可能所有文章都从最最最基础的讲起的，作者也开始摆烂咯，哈哈哈哈！！！（主要是写教程没经济来源）</p>
 <h2 id="找到教程"><a href="#找到教程" class="headerlink" title="找到教程"></a>找到教程</h2><p>教程：<a target="_blank" rel="noopener" href="https://chartjs.bootcss.com/docs.html">Chart.js · GitBook (bootcss.com)</a></p>
 <p>本教程会使用到webpack, 不知道什么是webpack的，可以先去看一下，官网在：<a target="_blank" rel="noopener" href="https://webpack.js.org/">webpack</a>，用于解决模块化导入问题。我觉得很多小伙伴是不是卡在这里了呢？看到这里你是不是觉得很懵，为什么能直接在自己博客的目录下安装chart.js, 然后直接引用，<br>哈哈哈哈，hexo可不支持模块化哦！，看以后会不会支持吧，反正不管怎样都要使用webpack去打包，生成一个可用的js文件</p>
 <h2 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h2><p>在一个空文件夹中</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">npm i webpack</code></pre>
 
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack-cli</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">npm i webpack-cli</code></pre>
 
-<h2 id="安装chart-js"><a href="#安装chart-js" class="headerlink" title="安装chart.js"></a>安装chart.js</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i chart.js</span><br></pre></td></tr></table></figure>
+<h2 id="安装chart-js"><a href="#安装chart-js" class="headerlink" title="安装chart.js"></a>安装chart.js</h2><pre><code class="hljs sh">npm i chart.js</code></pre>
 
 <h2 id="新建一个src目录"><a href="#新建一个src目录" class="headerlink" title="新建一个src目录"></a>新建一个src目录</h2><p>在此目录新建main.js, 主要用于写chart.js的配置<br>内容如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Chart</span> <span class="keyword">from</span> <span class="string">&quot;chart.js/auto&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> ctx = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myChart&quot;</span>).<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> myChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">labels</span>: [<span class="string">&quot;Red&quot;</span>, <span class="string">&quot;Blue&quot;</span>, <span class="string">&quot;Yellow&quot;</span>, <span class="string">&quot;Green&quot;</span>, <span class="string">&quot;Purple&quot;</span>, <span class="string">&quot;Orange&quot;</span>],</span><br><span class="line">        <span class="attr">datasets</span>: [&#123;</span><br><span class="line">            <span class="attr">label</span>: <span class="string">&#x27;# of Votes&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">12</span>, <span class="number">19</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">            <span class="attr">backgroundColor</span>: [</span><br><span class="line">                <span class="string">&#x27;rgba(255, 99, 132, 0.2)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(54, 162, 235, 0.2)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(255, 206, 86, 0.2)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(75, 192, 192, 0.2)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(153, 102, 255, 0.2)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(255, 159, 64, 0.2)&#x27;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">borderColor</span>: [</span><br><span class="line">                <span class="string">&#x27;rgba(255,99,132,1)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(54, 162, 235, 1)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(255, 206, 86, 1)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(153, 102, 255, 1)&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;rgba(255, 159, 64, 1)&#x27;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">borderWidth</span>: <span class="number">1</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">options</span>: &#123;</span><br><span class="line">        <span class="attr">scales</span>: &#123;</span><br><span class="line">            <span class="attr">yAxes</span>: [&#123;</span><br><span class="line">                <span class="attr">ticks</span>: &#123;</span><br><span class="line">                    <span class="attr">beginAtZero</span>:<span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Chart</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;chart.js/auto&quot;</span>;
+<span class="hljs-keyword">var</span> ctx = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;myChart&quot;</span>).<span class="hljs-title function_">getContext</span>(<span class="hljs-string">&#x27;2d&#x27;</span>);
+<span class="hljs-keyword">var</span> myChart = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Chart</span>(ctx, &#123;
+    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
+    <span class="hljs-attr">data</span>: &#123;
+        <span class="hljs-attr">labels</span>: [<span class="hljs-string">&quot;Red&quot;</span>, <span class="hljs-string">&quot;Blue&quot;</span>, <span class="hljs-string">&quot;Yellow&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>, <span class="hljs-string">&quot;Purple&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>],
+        <span class="hljs-attr">datasets</span>: [&#123;
+            <span class="hljs-attr">label</span>: <span class="hljs-string">&#x27;# of Votes&#x27;</span>,
+            <span class="hljs-attr">data</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">19</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+            <span class="hljs-attr">backgroundColor</span>: [
+                <span class="hljs-string">&#x27;rgba(255, 99, 132, 0.2)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(54, 162, 235, 0.2)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(255, 206, 86, 0.2)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(75, 192, 192, 0.2)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(153, 102, 255, 0.2)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(255, 159, 64, 0.2)&#x27;</span>
+            ],
+            <span class="hljs-attr">borderColor</span>: [
+                <span class="hljs-string">&#x27;rgba(255,99,132,1)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(54, 162, 235, 1)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(255, 206, 86, 1)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(75, 192, 192, 1)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(153, 102, 255, 1)&#x27;</span>,
+                <span class="hljs-string">&#x27;rgba(255, 159, 64, 1)&#x27;</span>
+            ],
+            <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">1</span>
+        &#125;]
+    &#125;,
+    <span class="hljs-attr">options</span>: &#123;
+        <span class="hljs-attr">scales</span>: &#123;
+            <span class="hljs-attr">yAxes</span>: [&#123;
+                <span class="hljs-attr">ticks</span>: &#123;
+                    <span class="hljs-attr">beginAtZero</span>:<span class="hljs-literal">true</span>
+                &#125;
+            &#125;]
+        &#125;
+    &#125;
+&#125;);</code></pre>
 <p><strong><font color='red'>注意chart.js的引用：import Chart from “chart.js&#x2F;auto”;</font></strong></p>
 <h2 id="配置webpack的打包信息"><a href="#配置webpack的打包信息" class="headerlink" title="配置webpack的打包信息"></a>配置webpack的打包信息</h2><p>新建文件webpack.config.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,  <span class="comment">// 项目的入口文件路径</span></span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>  <span class="comment">// 构建后的文件路径和文件名</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;development&#x27;</span>,
+  <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;./src/main.js&#x27;</span>,  <span class="hljs-comment">// 项目的入口文件路径</span>
+  <span class="hljs-attr">output</span>: &#123;
+    <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;dist&#x27;</span>),
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;bundle.js&#x27;</span>  <span class="hljs-comment">// 构建后的文件路径和文件名</span>
+  &#125;
+&#125;;</code></pre>
 <p>执行命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx webpack</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">npx webpack</code></pre>
 
 <p>执行后生成一个dist文件夹</p>
-<h2 id="创建html页面"><a href="#创建html页面" class="headerlink" title="创建html页面"></a>创建html页面</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myChart&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./dist/bundle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建html页面"><a href="#创建html页面" class="headerlink" title="创建html页面"></a>创建html页面</h2><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myChart&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;400&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;400&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./dist/bundle.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
 <p>用浏览器打开应该就成功了</p>
 <p><strong>最后在根据我之前的那篇文章：<a target="_blank" rel="noopener" href="https://www.lazychild.fun/2023/06/22/23/">增加一个统计模块 | Lazychild&#39;s Blog</a>，可以获取本地的一些数据，将图表的数据与博客数据关联起来，最后将自己生成的js文件与html页面移植到自己的博客项目中即可</strong></p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -128,14 +191,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/08/02/34/">uni-app中的省市区选择组件</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/23/32/">LeanCloud云数据库基本操作</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/08/02/34/">uni-app中的省市区选择组件</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/23/32/">LeanCloud云数据库基本操作</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -276,8 +339,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

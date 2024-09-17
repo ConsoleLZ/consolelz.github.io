@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>Docker常用命令 - 小哲的博客</title>
+  <title>Docker常用命令 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="docker 基础命令 启动docker  1systemctl start docker   关闭docker  1systemctl stop docker   重启docker  1systemctl restart docker   docker设置随服务启动而自启动  1systemctl enable docker   查看docker 运行状态  1systemctl status">
+    <meta name="description" content="docker 基础命令 启动docker  systemctl start docker   关闭docker  systemctl stop docker   重启docker  systemctl restart docker   docker设置随服务启动而自启动  systemctl enable docker   查看docker 运行状态  systemctl status docke">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker常用命令">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/06/04/67/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="docker 基础命令 启动docker  1systemctl start docker   关闭docker  1systemctl stop docker   重启docker  1systemctl restart docker   docker设置随服务启动而自启动  1systemctl enable docker   查看docker 运行状态  1systemctl status">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="docker 基础命令 启动docker  systemctl start docker   关闭docker  systemctl stop docker   重启docker  systemctl restart docker   docker设置随服务启动而自启动  systemctl enable docker   查看docker 运行状态  systemctl status docke">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/665ef0345e6d1bfa0557739b.png">
 <meta property="og:image" content="https://pic.imgdb.cn/item/665ef2715e6d1bfa055b760b.png">
@@ -62,11 +62,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -81,7 +85,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">docker 基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4"><span class="toc-text">docker 镜像命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">容器命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">挂载数据卷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E6%8F%90%E4%BA%A4%E4%B8%80%E4%B8%AA%E9%95%9C%E5%83%8F"><span class="toc-text">自己提交一个镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-text">本地镜像发布到阿里云</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-text">docker 基础命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-%E9%95%9C%E5%83%8F%E5%91%BD%E4%BB%A4"><span class="toc-text">docker 镜像命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">容器命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E6%95%B0%E6%8D%AE%E5%8D%B7"><span class="toc-text">挂载数据卷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E6%8F%90%E4%BA%A4%E4%B8%80%E4%B8%AA%E9%95%9C%E5%83%8F"><span class="toc-text">自己提交一个镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%8F%91%E5%B8%83%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-text">本地镜像发布到阿里云</span></a></li></ol></div></div></widget>
 
 
 
@@ -89,7 +93,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -114,61 +118,66 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="docker-基础命令"><a href="#docker-基础命令" class="headerlink" title="docker 基础命令"></a>docker 基础命令</h2><ol>
+  </div><article class="md-text content slide-up"><h2 id="docker-基础命令"><a href="#docker-基础命令" class="headerlink" title="docker 基础命令"></a>docker 基础命令</h2><ol>
 <li><strong>启动docker</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">systemctl start docker</code></pre>
 
 <ol start="2">
 <li><strong>关闭docker</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">systemctl stop docker</code></pre>
 
 <ol start="3">
 <li><strong>重启docker</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">systemctl restart docker</code></pre>
 
 <ol start="4">
 <li><strong>docker设置随服务启动而自启动</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">systemctl <span class="hljs-built_in">enable</span> docker</code></pre>
 
 <ol start="5">
 <li><strong>查看docker 运行状态</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">systemctl status docker</code></pre>
 
 <p>如果是在运行中 输入命令后 会看到绿色的active</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/665ef0345e6d1bfa0557739b.png"></p>
 <ol start="6">
 <li><strong>查看docker 版本号信息</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br><span class="line"></span><br><span class="line">docker info</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker version
+
+docker info
+</code></pre>
 
 <ol start="7">
 <li><strong>docker 帮助命令</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker --<span class="hljs-built_in">help</span></code></pre>
 
 <p>比如 咱忘记了 拉取命令 不知道可以带哪些参数 咱可以这样使用</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker pull --<span class="hljs-built_in">help</span></code></pre>
 
 <h2 id="docker-镜像命令"><a href="#docker-镜像命令" class="headerlink" title="docker 镜像命令"></a>docker 镜像命令</h2><ol>
 <li><strong>查看自己服务器中docker 镜像列表</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker images</code></pre>
 
 <ol start="2">
 <li><strong>搜索镜像</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker search 镜像名</span><br><span class="line">docker search --filter=STARS=9000 mysql 搜索 STARS &gt;9000的 mysql 镜像</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker search 镜像名
+docker search --filter=STARS=9000 mysql 搜索 STARS &gt;9000的 mysql 镜像</code></pre>
 
 <ol start="3">
 <li><strong>拉取镜像</strong></li>
 </ol>
 <p>不加tag(版本号) 即拉取docker仓库中 该镜像的最新版本latest 加:tag 则是拉取指定版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull 镜像名 </span><br><span class="line">docker pull 镜像名:tag</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker pull 镜像名 
+docker pull 镜像名:tag</code></pre>
 
 <p>比如拉取ubuntu：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/665ef2715e6d1bfa055b760b.png"></p>
@@ -176,48 +185,55 @@
 <li><strong>删除镜像</strong></li>
 </ol>
 <p>删除一个：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像名/镜像ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker rmi -f 镜像名/镜像ID</code></pre>
 
 <p>删除多个 其镜像ID或镜像用用空格隔开即可 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker rmi -f 镜像名/镜像ID 镜像名/镜像ID 镜像名/镜像ID</code></pre>
 
 <p>删除全部镜像  -a 意思为显示全部, -q 意思为只显示ID</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f $(docker images -aq)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker rmi -f $(docker images -aq)</code></pre>
 
 <p>强制删除镜像</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image <span class="built_in">rm</span> 镜像名称/镜像ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker image <span class="hljs-built_in">rm</span> 镜像名称/镜像ID</code></pre>
 
 <ol start="5">
 <li><strong>保存镜像</strong></li>
 </ol>
 <p>将我们的镜像 保存为tar 压缩文件 这样方便镜像转移和保存 ,然后 可以在任何一台安装了docker的服务器上 加载这个镜像</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save 镜像名/镜像ID -o 镜像保存在哪个位置与名字</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker save 镜像名/镜像ID -o 镜像保存在哪个位置与名字</code></pre>
 
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/665ef6e75e6d1bfa0561dafe.png"></p>
 <ol start="6">
 <li><strong>加载镜像</strong></li>
 </ol>
 <p>任何装 docker 的地方加载镜像保存文件,使其恢复为一个镜像</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i 镜像保存文件位置</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker load -i 镜像保存文件位置</code></pre>
 
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/665ef7aa5e6d1bfa0562aa19.png"></p>
 <h2 id="容器命令"><a href="#容器命令" class="headerlink" title="容器命令"></a>容器命令</h2><ol>
 <li><strong>通过镜像运行一个容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run 镜像名字</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker run 镜像名字</code></pre>
 
 
 <ol start="2">
 <li><strong>查看正在运行的容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">常用参数：</span><br><span class="line">-a :列出当前所有的容器</span><br><span class="line">-l :显示最近创建的容器。</span><br><span class="line">-n nu：显示最近nu个创建的容器。</span><br><span class="line">-q :静默模式，只显示容器编号。</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker ps
+
+
+常用参数：
+-a :列出当前所有的容器
+-l :显示最近创建的容器。
+-n nu：显示最近nu个创建的容器。
+-q :静默模式，只显示容器编号。</code></pre>
 
 <ol start="3">
 <li><strong>运行容器时的常用参数</strong></li>
 </ol>
 <p><code>-it</code>: 命令交互式</p>
 <p>比如运行ubuntu</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it ubuntu</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker run -it ubuntu</code></pre>
 
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/665ef35f5e6d1bfa055cf560.png"></p>
 <p>退出交互：</p>
@@ -227,65 +243,81 @@
 </ul>
 <p><code>-d</code>: 后台守护式</p>
 <p>比如运行redis：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d redis</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker run -d redis</code></pre>
 
 <ol start="4">
 <li><strong>进入正在运行的容器并以命令行交互</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这种方式会打开新的终端，并且可以启动新的进程，用exit退出，不会导致容器的停止</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID/容器名称 /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接进入容器启动命令的终端，不会启动新的进程，用exit退出，会导致容器的停止</span></span><br><span class="line">docker attach 容器ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh"><span class="hljs-comment"># 这种方式会打开新的终端，并且可以启动新的进程，用exit退出，不会导致容器的停止</span>
+docker <span class="hljs-built_in">exec</span> -it 容器ID/容器名称 /bin/bash
+
+<span class="hljs-comment"># 直接进入容器启动命令的终端，不会启动新的进程，用exit退出，会导致容器的停止</span>
+docker attach 容器ID</code></pre>
 
 <p>比如进入redis：</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66603da55e6d1bfa05a27a6b.png"></p>
 <ol start="5">
 <li><strong>停止容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器ID或者容器名</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker stop 容器ID或者容器名</code></pre>
 
 <ol start="6">
 <li><strong>强制停止容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">kill</span> 容器ID或容器名</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker <span class="hljs-built_in">kill</span> 容器ID或容器名</code></pre>
 
 <ol start="7">
 <li><strong>启动已停止运行的容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器ID或者容器名</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker start 容器ID或者容器名</code></pre>
 
 <ol start="8">
 <li><strong>重启容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 容器ID或者容器名</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker restart 容器ID或者容器名</code></pre>
 
 <ol start="9">
 <li><strong>删除已停止的容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#删除一个</span></span><br><span class="line">docker <span class="built_in">rm</span> 容器ID  </span><br><span class="line">docker <span class="built_in">rm</span> -f 容器ID  <span class="comment">#强制删除</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">#删除多个</span></span><br><span class="line">docker <span class="built_in">rm</span> -f $(docker ps -a -q)</span><br><span class="line">或</span><br><span class="line">docker ps -a -q | xargs docker <span class="built_in">rm</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh"><span class="hljs-comment">#删除一个</span>
+docker <span class="hljs-built_in">rm</span> 容器ID  
+docker <span class="hljs-built_in">rm</span> -f 容器ID  <span class="hljs-comment">#强制删除</span>
+ 
+ 
+<span class="hljs-comment">#删除多个</span>
+docker <span class="hljs-built_in">rm</span> -f $(docker ps -a -q)
+或
+docker ps -a -q | xargs docker <span class="hljs-built_in">rm</span></code></pre>
 
 <ol start="10">
 <li><strong>查看容器日志</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs 容器ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker logs 容器ID</code></pre>
 
 <ol start="11">
 <li><strong>查看容器内运行的进程</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top 容器ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker top 容器ID</code></pre>
 
 <ol start="12">
 <li><strong>查看容器内部细节</strong></li>
 </ol>
 <p>查看其json文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 容器ID</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker inspect 容器ID</code></pre>
 
 <ol start="13">
 <li><strong>从容器内拷贝文件到主机上</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> 容器ID:容器内路径 目的主机路径</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">docker <span class="built_in">cp</span> 3d26bf46bbb0:/home/ubuntu/a.txt /root/test</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker <span class="hljs-built_in">cp</span> 容器ID:容器内路径 目的主机路径
+
+例如：
+docker <span class="hljs-built_in">cp</span> 3d26bf46bbb0:/home/ubuntu/a.txt /root/test</code></pre>
 
 <ol start="14">
 <li><strong>导入和导出容器</strong></li>
 </ol>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">export</span> 容器ID &gt; 文件名.tar</span><br><span class="line"><span class="built_in">cat</span> 文件名.tar | docker import - 镜像用户/镜像名:镜像版本号</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker <span class="hljs-built_in">export</span> 容器ID &gt; 文件名.tar
+<span class="hljs-built_in">cat</span> 文件名.tar | docker import - 镜像用户/镜像名:镜像版本号</code></pre>
 
 
 
@@ -306,7 +338,7 @@
 <p>首先在宿主机上面创建一个目录tmp，方便后续测试</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/66670cef5e6d1bfa056dba4d.png"></p>
 <p>以数据卷挂载的方式运行一个ubuntu容器</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v /root/tmp:/tmp ubuntu</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker run -it -v /root/tmp:/tmp ubuntu</code></pre>
 
 <p>解释：</p>
 <p>-v &#x2F;root&#x2F;tmp:&#x2F;tmp：-v就是指定需要进行数据卷挂载，冒号左边的是宿主机目录，右边是docker容器目录</p>
@@ -321,7 +353,7 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/666711485e6d1bfa0573990e.png"></p>
 <p>到这里就完成了宿主机与docker容器中的一个数据同步更新了</p>
 <h2 id="自己提交一个镜像"><a href="#自己提交一个镜像" class="headerlink" title="自己提交一个镜像"></a>自己提交一个镜像</h2><p>我们运行的容器可能在镜像的基础上做了一些修改，有时候我们希望保存起来，封装成一个更新的镜像，这时候我们就需要使用 commit 命令来构建一个新的镜像</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m=<span class="string">&quot;提交信息&quot;</span> -a=<span class="string">&quot;作者信息&quot;</span> 容器名/容器ID 提交后的镜像名:Tag</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs sh">docker commit -m=<span class="hljs-string">&quot;提交信息&quot;</span> -a=<span class="hljs-string">&quot;作者信息&quot;</span> 容器名/容器ID 提交后的镜像名:Tag</code></pre>
 
 <h2 id="本地镜像发布到阿里云"><a href="#本地镜像发布到阿里云" class="headerlink" title="本地镜像发布到阿里云"></a>本地镜像发布到阿里云</h2><p>首先登录阿里云，然后进入控制台</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6661b0925e6d1bfa05fd81a7.png"></p>
@@ -337,7 +369,7 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/6661b2ae5e6d1bfa05ffea14.png"></p>
 <p>最后会给你一个操作指南，跟着做就行</p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -345,14 +377,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/12/70/">Dockerfile介绍</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/03/66/">Centos7安装Docker</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/06/12/70/">Dockerfile介绍</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/06/03/66/">Centos7安装Docker</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -493,8 +525,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

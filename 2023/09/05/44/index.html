@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>css中变量的使用 - 小哲的博客</title>
+  <title>css中变量的使用 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="前言说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo css中如何定义变量123:root&#123;        --color: #000;     &#125;   如何使用1234body&#123;        height: 96vh;        background-colo">
+    <meta name="description" content="前言说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo css中如何定义变量:root&#123;         --color: #000;      &#125;   如何使用body&#123;         height: 96vh;         background-color:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css中变量的使用">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/09/05/44/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="前言说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo css中如何定义变量123:root&#123;        --color: #000;     &#125;   如何使用1234body&#123;        height: 96vh;        background-colo">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="前言说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo css中如何定义变量:root&#123;         --color: #000;      &#125;   如何使用body&#123;         height: 96vh;         background-color:">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-04T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.011Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-text">css中如何定义变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-text">js中获取变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E5%8A%A8%E6%80%81%E6%94%B9%E5%8F%98%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-text">js中动态改变变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">完整代码</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css%E4%B8%AD%E5%A6%82%E4%BD%95%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F"><span class="toc-text">css中如何定义变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-text">js中获取变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E4%B8%AD%E5%8A%A8%E6%80%81%E6%94%B9%E5%8F%98%E5%8F%98%E9%87%8F%E5%80%BC"><span class="toc-text">js中动态改变变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-text">完整代码</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,25 +100,57 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo</p>
-<h2 id="css中如何定义变量"><a href="#css中如何定义变量" class="headerlink" title="css中如何定义变量"></a>css中如何定义变量</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">        <span class="attr">--color</span>: <span class="number">#000</span>;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>说来惭愧，最近学习sass后，才发现原来css中也可以写变量，原来自己对css的知识只是冰山一角，接下来我们就来写一个简单的动态改变背景颜色的demo</p>
+<h2 id="css中如何定义变量"><a href="#css中如何定义变量" class="headerlink" title="css中如何定义变量"></a>css中如何定义变量</h2><pre><code class="hljs css"><span class="hljs-selector-pseudo">:root</span>&#123;
+        <span class="hljs-attr">--color</span>: <span class="hljs-number">#000</span>;
+     &#125;</code></pre>
 
 
-<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">96vh</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: <span class="built_in">var</span>(--color);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><pre><code class="hljs css"><span class="hljs-selector-tag">body</span>&#123;
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">96vh</span>;
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--color);
+    &#125;</code></pre>
 
 
-<h2 id="js中获取变量值"><a href="#js中获取变量值" class="headerlink" title="js中获取变量值"></a>js中获取变量值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> rootColor = <span class="title function_">getComputedStyle</span>(<span class="variable language_">document</span>.<span class="property">documentElement</span>).<span class="title function_">getPropertyValue</span>(<span class="string">&#x27;--color&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="js中获取变量值"><a href="#js中获取变量值" class="headerlink" title="js中获取变量值"></a>js中获取变量值</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> rootColor = <span class="hljs-title function_">getComputedStyle</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>).<span class="hljs-title function_">getPropertyValue</span>(<span class="hljs-string">&#x27;--color&#x27;</span>);</code></pre>
 
 
-<h2 id="js中动态改变变量值"><a href="#js中动态改变变量值" class="headerlink" title="js中动态改变变量值"></a>js中动态改变变量值</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="title function_">setProperty</span>(<span class="string">&#x27;--color&#x27;</span>, 值);</span><br></pre></td></tr></table></figure>
+<h2 id="js中动态改变变量值"><a href="#js中动态改变变量值" class="headerlink" title="js中动态改变变量值"></a>js中动态改变变量值</h2><pre><code class="hljs js"><span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">&#x27;--color&#x27;</span>, 值);</code></pre>
 
 
 
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>简单的背景选择<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-pseudo">:root</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attr">--color</span>: <span class="number">#000</span>;</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span>&#123;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">96vh</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">background-color</span>: <span class="built_in">var</span>(--color);</span></span><br><span class="line"><span class="language-css">        &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;color&quot;</span> <span class="attr">id</span>=<span class="string">&quot;color&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// const rootColor = getComputedStyle(document.documentElement).getPropertyValue(&#x27;--color&#x27;);</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> colorSelector = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#color&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">        colorSelector.<span class="title function_">addEventListener</span>(<span class="string">&#x27;change&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="comment">// 通过改变css变量，改变页面背景色</span></span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">style</span>.<span class="title function_">setProperty</span>(<span class="string">&#x27;--color&#x27;</span>, e.<span class="property">target</span>.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>简单的背景选择<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span>
+<span class="language-css">        <span class="hljs-selector-pseudo">:root</span>&#123;</span>
+<span class="language-css">            <span class="hljs-attr">--color</span>: <span class="hljs-number">#000</span>;</span>
+<span class="language-css">        &#125;</span>
+<span class="language-css">        <span class="hljs-selector-tag">body</span>&#123;</span>
+<span class="language-css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">96vh</span>;</span>
+<span class="language-css">            <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">var</span>(--color);</span>
+<span class="language-css">        &#125;</span>
+<span class="language-css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;color&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">        <span class="hljs-comment">// const rootColor = getComputedStyle(document.documentElement).getPropertyValue(&#x27;--color&#x27;);</span></span>
+<span class="language-javascript">        <span class="hljs-keyword">let</span> colorSelector = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#color&#x27;</span>);</span>
+<span class="language-javascript">        colorSelector.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;change&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 通过改变css变量，改变页面背景色</span></span>
+<span class="language-javascript">            <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">style</span>.<span class="hljs-title function_">setProperty</span>(<span class="hljs-string">&#x27;--color&#x27;</span>, e.<span class="hljs-property">target</span>.<span class="hljs-property">value</span>);</span>
+<span class="language-javascript">        &#125;);</span>
+<span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
 <p><strong>或许css才是最神秘的语言</strong></p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -122,14 +158,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/09/10/45/">主题推荐-stellar</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/09/02/43/">在vscode中的使用sass插件</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/09/10/45/">主题推荐-stellar</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/09/02/43/">在vscode中的使用sass插件</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -270,8 +306,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

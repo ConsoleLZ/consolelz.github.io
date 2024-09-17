@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>hexo的安装与使用 - 小哲的博客</title>
+  <title>hexo的安装与使用 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="为什么要使用hexo？hexo简单好用 下载node作者这里就只提供一下网站了，安装很简单，node 下载git不会git，建议先学习，这里推荐下载git的比较快的网站，git 查看版本1$ node -v 下载Hexo1$ npm install -g hexo-cli 安装Hexo在你的某个文件夹下，执行： 1$ hexo init 下一篇文章讲如何部署，很多细节哦">
+    <meta name="description" content="为什么要使用hexo？hexo简单好用 下载node作者这里就只提供一下网站了，安装很简单，node 下载git不会git，建议先学习，这里推荐下载git的比较快的网站，git 查看版本$ node -v 下载Hexo$ npm install -g hexo-cli 安装Hexo在你的某个文件夹下，执行： $ hexo init 下一篇文章讲如何部署，很多细节哦">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo的安装与使用">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/04/02/1/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="为什么要使用hexo？hexo简单好用 下载node作者这里就只提供一下网站了，安装很简单，node 下载git不会git，建议先学习，这里推荐下载git的比较快的网站，git 查看版本1$ node -v 下载Hexo1$ npm install -g hexo-cli 安装Hexo在你的某个文件夹下，执行： 1$ hexo init 下一篇文章讲如何部署，很多细节哦">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="为什么要使用hexo？hexo简单好用 下载node作者这里就只提供一下网站了，安装很简单，node 下载git不会git，建议先学习，这里推荐下载git的比较快的网站，git 查看版本$ node -v 下载Hexo$ npm install -g hexo-cli 安装Hexo在你的某个文件夹下，执行： $ hexo init 下一篇文章讲如何部署，很多细节哦">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-01T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:09.997Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8hexo%EF%BC%9F"><span class="toc-text">为什么要使用hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDnode"><span class="toc-text">下载node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDgit"><span class="toc-text">下载git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="toc-text">查看版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDHexo"><span class="toc-text">下载Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-text">安装Hexo</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8hexo%EF%BC%9F"><span class="toc-text">为什么要使用hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDnode"><span class="toc-text">下载node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDgit"><span class="toc-text">下载git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%89%88%E6%9C%AC"><span class="toc-text">查看版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDHexo"><span class="toc-text">下载Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="toc-text">安装Hexo</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,16 +100,16 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="为什么要使用hexo？"><a href="#为什么要使用hexo？" class="headerlink" title="为什么要使用hexo？"></a>为什么要使用hexo？</h2><p>hexo简单好用</p>
+  </div><article class="md-text content slide-up"><h2 id="为什么要使用hexo？"><a href="#为什么要使用hexo？" class="headerlink" title="为什么要使用hexo？"></a>为什么要使用hexo？</h2><p>hexo简单好用</p>
 <h2 id="下载node"><a href="#下载node" class="headerlink" title="下载node"></a>下载node</h2><p>作者这里就只提供一下网站了，安装很简单，<a target="_blank" rel="noopener" href="https://nodejs.org/en">node</a></p>
 <h2 id="下载git"><a href="#下载git" class="headerlink" title="下载git"></a>下载git</h2><p>不会git，建议先学习，这里推荐下载git的比较快的网站，<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/binary.html?path=git-for-windows/">git</a></p>
-<h2 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">node -v</span></span><br></pre></td></tr></table></figure>
-<h2 id="下载Hexo"><a href="#下载Hexo" class="headerlink" title="下载Hexo"></a>下载Hexo</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install -g hexo-cli</span></span><br></pre></td></tr></table></figure>
+<h2 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h2><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">node -v</span></code></pre>
+<h2 id="下载Hexo"><a href="#下载Hexo" class="headerlink" title="下载Hexo"></a>下载Hexo</h2><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">npm install -g hexo-cli</span></code></pre>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>在你的某个文件夹下，执行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">hexo init</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">hexo init</span></code></pre>
 <p>下一篇文章讲如何部署，很多细节哦</p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -113,14 +117,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/04/03/2/">如何部署至Gitee</a></div><div class="item" id="next"></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/04/03/2/">如何部署至Gitee</a></div><div class="item" id="next"></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -261,8 +265,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

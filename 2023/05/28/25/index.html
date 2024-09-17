@@ -16,14 +16,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>hexo博客项目部署至vercel - 小哲的博客</title>
+  <title>hexo博客项目部署至vercel - 程序猿小哲的博客</title>
 
   
     <meta name="description" content="部署过程太过于繁琐，作者真的好懒，不想写，这里就大概描述一下我的部署过程吧 注册github账号GitHub 因为作者之前用的都是Gitee，因为vercel的部署不能用Gitee了，所有注册github是必要的，并且作者悄悄的告诉你，github才是真正的源码市场，可以学到很多大佬的源码 下载fastgithub很多人访问github都很难进去，这是当然，毕竟是国外的网站，这里可以自己翻墙，但是">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客项目部署至vercel">
 <meta property="og:url" content="https://asdgjsad.github.io/2023/05/28/25/index.html">
-<meta property="og:site_name" content="小哲的博客">
+<meta property="og:site_name" content="程序猿小哲的博客">
 <meta property="og:description" content="部署过程太过于繁琐，作者真的好懒，不想写，这里就大概描述一下我的部署过程吧 注册github账号GitHub 因为作者之前用的都是Gitee，因为vercel的部署不能用Gitee了，所有注册github是必要的，并且作者悄悄的告诉你，github才是真正的源码市场，可以学到很多大佬的源码 下载fastgithub很多人访问github都很难进去，这是当然，毕竟是国外的网站，这里可以自己翻墙，但是">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.imgdb.cn/item/664dd6dbd9c307b7e9fbc1db.png">
@@ -49,11 +49,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -68,7 +72,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cgithub%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册github账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDfastgithub"><span class="toc-text">下载fastgithub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9hexo%E4%B8%8B%E9%9D%A2%E7%9A%84-config-yml%E6%96%87%E4%BB%B6"><span class="toc-text">修改hexo下面的_config.yml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cvercel%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册vercel账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D"><span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vercel%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">vercel的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E6%AD%A5%E4%BF%AE%E6%94%B9hexo%E4%B8%8B%E9%9D%A2%E7%9A%84-config-yml%E6%96%87%E4%BB%B6"><span class="toc-text">最后一步修改hexo下面的_config.yml文件</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cgithub%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册github账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDfastgithub"><span class="toc-text">下载fastgithub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9hexo%E4%B8%8B%E9%9D%A2%E7%9A%84-config-yml%E6%96%87%E4%BB%B6"><span class="toc-text">修改hexo下面的_config.yml文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8Cvercel%E8%B4%A6%E5%8F%B7"><span class="toc-text">注册vercel账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AD%E4%B9%B0%E5%9F%9F%E5%90%8D"><span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vercel%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">vercel的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E6%AD%A5%E4%BF%AE%E6%94%B9hexo%E4%B8%8B%E9%9D%A2%E7%9A%84-config-yml%E6%96%87%E4%BB%B6"><span class="toc-text">最后一步修改hexo下面的_config.yml文件</span></a></li></ol></div></div></widget>
 
 
 
@@ -76,7 +80,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -101,13 +105,16 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><p><em>部署过程太过于繁琐，作者真的好懒，不想写，这里就大概描述一下我的部署过程吧</em></p>
+  </div><article class="md-text content slide-up"><p><em>部署过程太过于繁琐，作者真的好懒，不想写，这里就大概描述一下我的部署过程吧</em></p>
 <h2 id="注册github账号"><a href="#注册github账号" class="headerlink" title="注册github账号"></a>注册github账号</h2><p><a target="_blank" rel="noopener" href="https://github.com/">GitHub</a></p>
 <p>因为作者之前用的都是Gitee，因为vercel的部署不能用Gitee了，所有注册github是必要的，并且作者悄悄的告诉你，github才是真正的源码市场，可以学到很多大佬的源码</p>
 <h2 id="下载fastgithub"><a href="#下载fastgithub" class="headerlink" title="下载fastgithub"></a>下载fastgithub</h2><p>很多人访问github都很难进去，这是当然，毕竟是国外的网站，这里可以自己翻墙，但是大多数翻墙软件都需要money👀️ ，<br>这里就不得不介绍另外一种软件了——fastgithub<br>不多说，用它之后腰不疼，腿也不疼了，哈哈哈哈😄</p>
 <p>直接搜索即可下载，网上有使用教程，作者真的很懒，不想多说</p>
 <h2 id="修改hexo下面的-config-yml文件"><a href="#修改hexo下面的-config-yml文件" class="headerlink" title="修改hexo下面的_config.yml文件"></a>修改hexo下面的_config.yml文件</h2><p>因为作者之前用的是Gitee，你如果之前用的是github请省略这个步骤<br>这一步也不想多说，主要是改变了云仓库的地址，直接展示：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">自己仓库的地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs yaml"><span class="hljs-attr">deploy:</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span>
+  <span class="hljs-attr">repo:</span> <span class="hljs-string">自己仓库的地址</span>
+  <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span></code></pre>
 
 <h2 id="注册vercel账号"><a href="#注册vercel账号" class="headerlink" title="注册vercel账号"></a>注册vercel账号</h2><p><a target="_blank" rel="noopener" href="https://vercel.com/">https://vercel.com/</a></p>
 <p>这里最最最最最好使用github账号登录即可，方便后续代码的上传更新，总而言之，很方便<br>注册成功后点击新建一个项目（不要跟我说新建项目也不会，实在不行请留言给我），之后会出现：</p>
@@ -118,11 +125,12 @@
 <p>进入后再点击：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dd6dcd9c307b7e9fbc235.png"></p>
 <p><em>这里接着的操作请使用浏览器自带的翻译功能，一步步的配置自己的域名，写起来挺麻烦，但是操作起来挺简单，这里配置成功后需要有一个等待时间他会不断的刷新，然后报错，等等他就好了</em></p>
 <p>最后变成这样你就成功了🎉️ ：<br><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dd6dcd9c307b7e9fbc24a.png"></p>
-<h2 id="最后一步修改hexo下面的-config-yml文件"><a href="#最后一步修改hexo下面的-config-yml文件" class="headerlink" title="最后一步修改hexo下面的_config.yml文件"></a>最后一步修改hexo下面的_config.yml文件</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">自己网站的域名</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br></pre></td></tr></table></figure>
+<h2 id="最后一步修改hexo下面的-config-yml文件"><a href="#最后一步修改hexo下面的-config-yml文件" class="headerlink" title="最后一步修改hexo下面的_config.yml文件"></a>最后一步修改hexo下面的_config.yml文件</h2><pre><code class="hljs yaml"><span class="hljs-attr">url:</span> <span class="hljs-string">自己网站的域名</span>
+<span class="hljs-attr">root:</span> <span class="hljs-string">/</span></code></pre>
 
 <p>记得重新上传代码</p>
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -130,14 +138,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/06/01/26/">初始ws模块</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/24/24/">留言板模块与文章评论开启</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/06/01/26/">初始ws模块</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/24/24/">留言板模块与文章评论开启</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -278,8 +286,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

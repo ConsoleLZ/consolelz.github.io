@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>vue3基础知识3 - 小哲的博客</title>
+  <title>vue3基础知识3 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="slot插槽1. 基本插槽组件： 123456&lt;template&gt;    &lt;div&gt;        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h2&gt;        &lt;slot&gt;&lt;&#x2F;slot&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;template&gt;  使用者： 123456789&lt;">
+    <meta name="description" content="slot插槽1. 基本插槽组件： &lt;template&gt;     &lt;div&gt;         &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h2&gt;         &lt;slot&gt;&lt;&#x2F;slot&gt;     &lt;&#x2F;div&gt; &lt;&#x2F;template&gt;  使用者： &lt;template&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3基础知识3">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/03/02/58/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="slot插槽1. 基本插槽组件： 123456&lt;template&gt;    &lt;div&gt;        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h2&gt;        &lt;slot&gt;&lt;&#x2F;slot&gt;    &lt;&#x2F;div&gt;&lt;&#x2F;template&gt;  使用者： 123456789&lt;">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="slot插槽1. 基本插槽组件： &lt;template&gt;     &lt;div&gt;         &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;&#x2F;h2&gt;         &lt;slot&gt;&lt;&#x2F;slot&gt;     &lt;&#x2F;div&gt; &lt;&#x2F;template&gt;  使用者： &lt;template&amp;g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-01T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.015Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#slot%E6%8F%92%E6%A7%BD"><span class="toc-text">slot插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%8F%92%E6%A7%BD"><span class="toc-text">1. 基本插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="toc-text">2. 具名插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="toc-text">3. 作用域插槽</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-text">自定义指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C"><span class="toc-text">1. 局部注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="toc-text">2. 全局注册</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shallowRef%E4%B8%8EshallowReactive"><span class="toc-text">shallowRef与shallowReactive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readonly-%E4%B8%8EshallowReadonly"><span class="toc-text">readonly()与shallowReadonly()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toRaw"><span class="toc-text">toRaw()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markRaw"><span class="toc-text">markRaw()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#customRef"><span class="toc-text">customRef()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Teleport"><span class="toc-text">Teleport</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#slot%E6%8F%92%E6%A7%BD"><span class="toc-text">slot插槽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%8F%92%E6%A7%BD"><span class="toc-text">1. 基本插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="toc-text">2. 具名插槽</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="toc-text">3. 作用域插槽</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-text">自定义指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C"><span class="toc-text">1. 局部注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="toc-text">2. 全局注册</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shallowRef%E4%B8%8EshallowReactive"><span class="toc-text">shallowRef与shallowReactive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readonly-%E4%B8%8EshallowReadonly"><span class="toc-text">readonly()与shallowReadonly()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#toRaw"><span class="toc-text">toRaw()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markRaw"><span class="toc-text">markRaw()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#customRef"><span class="toc-text">customRef()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Teleport"><span class="toc-text">Teleport</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,66 +100,239 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="slot插槽"><a href="#slot插槽" class="headerlink" title="slot插槽"></a>slot插槽</h2><h4 id="1-基本插槽"><a href="#1-基本插槽" class="headerlink" title="1. 基本插槽"></a>1. 基本插槽</h4><p>组件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="slot插槽"><a href="#slot插槽" class="headerlink" title="slot插槽"></a>slot插槽</h2><h4 id="1-基本插槽"><a href="#1-基本插槽" class="headerlink" title="1. 基本插槽"></a>1. 基本插槽</h4><p>组件：</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
 
 <p>使用者：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Compo1 title=&quot;游戏列表&quot;&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">           &lt;li v-for=&quot;item in games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/Compo1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;Compo1 title=&quot;游戏列表&quot;&gt;
+        &lt;ul&gt;
+           &lt;li v-for=&quot;item in games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/Compo1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
 
 <h4 id="2-具名插槽"><a href="#2-具名插槽" class="headerlink" title="2. 具名插槽"></a>2. 具名插槽</h4><p>组件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;slot name=&quot;content&quot;&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;
+        &lt;slot name=&quot;content&quot;&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
 
 <p>使用者：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Compo1 title=&quot;游戏列表&quot; v-slot:content&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li v-for=&quot;item in games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/Compo1&gt;</span><br><span class="line">    &lt;Compo1 title=&quot;美食中国&quot; #content&gt;</span><br><span class="line">      &lt;img :src=&quot;imgUrl&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;/Compo1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;Compo1 title=&quot;游戏列表&quot; v-slot:content&gt;
+      &lt;ul&gt;
+        &lt;li v-for=&quot;item in games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/Compo1&gt;
+    &lt;Compo1 title=&quot;美食中国&quot; #content&gt;
+      &lt;img :src=&quot;imgUrl&quot; alt=&quot;&quot;&gt;
+    &lt;/Compo1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
 
 <h4 id="3-作用域插槽"><a href="#3-作用域插槽" class="headerlink" title="3. 作用域插槽"></a>3. 作用域插槽</h4><p>组件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;slot name=&quot;content&quot; :games=&quot;games&quot; :imgUrl=&quot;imgUrl&quot;&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;&#123;&#123; title &#125;&#125;&lt;/h2&gt;
+        &lt;slot name=&quot;content&quot; :games=&quot;games&quot; :imgUrl=&quot;imgUrl&quot;&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+&lt;/template&gt;</code></pre>
 
 <p>使用者：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;Compo1 title=&quot;游戏列表&quot; v-slot:content = &#x27;params&#x27;&gt;</span><br><span class="line">      &lt;ul&gt;</span><br><span class="line">        &lt;li v-for=&quot;item in params.games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line">    &lt;/Compo1&gt;</span><br><span class="line">    &lt;Compo1 title=&quot;美食中国&quot; #content = &#x27;params&#x27;&gt;</span><br><span class="line">      &lt;img :src=&quot;params.imgUrl&quot; alt=&quot;&quot;&gt;</span><br><span class="line">    &lt;/Compo1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;Compo1 title=&quot;游戏列表&quot; v-slot:content = &#x27;params&#x27;&gt;
+      &lt;ul&gt;
+        &lt;li v-for=&quot;item in params.games&quot; :key=&quot;item.id&quot;&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/Compo1&gt;
+    &lt;Compo1 title=&quot;美食中国&quot; #content = &#x27;params&#x27;&gt;
+      &lt;img :src=&quot;params.imgUrl&quot; alt=&quot;&quot;&gt;
+    &lt;/Compo1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;</code></pre>
 
-<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><h4 id="1-局部注册"><a href="#1-局部注册" class="headerlink" title="1. 局部注册"></a>1. 局部注册</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;input v-focus type=&quot;text&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup lang=&quot;ts&quot;&gt;</span><br><span class="line">const vFocus = &#123;</span><br><span class="line">  mounted: (el) =&gt; &#123;</span><br><span class="line">    el.style.height = &#x27;25px&#x27;</span><br><span class="line">    el.focus()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><h4 id="1-局部注册"><a href="#1-局部注册" class="headerlink" title="1. 局部注册"></a>1. 局部注册</h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+      &lt;input v-focus type=&quot;text&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup lang=&quot;ts&quot;&gt;
+const vFocus = &#123;
+  mounted: (el) =&gt; &#123;
+    el.style.height = &#x27;25px&#x27;
+    el.focus()
+  &#125;
+&#125;
+&lt;/script&gt;</code></pre>
 
 <h4 id="2-全局注册"><a href="#2-全局注册" class="headerlink" title="2. 全局注册"></a>2. 全局注册</h4><p>可以自定义一个文件夹directives，将所有指令的逻辑都放在这里</p>
 <p>比如我新建一个vFocus.ts文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vFocus = &#123;</span><br><span class="line">    <span class="attr">mounted</span>: <span class="function">(<span class="params">el</span>) =&gt;</span> &#123;</span><br><span class="line">        el.<span class="property">style</span>.<span class="property">height</span> = <span class="string">&#x27;25px&#x27;</span></span><br><span class="line">        el.<span class="property">style</span>.<span class="property">border</span> = <span class="string">&#x27;1px dashed black&#x27;</span></span><br><span class="line">        el.<span class="title function_">focus</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> vFocus</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> vFocus = &#123;
+    <span class="hljs-attr">mounted</span>: <span class="hljs-function">(<span class="hljs-params">el</span>) =&gt;</span> &#123;
+        el.<span class="hljs-property">style</span>.<span class="hljs-property">height</span> = <span class="hljs-string">&#x27;25px&#x27;</span>
+        el.<span class="hljs-property">style</span>.<span class="hljs-property">border</span> = <span class="hljs-string">&#x27;1px dashed black&#x27;</span>
+        el.<span class="hljs-title function_">focus</span>()
+    &#125;
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> vFocus</code></pre>
 
 <p>main.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入自定义指令</span></span><br><span class="line"><span class="keyword">import</span> vFocus <span class="keyword">from</span> <span class="string">&#x27;@/directives/vFocus&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="title function_">createApp</span>(<span class="title class_">App</span>);</span><br><span class="line"><span class="comment">//注册自定义指令 </span></span><br><span class="line">app.<span class="title function_">directive</span>(<span class="string">&#x27;focus&#x27;</span>, vFocus)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">mount</span>(<span class="string">&#x27;#app&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 引入自定义指令</span>
+<span class="hljs-keyword">import</span> vFocus <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/directives/vFocus&#x27;</span>
+<span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>
+
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);
+<span class="hljs-comment">//注册自定义指令 </span>
+app.<span class="hljs-title function_">directive</span>(<span class="hljs-string">&#x27;focus&#x27;</span>, vFocus)
+
+app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>);</code></pre>
 
 <h2 id="shallowRef与shallowReactive"><a href="#shallowRef与shallowReactive" class="headerlink" title="shallowRef与shallowReactive"></a>shallowRef与shallowReactive</h2><p>ref()与reactive()的浅层作用形式，也就是说只对浅层的数据具有响应式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = <span class="title function_">shallowRef</span>(&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不会触发更改</span></span><br><span class="line">state.<span class="property">value</span>.<span class="property">count</span> = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 会触发更改</span></span><br><span class="line">state.<span class="property">value</span> = &#123; <span class="attr">count</span>: <span class="number">2</span> &#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> state = <span class="hljs-title function_">shallowRef</span>(&#123; <span class="hljs-attr">count</span>: <span class="hljs-number">1</span> &#125;)
+
+<span class="hljs-comment">// 不会触发更改</span>
+state.<span class="hljs-property">value</span>.<span class="hljs-property">count</span> = <span class="hljs-number">2</span>
+
+<span class="hljs-comment">// 会触发更改</span>
+state.<span class="hljs-property">value</span> = &#123; <span class="hljs-attr">count</span>: <span class="hljs-number">2</span> &#125;</code></pre>
 
 
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = <span class="title function_">shallowReactive</span>(&#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">nested</span>: &#123;</span><br><span class="line">    <span class="attr">bar</span>: <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改状态自身的属性是响应式的</span></span><br><span class="line">state.<span class="property">foo</span>++</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...但下层嵌套对象不会被转为响应式</span></span><br><span class="line"><span class="title function_">isReactive</span>(state.<span class="property">nested</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不是响应式的</span></span><br><span class="line">state.<span class="property">nested</span>.<span class="property">bar</span>++</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> state = <span class="hljs-title function_">shallowReactive</span>(&#123;
+  <span class="hljs-attr">foo</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">nested</span>: &#123;
+    <span class="hljs-attr">bar</span>: <span class="hljs-number">2</span>
+  &#125;
+&#125;)
+
+<span class="hljs-comment">// 更改状态自身的属性是响应式的</span>
+state.<span class="hljs-property">foo</span>++
+
+<span class="hljs-comment">// ...但下层嵌套对象不会被转为响应式</span>
+<span class="hljs-title function_">isReactive</span>(state.<span class="hljs-property">nested</span>) <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// 不是响应式的</span>
+state.<span class="hljs-property">nested</span>.<span class="hljs-property">bar</span>++</code></pre>
 
 <h2 id="readonly-与shallowReadonly"><a href="#readonly-与shallowReadonly" class="headerlink" title="readonly()与shallowReadonly()"></a>readonly()与shallowReadonly()</h2><p>readonly()只读代理是深层的：对任何嵌套属性的访问都将是只读的。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> original = <span class="title function_">reactive</span>(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> copy = <span class="title function_">readonly</span>(original)</span><br><span class="line"></span><br><span class="line"><span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 用来做响应性追踪</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(copy.<span class="property">count</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改源属性会触发其依赖的侦听器</span></span><br><span class="line">original.<span class="property">count</span>++</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改该只读副本将会失败，并会得到一个警告</span></span><br><span class="line">copy.<span class="property">count</span>++ <span class="comment">// warning!</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> original = <span class="hljs-title function_">reactive</span>(&#123; <span class="hljs-attr">count</span>: <span class="hljs-number">0</span> &#125;)
+
+<span class="hljs-keyword">const</span> copy = <span class="hljs-title function_">readonly</span>(original)
+
+<span class="hljs-title function_">watchEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-comment">// 用来做响应性追踪</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(copy.<span class="hljs-property">count</span>)
+&#125;)
+
+<span class="hljs-comment">// 更改源属性会触发其依赖的侦听器</span>
+original.<span class="hljs-property">count</span>++
+
+<span class="hljs-comment">// 更改该只读副本将会失败，并会得到一个警告</span>
+copy.<span class="hljs-property">count</span>++ <span class="hljs-comment">// warning!</span></code></pre>
 
 <p>和 <code>readonly()</code> 不同，这里没有深层级的转换：只有根层级的属性变为了只读。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = <span class="title function_">shallowReadonly</span>(&#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">nested</span>: &#123;</span><br><span class="line">    <span class="attr">bar</span>: <span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更改状态自身的属性会失败</span></span><br><span class="line">state.<span class="property">foo</span>++</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...但可以更改下层嵌套对象</span></span><br><span class="line"><span class="title function_">isReadonly</span>(state.<span class="property">nested</span>) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是可以通过的</span></span><br><span class="line">state.<span class="property">nested</span>.<span class="property">bar</span>++</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> state = <span class="hljs-title function_">shallowReadonly</span>(&#123;
+  <span class="hljs-attr">foo</span>: <span class="hljs-number">1</span>,
+  <span class="hljs-attr">nested</span>: &#123;
+    <span class="hljs-attr">bar</span>: <span class="hljs-number">2</span>
+  &#125;
+&#125;)
+
+<span class="hljs-comment">// 更改状态自身的属性会失败</span>
+state.<span class="hljs-property">foo</span>++
+
+<span class="hljs-comment">// ...但可以更改下层嵌套对象</span>
+<span class="hljs-title function_">isReadonly</span>(state.<span class="hljs-property">nested</span>) <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// 这是可以通过的</span>
+state.<span class="hljs-property">nested</span>.<span class="hljs-property">bar</span>++</code></pre>
 
 <h2 id="toRaw"><a href="#toRaw" class="headerlink" title="toRaw()"></a>toRaw()</h2><p><code>toRaw()</code> 可以返回由 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-core.html#reactive"><code>reactive()</code></a>、<a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-core.html#readonly"><code>readonly()</code></a>、<a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-advanced.html#shallowreactive"><code>shallowReactive()</code></a> 或者 <a target="_blank" rel="noopener" href="https://cn.vuejs.org/api/reactivity-advanced.html#shallowreadonly"><code>shallowReadonly()</code></a> 创建的代理对应的原始对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> reactiveFoo = <span class="title function_">reactive</span>(foo)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">toRaw</span>(reactiveFoo) === foo) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> foo = &#123;&#125;
+<span class="hljs-keyword">const</span> reactiveFoo = <span class="hljs-title function_">reactive</span>(foo)
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">toRaw</span>(reactiveFoo) === foo) <span class="hljs-comment">// true</span></code></pre>
 
 <h2 id="markRaw"><a href="#markRaw" class="headerlink" title="markRaw()"></a>markRaw()</h2><p>markRaw 将一个对象标记为不可被转为代理。返回该对象本身。(只对reactive生效)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="title function_">markRaw</span>(&#123;&#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">isReactive</span>(<span class="title function_">reactive</span>(foo))) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 也适用于嵌套在其他响应性对象</span></span><br><span class="line"><span class="keyword">const</span> bar = <span class="title function_">reactive</span>(&#123; foo &#125;)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">isReactive</span>(bar.<span class="property">foo</span>)) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> foo = <span class="hljs-title function_">markRaw</span>(&#123;&#125;)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">isReactive</span>(<span class="hljs-title function_">reactive</span>(foo))) <span class="hljs-comment">// false</span>
+
+<span class="hljs-comment">// 也适用于嵌套在其他响应性对象</span>
+<span class="hljs-keyword">const</span> bar = <span class="hljs-title function_">reactive</span>(&#123; foo &#125;)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">isReactive</span>(bar.<span class="hljs-property">foo</span>)) <span class="hljs-comment">// false</span></code></pre>
 
 <h2 id="customRef"><a href="#customRef" class="headerlink" title="customRef()"></a>customRef()</h2><p>创建一个自定义的 ref，显式声明对其依赖追踪和更新触发的控制方式。</p>
 <p>创建一个hooks：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; customRef &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params">inputInit, delay</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> input = <span class="title function_">customRef</span>(<span class="function">(<span class="params">track, trigger</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> timer</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="title function_">get</span>(<span class="params"></span>) &#123;</span><br><span class="line">                <span class="title function_">track</span>()  <span class="comment">//告诉vue数据inputInit很重要，你要对其进行持续关注，一旦其数据变化就去更新</span></span><br><span class="line">                <span class="keyword">return</span> inputInit</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="title function_">set</span>(<span class="params">value</span>) &#123;</span><br><span class="line">                <span class="built_in">clearTimeout</span>(timer)</span><br><span class="line">                timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                    inputInit = value</span><br><span class="line">                    <span class="title function_">trigger</span>()  <span class="comment">// 通知vue数据变化了</span></span><br><span class="line">                &#125;, delay)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        input</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; customRef &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">inputInit, delay</span>) &#123;
+    <span class="hljs-keyword">const</span> input = <span class="hljs-title function_">customRef</span>(<span class="hljs-function">(<span class="hljs-params">track, trigger</span>) =&gt;</span> &#123;
+        <span class="hljs-keyword">let</span> timer
+        <span class="hljs-keyword">return</span> &#123;
+            <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>) &#123;
+                <span class="hljs-title function_">track</span>()  <span class="hljs-comment">//告诉vue数据inputInit很重要，你要对其进行持续关注，一旦其数据变化就去更新</span>
+                <span class="hljs-keyword">return</span> inputInit
+            &#125;,
+            <span class="hljs-title function_">set</span>(<span class="hljs-params">value</span>) &#123;
+                <span class="hljs-built_in">clearTimeout</span>(timer)
+                timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+                    inputInit = value
+                    <span class="hljs-title function_">trigger</span>()  <span class="hljs-comment">// 通知vue数据变化了</span>
+                &#125;, delay)
+            &#125;
+        &#125;
+    &#125;)
+    <span class="hljs-keyword">return</span> &#123;
+        input
+    &#125;
+&#125;
+</code></pre>
 
 <p>使用者：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;input type=&quot;text&quot; v-model=&quot;input&quot;&gt;</span><br><span class="line">  &lt;div&gt;&#123;&#123; input &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot; setup&gt;</span><br><span class="line">import useCustomRef from &#x27;./hooks/useCustomRef&#x27;;</span><br><span class="line"></span><br><span class="line">let &#123;input&#125; = useCustomRef(&#x27;666&#x27;, 2000)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;input type=&quot;text&quot; v-model=&quot;input&quot;&gt;
+  &lt;div&gt;&#123;&#123; input &#125;&#125;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script lang=&quot;ts&quot; setup&gt;
+import useCustomRef from &#x27;./hooks/useCustomRef&#x27;;
+
+let &#123;input&#125; = useCustomRef(&#x27;666&#x27;, 2000)
+
+&lt;/script&gt;
+</code></pre>
 
 
 
 <h2 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h2><p><code>&lt;Teleport&gt;</code> 是一个内置组件，它可以将一个组件内部的一部分模板“传送”到该组件的 DOM 结构外层的位置去。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;open = true&quot;&gt;Open Modal&lt;/button&gt;</span><br><span class="line"></span><br><span class="line">&lt;Teleport to=&quot;body&quot;&gt;</span><br><span class="line">  &lt;div v-if=&quot;open&quot; class=&quot;modal&quot;&gt;</span><br><span class="line">    &lt;p&gt;Hello from the modal!&lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;open = false&quot;&gt;Close&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/Teleport&gt;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs vue">&lt;button @click=&quot;open = true&quot;&gt;Open Modal&lt;/button&gt;
+
+&lt;Teleport to=&quot;body&quot;&gt;
+  &lt;div v-if=&quot;open&quot; class=&quot;modal&quot;&gt;
+    &lt;p&gt;Hello from the modal!&lt;/p&gt;
+    &lt;button @click=&quot;open = false&quot;&gt;Close&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/Teleport&gt;</code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -163,14 +340,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/03/10/59/">js设计模式</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/24/57/">vue3基础知识2</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/03/10/59/">js设计模式</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/24/57/">vue3基础知识2</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -311,8 +488,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

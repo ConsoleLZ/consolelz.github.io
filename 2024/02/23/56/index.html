@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>vue3基础知识1 - 小哲的博客</title>
+  <title>vue3基础知识1 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="toRef与toRefs使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性： 123456789101112131415import &#123; reactive,toRefs,toRef &#125; from &#x27;vue&#x27;const person &#x3D; reactive(&#123;  name: &#x27;张三&#x27;,  age: 18&#125;">
+    <meta name="description" content="toRef与toRefs使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性： import &#123; reactive,toRefs,toRef &#125; from &#x27;vue&#x27; const person &#x3D; reactive(&#123;   name: &#x27;张三&#x27;,   age: 18 &#125;)  const cityObj">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue3基础知识1">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/02/23/56/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="toRef与toRefs使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性： 123456789101112131415import &#123; reactive,toRefs,toRef &#125; from &#x27;vue&#x27;const person &#x3D; reactive(&#123;  name: &#x27;张三&#x27;,  age: 18&#125;">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="toRef与toRefs使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性： import &#123; reactive,toRefs,toRef &#125; from &#x27;vue&#x27; const person &#x3D; reactive(&#123;   name: &#x27;张三&#x27;,   age: 18 &#125;)  const cityObj">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-02-22T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.015Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#toRef%E4%B8%8EtoRefs"><span class="toc-text">toRef与toRefs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#computed-%E5%87%BD%E6%95%B0"><span class="toc-text">computed()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watch-%E5%87%BD%E6%95%B0"><span class="toc-text">watch()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watchEffect-%E5%87%BD%E6%95%B0"><span class="toc-text">watchEffect()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E4%B8%8Edom%E7%BB%93%E6%9E%84%E7%9A%84%E8%81%94%E5%8A%A8"><span class="toc-text">ref与dom结构的联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#defineProps"><span class="toc-text">defineProps()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%B7%AF%E7%94%B1"><span class="toc-text">基本路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#query%E4%BC%A0%E5%8F%82"><span class="toc-text">query传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#params%E4%BC%A0%E5%8F%82"><span class="toc-text">params传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1props%E9%85%8D%E7%BD%AE"><span class="toc-text">路由props配置</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#toRef%E4%B8%8EtoRefs"><span class="toc-text">toRef与toRefs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#computed-%E5%87%BD%E6%95%B0"><span class="toc-text">computed()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watch-%E5%87%BD%E6%95%B0"><span class="toc-text">watch()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#watchEffect-%E5%87%BD%E6%95%B0"><span class="toc-text">watchEffect()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref%E4%B8%8Edom%E7%BB%93%E6%9E%84%E7%9A%84%E8%81%94%E5%8A%A8"><span class="toc-text">ref与dom结构的联动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#defineProps"><span class="toc-text">defineProps()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%B7%AF%E7%94%B1"><span class="toc-text">基本路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#query%E4%BC%A0%E5%8F%82"><span class="toc-text">query传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#params%E4%BC%A0%E5%8F%82"><span class="toc-text">params传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1props%E9%85%8D%E7%BD%AE"><span class="toc-text">路由props配置</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,14 +100,42 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="toRef与toRefs"><a href="#toRef与toRefs" class="headerlink" title="toRef与toRefs"></a>toRef与toRefs</h2><p>使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; reactive,toRefs,toRef &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">const</span> person = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cityObj = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;北京&#x27;</span>,</span><br><span class="line">  <span class="attr">id</span>: <span class="string">&#x27;asdasxzc&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消费者组件可以解构/展开返回的对象而不会失去响应性</span></span><br><span class="line"><span class="keyword">let</span> &#123; name, age &#125; = <span class="title function_">toRefs</span>(person)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> city = <span class="title function_">toRef</span>(cityObj,<span class="string">&#x27;name&#x27;</span>)</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content slide-up"><h2 id="toRef与toRefs"><a href="#toRef与toRefs" class="headerlink" title="toRef与toRefs"></a>toRef与toRefs</h2><p>使用它，消费者组件可以解构&#x2F;展开返回的对象而不会失去响应性：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; reactive,toRefs,toRef &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">const</span> person = <span class="hljs-title function_">reactive</span>(&#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>
+&#125;)
+
+<span class="hljs-keyword">const</span> cityObj = <span class="hljs-title function_">reactive</span>(&#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;北京&#x27;</span>,
+  <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;asdasxzc&#x27;</span>
+&#125;)
+
+<span class="hljs-comment">// 消费者组件可以解构/展开返回的对象而不会失去响应性</span>
+<span class="hljs-keyword">let</span> &#123; name, age &#125; = <span class="hljs-title function_">toRefs</span>(person)
+
+<span class="hljs-keyword">let</span> city = <span class="hljs-title function_">toRef</span>(cityObj,<span class="hljs-string">&#x27;name&#x27;</span>)</code></pre>
 
 <h2 id="computed-函数"><a href="#computed-函数" class="headerlink" title="computed()函数"></a>computed()函数</h2><p>创建一个只读的计算属性 ref：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">const</span> plusOne = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> count.<span class="property">value</span> + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(plusOne.<span class="property">value</span>) <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">plusOne.<span class="property">value</span>++ <span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">const</span> plusOne = <span class="hljs-title function_">computed</span>(<span class="hljs-function">() =&gt;</span> count.<span class="hljs-property">value</span> + <span class="hljs-number">1</span>)
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(plusOne.<span class="hljs-property">value</span>) <span class="hljs-comment">// 2</span>
+
+plusOne.<span class="hljs-property">value</span>++ <span class="hljs-comment">// 错误</span></code></pre>
 
 <p>创建一个可写的计算属性 ref：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> count = <span class="title function_">ref</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">const</span> plusOne = <span class="title function_">computed</span>(&#123;</span><br><span class="line">  <span class="attr">get</span>: <span class="function">() =&gt;</span> count.<span class="property">value</span> + <span class="number">1</span>,</span><br><span class="line">  <span class="attr">set</span>: <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    count.<span class="property">value</span> = val - <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">plusOne.<span class="property">value</span> = <span class="number">1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(count.<span class="property">value</span>) <span class="comment">// 0</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> count = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1</span>)
+<span class="hljs-keyword">const</span> plusOne = <span class="hljs-title function_">computed</span>(&#123;
+  <span class="hljs-attr">get</span>: <span class="hljs-function">() =&gt;</span> count.<span class="hljs-property">value</span> + <span class="hljs-number">1</span>,
+  <span class="hljs-attr">set</span>: <span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> &#123;
+    count.<span class="hljs-property">value</span> = val - <span class="hljs-number">1</span>
+  &#125;
+&#125;)
+
+plusOne.<span class="hljs-property">value</span> = <span class="hljs-number">1</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(count.<span class="hljs-property">value</span>) <span class="hljs-comment">// 0</span></code></pre>
 
 <h2 id="watch-函数"><a href="#watch-函数" class="headerlink" title="watch()函数"></a>watch()函数</h2><p>用于声明在数据更改时调用的侦听回调。</p>
 <ul>
@@ -117,84 +149,282 @@
 <p>监听ref数据时：</p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="title function_">ref</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认是不会开启深度监听的，如果需要开启深度监听，需要在watch中传入deep参数</span></span><br><span class="line"><span class="comment">// deep: true</span></span><br><span class="line"><span class="title function_">watch</span>(person, <span class="function">(<span class="params">newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal, oldVal)</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="attr">deep</span>: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> person = <span class="hljs-title function_">ref</span>(&#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>
+&#125;)
+
+
+<span class="hljs-comment">// 默认是不会开启深度监听的，如果需要开启深度监听，需要在watch中传入deep参数</span>
+<span class="hljs-comment">// deep: true</span>
+<span class="hljs-title function_">watch</span>(person, <span class="hljs-function">(<span class="hljs-params">newVal, oldVal</span>) =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newVal, oldVal)
+&#125;, &#123;
+  <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span>
+&#125;)</code></pre>
 
 
 
 <pre><code> 监听reactive数据时：
 </code></pre>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认开启深度监听,并且无法修改</span></span><br><span class="line"><span class="title function_">watch</span>(person, <span class="function">(<span class="params">newValue, oldValue</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newValue, oldValue)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> person = <span class="hljs-title function_">reactive</span>(&#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;张三&quot;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>
+&#125;)
+
+<span class="hljs-comment">// 默认开启深度监听,并且无法修改</span>
+<span class="hljs-title function_">watch</span>(person, <span class="hljs-function">(<span class="hljs-params">newValue, oldValue</span>) =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newValue, oldValue)
+&#125;)</code></pre>
 
 
 
 <p>​	监听响应式对象中的单个属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> person = <span class="title function_">reactive</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">adress</span>: &#123;</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&#x27;北京&#x27;</span>,</span><br><span class="line">    <span class="attr">street</span>: <span class="string">&#x27;北京路&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果要监听某个属性，可以使用getter函数</span></span><br><span class="line"><span class="comment">// 1.如果这个属性值是基本类型，只能写成getter函数</span></span><br><span class="line"><span class="title function_">watch</span>(<span class="function">()=&gt;</span>person.<span class="property">name</span>, <span class="function">(<span class="params">newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal, oldVal)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">    2.如果这个属性值是对象，如果写成getter函数，</span></span><br><span class="line"><span class="comment">    那么就是监听的地址的变换，里面单个属性变化监听不到，但是可以开启deep，进行深度监听</span></span><br><span class="line"><span class="comment">    如果不写成函数，那么就是监听里面单个属性的变化，无法监听地址的变换</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="title function_">watch</span>(<span class="function">()=&gt;</span>person.<span class="property">adress</span>, <span class="function">(<span class="params">newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal, oldVal)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> person = <span class="hljs-title function_">reactive</span>(&#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,
+  <span class="hljs-attr">adress</span>: &#123;
+    <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;北京&#x27;</span>,
+    <span class="hljs-attr">street</span>: <span class="hljs-string">&#x27;北京路&#x27;</span>
+  &#125;
+&#125;)
+
+
+<span class="hljs-comment">// 如果要监听某个属性，可以使用getter函数</span>
+<span class="hljs-comment">// 1.如果这个属性值是基本类型，只能写成getter函数</span>
+<span class="hljs-title function_">watch</span>(<span class="hljs-function">()=&gt;</span>person.<span class="hljs-property">name</span>, <span class="hljs-function">(<span class="hljs-params">newVal, oldVal</span>) =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newVal, oldVal)
+&#125;)
+
+
+<span class="hljs-comment">/* </span>
+<span class="hljs-comment">    2.如果这个属性值是对象，如果写成getter函数，</span>
+<span class="hljs-comment">    那么就是监听的地址的变换，里面单个属性变化监听不到，但是可以开启deep，进行深度监听</span>
+<span class="hljs-comment">    如果不写成函数，那么就是监听里面单个属性的变化，无法监听地址的变换</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-title function_">watch</span>(<span class="hljs-function">()=&gt;</span>person.<span class="hljs-property">adress</span>, <span class="hljs-function">(<span class="hljs-params">newVal, oldVal</span>) =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newVal, oldVal)
+&#125;)</code></pre>
 
 
 
 <p>监听响应式对象中的单个属性:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果要监听多个属性，写成数组即可</span></span><br><span class="line"><span class="title function_">watch</span>([<span class="function">()=&gt;</span>person.<span class="property">name</span>, <span class="function">()=&gt;</span>person.<span class="property">adress</span>], <span class="function">(<span class="params">newVal, oldVal</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(newVal, oldVal)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// 如果要监听多个属性，写成数组即可</span>
+<span class="hljs-title function_">watch</span>([<span class="hljs-function">()=&gt;</span>person.<span class="hljs-property">name</span>, <span class="hljs-function">()=&gt;</span>person.<span class="hljs-property">adress</span>], <span class="hljs-function">(<span class="hljs-params">newVal, oldVal</span>) =&gt;</span> &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(newVal, oldVal)
+&#125;)</code></pre>
 
 
 
 <h2 id="watchEffect-函数"><a href="#watchEffect-函数" class="headerlink" title="watchEffect()函数"></a>watchEffect()函数</h2><p>立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行。</p>
 <p>与watch的区别：watch需要指定数据源进行监听</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> height = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">let</span> weight = <span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">watchEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span>(height.<span class="property">value</span> &gt; <span class="number">5</span> &amp;&amp; weight.<span class="property">value</span> &gt; <span class="number">10</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;发送服务器消息&quot;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> height = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)
+<span class="hljs-keyword">let</span> weight = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)
+
+<span class="hljs-title function_">watchEffect</span>(<span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">if</span>(height.<span class="hljs-property">value</span> &gt; <span class="hljs-number">5</span> &amp;&amp; weight.<span class="hljs-property">value</span> &gt; <span class="hljs-number">10</span>)&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;发送服务器消息&quot;</span>)
+  &#125;
+&#125;)</code></pre>
 
 
 
 <h2 id="ref与dom结构的联动"><a href="#ref与dom结构的联动" class="headerlink" title="ref与dom结构的联动"></a>ref与dom结构的联动</h2><p>使用选项式 API，引用将被注册在组件的 <code>this.$refs</code> 对象里：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 存储为 <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">p</span> --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;p&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;!-- 存储为 <span class="hljs-variable language_">this</span>.<span class="hljs-property">$refs</span>.<span class="hljs-property">p</span> --&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span></code></pre>
 
 
 
 <p>使用组合式 API，引用将存储在与名字匹配的 ref 里：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p = <span class="title function_">ref</span>()</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">ref</span>=<span class="string">&quot;p&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;script setup&gt;
+<span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+
+<span class="hljs-keyword">const</span> p = <span class="hljs-title function_">ref</span>()
+&lt;/script&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;p&quot;</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span></code></pre>
 
 
 
 <p>用于组件时：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test组件</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">   <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>我是一个组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">let</span> a = <span class="title function_">ref</span>(<span class="number">0</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">let</span> b = <span class="title function_">ref</span>(<span class="number">1</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">let</span> c = <span class="title function_">ref</span>(<span class="number">2</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="title function_">defineExpose</span>(&#123;a,b,c&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">&quot;scss&quot;</span> <span class="attr">scoped</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-comment">// test组件</span>
+&lt;template&gt;
+   <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是一个组件<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+&lt;/template&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; ref &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> a = <span class="hljs-title function_">ref</span>(<span class="hljs-number">0</span>)</span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> b = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1</span>)</span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">let</span> c = <span class="hljs-title function_">ref</span>(<span class="hljs-number">2</span>)</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">defineExpose</span>(&#123;a,b,c&#125;)</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span>
+<span class="language-xml"></span>
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span></code></pre>
 
 
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;getDom&quot;</span>&gt;</span>获取dom<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">test</span> <span class="attr">ref</span>=<span class="string">&quot;tes&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">test</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> test <span class="keyword">from</span> <span class="string">&#x27;./components/test.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tes = <span class="title function_">ref</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果想要获取组件里面的变量，需要组件自行导出</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getDom</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tes.<span class="property">value</span>.<span class="property">a</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tes.<span class="property">value</span>.<span class="property">b</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(tes.<span class="property">value</span>.<span class="property">c</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;getDom&quot;</span>&gt;</span>获取dom<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">test</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;tes&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">test</span>&gt;</span></span>
+&lt;/template&gt;
+
+<span class="hljs-keyword">import</span> test <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./components/test.vue&#x27;</span>
+
+<span class="hljs-keyword">let</span> tes = <span class="hljs-title function_">ref</span>();
+
+<span class="hljs-comment">// 如果想要获取组件里面的变量，需要组件自行导出</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getDom</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tes.<span class="hljs-property">value</span>.<span class="hljs-property">a</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tes.<span class="hljs-property">value</span>.<span class="hljs-property">b</span>);
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(tes.<span class="hljs-property">value</span>.<span class="hljs-property">c</span>);
+&#125;</code></pre>
 
 
 
-<h2 id="defineProps"><a href="#defineProps" class="headerlink" title="defineProps()"></a>defineProps()</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型限制+默认值+是否必传</span></span><br><span class="line"><span class="keyword">let</span> props = <span class="title function_">withDefaults</span>(defineProps&lt;&#123;list?:<span class="title class_">PersonList</span>&#125;&gt;(),&#123;</span><br><span class="line">   <span class="comment">// 默认值</span></span><br><span class="line">   <span class="attr">list</span>:<span class="function">()=&gt;</span>[&#123;<span class="attr">id</span>:<span class="string">&#x27;asdasdzxc&#x27;</span>,<span class="attr">name</span>:<span class="string">&#x27;海尔&#x27;</span>,<span class="attr">age</span>:<span class="number">22</span>&#125;]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="defineProps"><a href="#defineProps" class="headerlink" title="defineProps()"></a>defineProps()</h2><pre><code class="hljs js"><span class="hljs-comment">// 类型限制+默认值+是否必传</span>
+<span class="hljs-keyword">let</span> props = <span class="hljs-title function_">withDefaults</span>(defineProps&lt;&#123;list?:<span class="hljs-title class_">PersonList</span>&#125;&gt;(),&#123;
+   <span class="hljs-comment">// 默认值</span>
+   <span class="hljs-attr">list</span>:<span class="hljs-function">()=&gt;</span>[&#123;<span class="hljs-attr">id</span>:<span class="hljs-string">&#x27;asdasdzxc&#x27;</span>,<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;海尔&#x27;</span>,<span class="hljs-attr">age</span>:<span class="hljs-number">22</span>&#125;]
+&#125;)</code></pre>
 
 
 
-<h2 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/Home.vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">News</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/News.vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">About</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/About.vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">NewsDetails</span> <span class="keyword">from</span> <span class="string">&#x27;@/views/NewsDetails.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="title function_">createRouter</span>(&#123;</span><br><span class="line">    <span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span>,</span><br><span class="line">            <span class="attr">component</span>: <span class="title class_">Home</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/news&#x27;</span>,</span><br><span class="line">            <span class="attr">component</span>: <span class="title class_">News</span>,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">path</span>: <span class="string">&#x27;details&#x27;</span>,</span><br><span class="line">                    <span class="attr">component</span>: <span class="title class_">NewsDetails</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/about&#x27;</span>,</span><br><span class="line">            <span class="attr">component</span>: <span class="title class_">About</span>,</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重定向</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">path</span>: <span class="string">&#x27;/:pathMatch(.*)*&#x27;</span>,</span><br><span class="line">            <span class="attr">redirect</span>: <span class="function"><span class="params">to</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123; <span class="attr">path</span>: <span class="string">&#x27;/home&#x27;</span> &#125;;</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router;</span><br></pre></td></tr></table></figure>
+<h2 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h2><pre><code class="hljs js"><span class="hljs-keyword">import</span> &#123; createRouter, createWebHistory &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-router&#x27;</span>;
+
+
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Home</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/Home.vue&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">News</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/News.vue&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">About</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/About.vue&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">NewsDetails</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/views/NewsDetails.vue&#x27;</span>;
+
+<span class="hljs-keyword">const</span> router = <span class="hljs-title function_">createRouter</span>(&#123;
+    <span class="hljs-attr">history</span>: <span class="hljs-title function_">createWebHistory</span>(),
+    <span class="hljs-attr">routes</span>: [
+        &#123;
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/home&#x27;</span>,
+            <span class="hljs-attr">component</span>: <span class="hljs-title class_">Home</span>,
+        &#125;,
+        &#123;
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/news&#x27;</span>,
+            <span class="hljs-attr">component</span>: <span class="hljs-title class_">News</span>,
+            <span class="hljs-attr">children</span>: [
+                &#123;
+                    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;details&#x27;</span>,
+                    <span class="hljs-attr">component</span>: <span class="hljs-title class_">NewsDetails</span>,
+                &#125;,
+            ],
+        &#125;,
+        &#123;
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/about&#x27;</span>,
+            <span class="hljs-attr">component</span>: <span class="hljs-title class_">About</span>,
+        &#125;,
+
+        <span class="hljs-comment">// 重定向</span>
+        &#123;
+            <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/:pathMatch(.*)*&#x27;</span>,
+            <span class="hljs-attr">redirect</span>: <span class="hljs-function"><span class="hljs-params">to</span> =&gt;</span> &#123;
+                <span class="hljs-keyword">return</span> &#123; <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/home&#x27;</span> &#125;;
+            &#125;,
+        &#125;,
+    ]
+&#125;)
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> router;</code></pre>
 
 
 
 <h2 id="query传参"><a href="#query传参" class="headerlink" title="query传参"></a>query传参</h2><p>当我点击某个按钮，让它跳转到新闻详情页面时：&#x2F;news&#x2F;details?id&#x3D;${item.id}&amp;title&#x3D;${item.title}</p>
 <p>如何接收传的值呢？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    新闻详情</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; route.query.id &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; route.query.title &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123;useRoute&#125; <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> route = <span class="title function_">useRoute</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">    新闻详情</span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; route.query.id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; route.query.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;useRoute&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;</span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
 
 
 
 <h2 id="params传参"><a href="#params传参" class="headerlink" title="params传参"></a>params传参</h2><p>也就是需要这样传参：&#x2F;news&#x2F;details&#x2F;${item.id}&#x2F;${item.title}</p>
 <p>此时要怎样接收参数呢？</p>
 <p>改变路由结构：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/news&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">News</span>,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">path</span>: <span class="string">&#x27;details/:id/:title&#x27;</span>,</span><br><span class="line">                    <span class="attr">component</span>: <span class="title class_">NewsDetails</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            ],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&#123;
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/news&#x27;</span>,
+        <span class="hljs-attr">component</span>: <span class="hljs-title class_">News</span>,
+            <span class="hljs-attr">children</span>: [
+                &#123;
+                    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;details/:id/:title&#x27;</span>,
+                    <span class="hljs-attr">component</span>: <span class="hljs-title class_">NewsDetails</span>,
+                &#125;,
+            ],
+&#125;,</code></pre>
 
 <p>接收：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    新闻详情</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; route.params.id &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; route.params.title &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> &#123;useRoute&#125; <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> route = <span class="title function_">useRoute</span>();</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">    新闻详情</span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; route.params.id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; route.params.title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123;useRoute&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;</span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> route = <span class="hljs-title function_">useRoute</span>();</span></span></code></pre>
 
 
 
 <h2 id="路由props配置"><a href="#路由props配置" class="headerlink" title="路由props配置"></a>路由props配置</h2><p>之前所说的query传参和params传参，在接收时感觉比较繁琐，接下来看看路由props配置，告别繁琐</p>
 <p>首先改变路由：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/news&#x27;</span>,</span><br><span class="line">        <span class="attr">component</span>: <span class="title class_">News</span>,</span><br><span class="line">            <span class="attr">children</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">path</span>: <span class="string">&#x27;details&#x27;</span>,</span><br><span class="line">                    <span class="attr">component</span>: <span class="title class_">NewsDetails</span>,</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 第一种params写法</span></span><br><span class="line">                    <span class="comment">// props: true,</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 第二种query写法</span></span><br><span class="line">                    <span class="title function_">props</span>(<span class="params">route</span>)&#123;</span><br><span class="line">                        <span class="keyword">return</span> route.<span class="property">query</span>;</span><br><span class="line">                    &#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">            ],</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&#123;
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/news&#x27;</span>,
+        <span class="hljs-attr">component</span>: <span class="hljs-title class_">News</span>,
+            <span class="hljs-attr">children</span>: [
+                &#123;
+                    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;details&#x27;</span>,
+                    <span class="hljs-attr">component</span>: <span class="hljs-title class_">NewsDetails</span>,
+
+                    <span class="hljs-comment">// 第一种params写法</span>
+                    <span class="hljs-comment">// props: true,</span>
+
+                    <span class="hljs-comment">// 第二种query写法</span>
+                    <span class="hljs-title function_">props</span>(<span class="hljs-params">route</span>)&#123;
+                        <span class="hljs-keyword">return</span> route.<span class="hljs-property">query</span>;
+                    &#125;,
+                &#125;,
+            ],
+&#125;,</code></pre>
 
 <p>接收：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    新闻详情</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; id &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">lang</span>=<span class="string">&quot;ts&quot;</span> <span class="attr">setup</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="title function_">defineProps</span>([<span class="string">&#x27;id&#x27;</span>, <span class="string">&#x27;title&#x27;</span>])</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">    新闻详情</span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; id &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">defineProps</span>([<span class="hljs-string">&#x27;id&#x27;</span>, <span class="hljs-string">&#x27;title&#x27;</span>])</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -202,14 +432,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/24/57/">vue3基础知识2</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/10/55/">md文件的解析、渲染与目录文件读取</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/02/24/57/">vue3基础知识2</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/02/10/55/">md文件的解析、渲染与目录文件读取</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -350,8 +580,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

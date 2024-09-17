@@ -16,15 +16,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
   
-  <title>js基础篇3 - 小哲的博客</title>
+  <title>js基础篇3 - 程序猿小哲的博客</title>
 
   
-    <meta name="description" content="数组扩展 拆分多维数组flat 123let arr &#x3D; [1,2,[3,4,[5,6]]]console.log(arr.flat(2))&#x2F;&#x2F; [1, 2, 3, 4, 5, 6]  数组元素修改fill 12345678 &#x2F;* fill(value) fill(value, start) fill(value, start, end) *&#x2F;let arr &#x3D; [1, 2, 3, 4, 5]co">
+    <meta name="description" content="数组扩展 拆分多维数组flat let arr &#x3D; [1,2,[3,4,[5,6]]] console.log(arr.flat(2)) &#x2F;&#x2F; [1, 2, 3, 4, 5, 6]  数组元素修改fill  &#x2F;*  fill(value)  fill(value, start)  fill(value, start, end)  *&#x2F; let arr &#x3D; [1, 2, 3, 4, 5] conso">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js基础篇3">
 <meta property="og:url" content="https://asdgjsad.github.io/2024/01/02/52/index.html">
-<meta property="og:site_name" content="小哲的博客">
-<meta property="og:description" content="数组扩展 拆分多维数组flat 123let arr &#x3D; [1,2,[3,4,[5,6]]]console.log(arr.flat(2))&#x2F;&#x2F; [1, 2, 3, 4, 5, 6]  数组元素修改fill 12345678 &#x2F;* fill(value) fill(value, start) fill(value, start, end) *&#x2F;let arr &#x3D; [1, 2, 3, 4, 5]co">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="数组扩展 拆分多维数组flat let arr &#x3D; [1,2,[3,4,[5,6]]] console.log(arr.flat(2)) &#x2F;&#x2F; [1, 2, 3, 4, 5, 6]  数组元素修改fill  &#x2F;*  fill(value)  fill(value, start)  fill(value, start, end)  *&#x2F; let arr &#x3D; [1, 2, 3, 4, 5] conso">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-01T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-06-04T11:49:10.014Z">
@@ -44,11 +44,15 @@
   
 
   
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
 
   
   
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 <div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
 
@@ -63,7 +67,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">数组扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">对象扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%89%B9%E5%AE%9A%E5%B1%9E%E6%80%A7"><span class="toc-text">1. 判断一个对象是否存在特定属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Object-assign-%E6%8B%BC%E6%8E%A5"><span class="toc-text">2. Object.assign() 拼接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-getOwnPropertyDescriptors-%E8%BF%94%E5%9B%9E%E7%BB%99%E5%AE%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%80%E6%9C%89%E8%87%AA%E6%9C%89%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-text">3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Object-keys"><span class="toc-text">4. Object.keys()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Object-values"><span class="toc-text">5. Object.values()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Object-entries"><span class="toc-text">6. Object.entries()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Object-create"><span class="toc-text">7. Object.create</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">获取css中的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#class%E6%96%B0%E5%A2%9E"><span class="toc-text">class新增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E8%BF%AD%E4%BB%A3"><span class="toc-text">异步迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#at%E6%96%B9%E6%B3%95%EF%BC%88%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E5%86%85%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%89"><span class="toc-text">at方法（寻找数组内的元素）</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%89%A9%E5%B1%95"><span class="toc-text">数组扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95"><span class="toc-text">对象扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E7%89%B9%E5%AE%9A%E5%B1%9E%E6%80%A7"><span class="toc-text">1. 判断一个对象是否存在特定属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Object-assign-%E6%8B%BC%E6%8E%A5"><span class="toc-text">2. Object.assign() 拼接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-getOwnPropertyDescriptors-%E8%BF%94%E5%9B%9E%E7%BB%99%E5%AE%9A%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%89%80%E6%9C%89%E8%87%AA%E6%9C%89%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-text">3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Object-keys"><span class="toc-text">4. Object.keys()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Object-values"><span class="toc-text">5. Object.values()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Object-entries"><span class="toc-text">6. Object.entries()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Object-create"><span class="toc-text">7. Object.create</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96css%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">获取css中的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#class%E6%96%B0%E5%A2%9E"><span class="toc-text">class新增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E8%BF%AD%E4%BB%A3"><span class="toc-text">异步迭代</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E6%89%A9%E5%B1%95"><span class="toc-text">正则扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%89%A9%E5%B1%95"><span class="toc-text">字符串扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#at%E6%96%B9%E6%B3%95%EF%BC%88%E5%AF%BB%E6%89%BE%E6%95%B0%E7%BB%84%E5%86%85%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%89"><span class="toc-text">at方法（寻找数组内的元素）</span></a></li></ol></div></div></widget>
 
 
 
@@ -71,7 +75,7 @@
 
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/06/14/73/"><span class="title">three.js添加轨道控制器</span></a></div></widget>
+<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -96,78 +100,288 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h2 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h2><ol>
+  </div><article class="md-text content slide-up"><h2 id="数组扩展"><a href="#数组扩展" class="headerlink" title="数组扩展"></a>数组扩展</h2><ol>
 <li><p>拆分多维数组flat</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>,[<span class="number">5</span>,<span class="number">6</span>]]]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">flat</span>(<span class="number">2</span>))</span><br><span class="line"><span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,[<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]]]
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">flat</span>(<span class="hljs-number">2</span>))
+<span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span></code></pre>
 </li>
 <li><p>数组元素修改fill</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> fill(value)</span></span><br><span class="line"><span class="comment"> fill(value, start)</span></span><br><span class="line"><span class="comment"> fill(value, start, end)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">fill</span>(<span class="number">10</span>, <span class="number">2</span>))</span><br><span class="line"><span class="comment">// [1, 2, 10, 10, 10]</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"> <span class="hljs-comment">/*</span>
+<span class="hljs-comment"> fill(value)</span>
+<span class="hljs-comment"> fill(value, start)</span>
+<span class="hljs-comment"> fill(value, start, end)</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">fill</span>(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>))
+<span class="hljs-comment">// [1, 2, 10, 10, 10]</span></code></pre>
 </li>
 <li><p>只改变数组其中一个元素with</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">with</span>(<span class="number">1</span>, <span class="number">100</span>))</span><br><span class="line"><span class="comment">// [1, 100, 3, 4, 5]</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">with</span>(<span class="hljs-number">1</span>, <span class="hljs-number">100</span>))
+<span class="hljs-comment">// [1, 100, 3, 4, 5]</span></code></pre></li>
 </ol>
-<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><h4 id="1-判断一个对象是否存在特定属性"><a href="#1-判断一个对象是否存在特定属性" class="headerlink" title="1. 判断一个对象是否存在特定属性"></a>1. 判断一个对象是否存在特定属性</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// hasOwnProperty</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;name&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// in</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> obj)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reflect.has()</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Reflect</span>.<span class="title function_">has</span>(obj, <span class="string">&#x27;name&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="对象扩展"><a href="#对象扩展" class="headerlink" title="对象扩展"></a>对象扩展</h2><h4 id="1-判断一个对象是否存在特定属性"><a href="#1-判断一个对象是否存在特定属性" class="headerlink" title="1. 判断一个对象是否存在特定属性"></a>1. 判断一个对象是否存在特定属性</h4><pre><code class="hljs js"><span class="hljs-keyword">let</span> obj = &#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>
+&#125;
+
+<span class="hljs-comment">// hasOwnProperty</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-title function_">hasOwnProperty</span>(<span class="hljs-string">&#x27;name&#x27;</span>))
+
+<span class="hljs-comment">// in</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;name&#x27;</span> <span class="hljs-keyword">in</span> obj)
+
+<span class="hljs-comment">// Reflect.has()</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Reflect</span>.<span class="hljs-title function_">has</span>(obj, <span class="hljs-string">&#x27;name&#x27;</span>))</code></pre>
 
 
 
-<h4 id="2-Object-assign-拼接"><a href="#2-Object-assign-拼接" class="headerlink" title="2. Object.assign() 拼接"></a>2. Object.assign() 拼接</h4>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&#x27;New York&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">    <span class="attr">age</span>: <span class="number">25</span>,</span><br><span class="line">    <span class="attr">country</span>: <span class="string">&#x27;USA&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(obj1, obj2)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3)</span><br><span class="line"><span class="comment">// &#123;name: &#x27;John&#x27;, age: 25, city: &#x27;New York&#x27;, country: &#x27;USA&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-Object-assign-拼接"><a href="#2-Object-assign-拼接" class="headerlink" title="2. Object.assign() 拼接"></a>2. Object.assign() 拼接</h4>   <pre><code class="hljs js"><span class="hljs-keyword">let</span> obj1 = &#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;John&#x27;</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,
+    <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;New York&#x27;</span>
+&#125;
+<span class="hljs-keyword">let</span> obj2 = &#123;
+    <span class="hljs-attr">age</span>: <span class="hljs-number">25</span>,
+    <span class="hljs-attr">country</span>: <span class="hljs-string">&#x27;USA&#x27;</span>
+&#125;
+<span class="hljs-keyword">let</span> obj3 = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(obj1, obj2)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj3)
+<span class="hljs-comment">// &#123;name: &#x27;John&#x27;, age: 25, city: &#x27;New York&#x27;, country: &#x27;USA&#x27;&#125;</span></code></pre>
 
 <p>   很多人可能会想到这种方式可不可以用来复制一个对象，我告诉你结果：不完全可以，为什么这样说，大家看如下代码：</p>
-   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj4 = &#123;</span><br><span class="line">    <span class="attr">nameValue</span>: <span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get name&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">value</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set name&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj5 = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> obj6 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(obj5, obj4)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj6)</span><br><span class="line"><span class="comment">// &#123;nameValue: &#x27;xiaoming&#x27;, age: 18, name: undefined&#125;</span></span><br></pre></td></tr></table></figure>
+   <pre><code class="hljs js"><span class="hljs-keyword">let</span> obj4 = &#123;
+    <span class="hljs-attr">nameValue</span>: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,
+    <span class="hljs-keyword">get</span> <span class="hljs-title function_">name</span>() &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;get name&#x27;</span>)
+    &#125;,
+    <span class="hljs-keyword">set</span> <span class="hljs-title function_">name</span>(<span class="hljs-params">value</span>) &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;set name&#x27;</span>)
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> obj5 = &#123;&#125;
+<span class="hljs-keyword">let</span> obj6 = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">assign</span>(obj5, obj4)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj6)
+<span class="hljs-comment">// &#123;nameValue: &#x27;xiaoming&#x27;, age: 18, name: undefined&#125;</span></code></pre>
 
 <p>   当这个对象中有get 或者 set 时就不行了</p>
-<h4 id="3-getOwnPropertyDescriptors-返回给定对象的所有自有属性描述符"><a href="#3-getOwnPropertyDescriptors-返回给定对象的所有自有属性描述符" class="headerlink" title="3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符"></a>3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符</h4>   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj4 = &#123;</span><br><span class="line">    <span class="attr">nameValue</span>: <span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get name&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">value</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set name&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj7 = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptors</span>(obj4)</span><br><span class="line">obj7.<span class="property">name</span>.<span class="title function_">get</span>()</span><br><span class="line"><span class="comment">// get name</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-getOwnPropertyDescriptors-返回给定对象的所有自有属性描述符"><a href="#3-getOwnPropertyDescriptors-返回给定对象的所有自有属性描述符" class="headerlink" title="3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符"></a>3. getOwnPropertyDescriptors()返回给定对象的所有自有属性描述符</h4>   <pre><code class="hljs js"><span class="hljs-keyword">let</span> obj4 = &#123;
+    <span class="hljs-attr">nameValue</span>: <span class="hljs-string">&#x27;xiaoming&#x27;</span>,
+    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,
+    <span class="hljs-keyword">get</span> <span class="hljs-title function_">name</span>() &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;get name&#x27;</span>)
+    &#125;,
+    <span class="hljs-keyword">set</span> <span class="hljs-title function_">name</span>(<span class="hljs-params">value</span>) &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;set name&#x27;</span>)
+    &#125;
+&#125;
+<span class="hljs-keyword">let</span> obj7 = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptors</span>(obj4)
+obj7.<span class="hljs-property">name</span>.<span class="hljs-title function_">get</span>()
+<span class="hljs-comment">// get name</span></code></pre>
 
 <h4 id="4-Object-keys"><a href="#4-Object-keys" class="headerlink" title="4. Object.keys()"></a>4. Object.keys()</h4><p>​		返回一个由给定对象自身的可枚举的字符串键属性名组成的数组。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">     <span class="attr">name</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">     <span class="attr">city</span>: <span class="string">&#x27;New York&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj1))</span><br><span class="line"><span class="comment">// [&#x27;name&#x27;, &#x27;age&#x27;, &#x27;city&#x27;]</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> obj1 = &#123;
+     <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;John&#x27;</span>,
+     <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,
+     <span class="hljs-attr">city</span>: <span class="hljs-string">&#x27;New York&#x27;</span>
+&#125;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(obj1))
+<span class="hljs-comment">// [&#x27;name&#x27;, &#x27;age&#x27;, &#x27;city&#x27;]</span></code></pre>
 
 <h4 id="5-Object-values"><a href="#5-Object-values" class="headerlink" title="5. Object.values()"></a>5. Object.values()</h4><p>​		返回一个由所有自身属性值的数组，包括不可枚举属性值。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">values</span>(obj1))</span><br><span class="line"><span class="comment">// [&#x27;John&#x27;, 30, &#x27;New York&#x27;]</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">values</span>(obj1))
+<span class="hljs-comment">// [&#x27;John&#x27;, 30, &#x27;New York&#x27;]</span></code></pre>
 
 <h4 id="6-Object-entries"><a href="#6-Object-entries" class="headerlink" title="6. Object.entries()"></a>6. Object.entries()</h4><p>​		返回一个数组，包含给定对象自有的可枚举字符串键属性的键值对。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Object</span>.<span class="title function_">entries</span>(obj1))</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">[</span></span><br><span class="line"><span class="comment">    [&#x27;name&#x27;, &#x27;John&#x27;]</span></span><br><span class="line"><span class="comment">    [&#x27;age&#x27;, 30]</span></span><br><span class="line"><span class="comment">    [&#x27;city&#x27;, &#x27;New York&#x27;]	</span></span><br><span class="line"><span class="comment">]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">Object</span>.<span class="hljs-title function_">entries</span>(obj1))
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">[</span>
+<span class="hljs-comment">    [&#x27;name&#x27;, &#x27;John&#x27;]</span>
+<span class="hljs-comment">    [&#x27;age&#x27;, 30]</span>
+<span class="hljs-comment">    [&#x27;city&#x27;, &#x27;New York&#x27;]    </span>
+<span class="hljs-comment">]</span>
+<span class="hljs-comment">*/</span></code></pre>
 
 <h4 id="7-Object-create"><a href="#7-Object-create" class="headerlink" title="7. Object.create"></a>7. Object.create</h4><p>​		以一个现有对象作为原型，创建一个新对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">     <span class="attr">nameValue</span>: <span class="string">&#x27;John&#x27;</span>,</span><br><span class="line">     <span class="attr">age</span>: <span class="number">30</span>,</span><br><span class="line">     <span class="attr">city</span>: &#123;</span><br><span class="line">         <span class="attr">name</span>: <span class="string">&#x27;New York&#x27;</span>,</span><br><span class="line">         <span class="attr">population</span>: <span class="number">800000</span></span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;get name&#x27;</span>)</span><br><span class="line">         <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">nameValue</span></span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">value</span>) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;set name&#x27;</span>)</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">let</span> obj3 = <span class="title class_">Object</span>.<span class="title function_">create</span>(</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">getPrototypeOf</span>(obj1),</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptors</span>(obj1),</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3)</span><br><span class="line"><span class="comment">// &#123;nameValue: &#x27;John&#x27;, age: 30, city: &#123;…&#125;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3.<span class="property">name</span>)</span><br><span class="line"><span class="comment">// get name</span></span><br><span class="line"><span class="comment">// John</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"> <span class="hljs-keyword">let</span> obj1 = &#123;
+     <span class="hljs-attr">nameValue</span>: <span class="hljs-string">&#x27;John&#x27;</span>,
+     <span class="hljs-attr">age</span>: <span class="hljs-number">30</span>,
+     <span class="hljs-attr">city</span>: &#123;
+         <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;New York&#x27;</span>,
+         <span class="hljs-attr">population</span>: <span class="hljs-number">800000</span>
+     &#125;,
+     <span class="hljs-keyword">get</span> <span class="hljs-title function_">name</span>() &#123;
+         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;get name&#x27;</span>)
+         <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">nameValue</span>
+     &#125;,
+     <span class="hljs-keyword">set</span> <span class="hljs-title function_">name</span>(<span class="hljs-params">value</span>) &#123;
+         <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;set name&#x27;</span>)
+     &#125;
+ &#125;
+ 
+  <span class="hljs-keyword">let</span> obj3 = <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">create</span>(
+      <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getPrototypeOf</span>(obj1),
+      <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">getOwnPropertyDescriptors</span>(obj1),
+  );
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj3)
+<span class="hljs-comment">// &#123;nameValue: &#x27;John&#x27;, age: 30, city: &#123;…&#125;&#125;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj3.<span class="hljs-property">name</span>)
+<span class="hljs-comment">// get name</span>
+<span class="hljs-comment">// John</span></code></pre>
 
 
 
-<h2 id="获取css中的变量"><a href="#获取css中的变量" class="headerlink" title="获取css中的变量"></a>获取css中的变量</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;简单的背景选择&lt;/title&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        :root&#123;</span><br><span class="line">            --color: #000;</span><br><span class="line">        &#125;</span><br><span class="line">        body&#123;</span><br><span class="line">            height: 96vh;</span><br><span class="line">            background-color: var(--color);</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;input type=&quot;color&quot; id=&quot;color&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 获取css中变量的值</span><br><span class="line">        const rootColor = getComputedStyle(document.documentElement).getPropertyValue(&#x27;--color&#x27;);</span><br><span class="line">        </span><br><span class="line">        let colorSelector = document.querySelector(&#x27;#color&#x27;);</span><br><span class="line">        colorSelector.addEventListener(&#x27;change&#x27;, (e) =&gt; &#123;</span><br><span class="line">            // 通过改变css变量，改变页面背景色</span><br><span class="line">            document.documentElement.style.setProperty(&#x27;--color&#x27;, e.target.value);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="获取css中的变量"><a href="#获取css中的变量" class="headerlink" title="获取css中的变量"></a>获取css中的变量</h2><pre><code class="hljs js">&lt;!<span class="hljs-variable constant_">DOCTYPE</span> html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;简单的背景选择&lt;/title&gt;
+    &lt;style&gt;
+        :root&#123;
+            --color: #000;
+        &#125;
+        body&#123;
+            height: 96vh;
+            background-color: var(--color);
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input type=&quot;color&quot; id=&quot;color&quot;&gt;
+    &lt;script&gt;
+        // 获取css中变量的值
+        const rootColor = getComputedStyle(document.documentElement).getPropertyValue(&#x27;--color&#x27;);
+        
+        let colorSelector = document.querySelector(&#x27;#color&#x27;);
+        colorSelector.addEventListener(&#x27;change&#x27;, (e) =&gt; &#123;
+            // 通过改变css变量，改变页面背景色
+            document.documentElement.style.setProperty(&#x27;--color&#x27;, e.target.value);
+        &#125;);
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <h2 id="class新增"><a href="#class新增" class="headerlink" title="class新增"></a>class新增</h2><ol>
 <li><p>在属性面前在一个#，就是私有属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 定义私有属性</span></span><br><span class="line">    #privateName = <span class="string">&#x27;tiechui&#x27;</span></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">privateName</span> = <span class="variable language_">this</span>.#privateName</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 定义一个方法</span></span><br><span class="line">    <span class="title function_">sayHello</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;
+    <span class="hljs-keyword">static</span> a = <span class="hljs-number">1</span>;
+    <span class="hljs-comment">// 定义私有属性</span>
+    #privateName = <span class="hljs-string">&#x27;tiechui&#x27;</span>
+    <span class="hljs-title function_">constructor</span>(<span class="hljs-params">name, age</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">name</span> = name;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">age</span> = age;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">privateName</span> = <span class="hljs-variable language_">this</span>.#privateName
+    &#125;
+    <span class="hljs-comment">// 定义一个方法</span>
+    <span class="hljs-title function_">sayHello</span>(<span class="hljs-params"></span>) &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Hello, my name is <span class="hljs-subst">$&#123;<span class="hljs-variable language_">this</span>.name&#125;</span>`</span>);
+    &#125;
+&#125;</code></pre>
 </li>
 <li><p>静态代码块，当这个类被定义后，代码块会自动执行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">test</span>&#123;</span><br><span class="line">    <span class="keyword">static</span> n = <span class="number">1</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;静态代码块&#x27;</span>, <span class="variable language_">this</span>.<span class="property">n</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 静态代码块 1</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span>&#123;
+    <span class="hljs-keyword">static</span> n = <span class="hljs-number">1</span>
+    <span class="hljs-keyword">static</span> &#123;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;静态代码块&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">n</span>)
+    &#125;
+&#125;
+<span class="hljs-comment">// 静态代码块 1</span></code></pre></li>
 </ol>
-<h2 id="异步迭代"><a href="#异步迭代" class="headerlink" title="异步迭代"></a>异步迭代</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">ajax</span>(<span class="params">str, time</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">resolve</span>(str);</span><br><span class="line">        &#125;, time);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 迭代器</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span>* <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="title function_">ajax</span>(<span class="string">&#x27;a&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="title function_">ajax</span>(<span class="string">&#x27;b&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">yield</span> <span class="title function_">ajax</span>(<span class="string">&#x27;c&#x27;</span>,<span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="title class_">Foo</span> = <span class="title function_">foo</span>();</span><br><span class="line"><span class="title class_">Foo</span>.<span class="title function_">next</span>().<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// &#123;value: &#x27;a&#x27;, done: false&#125;</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">generate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="keyword">await</span> (<span class="keyword">var</span> val <span class="keyword">of</span> <span class="title function_">foo</span>()) &#123;</span><br><span class="line">        str = str + val;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">generate</span>();</span><br><span class="line"><span class="comment">// a</span></span><br><span class="line"><span class="comment">// b</span></span><br><span class="line"><span class="comment">// c</span></span><br><span class="line"><span class="comment">// abc</span></span><br></pre></td></tr></table></figure>
+<h2 id="异步迭代"><a href="#异步迭代" class="headerlink" title="异步迭代"></a>异步迭代</h2><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ajax</span>(<span class="hljs-params">str, time</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;
+            <span class="hljs-title function_">resolve</span>(str);
+        &#125;, time);
+    &#125;);
+&#125;
+<span class="hljs-comment">// 迭代器</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span>* <span class="hljs-title function_">foo</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">yield</span> <span class="hljs-title function_">ajax</span>(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-number">1000</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-title function_">ajax</span>(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">1000</span>);
+    <span class="hljs-keyword">yield</span> <span class="hljs-title function_">ajax</span>(<span class="hljs-string">&#x27;c&#x27;</span>,<span class="hljs-number">1000</span>);
+&#125;
 
-<h2 id="正则扩展"><a href="#正则扩展" class="headerlink" title="正则扩展"></a>正则扩展</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;今天是2023-12-23&#x27;</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;mounth&gt;\d&#123;1,2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span></span><br><span class="line"><span class="keyword">let</span> reg1 = <span class="regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;mounth&gt;\d&#123;1,2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span>d</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg.<span class="title function_">exec</span>(str))</span><br><span class="line"><span class="comment">// [&#x27;2023-12-23&#x27;, &#x27;2023&#x27;, &#x27;12&#x27;, &#x27;23&#x27;, index: 3, input: &#x27;今天是2023-12-23&#x27;, groups: &#123;…&#125;]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(reg1.<span class="title function_">exec</span>(str))</span><br><span class="line"><span class="comment">// [&#x27;2023-12-23&#x27;, &#x27;2023&#x27;, &#x27;12&#x27;, &#x27;23&#x27;, index: 3, input: &#x27;今天是2023-12-23&#x27;, groups: &#123;…&#125;, indices: Array(4)]</span></span><br></pre></td></tr></table></figure>
+<span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;&#x27;</span>;
+<span class="hljs-keyword">let</span> <span class="hljs-title class_">Foo</span> = <span class="hljs-title function_">foo</span>();
+<span class="hljs-title class_">Foo</span>.<span class="hljs-title function_">next</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span>=&gt;</span>&#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);
+&#125;)
+<span class="hljs-comment">// &#123;value: &#x27;a&#x27;, done: false&#125;</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">generate</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">var</span> val <span class="hljs-keyword">of</span> <span class="hljs-title function_">foo</span>()) &#123;
+        str = str + val;
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(val);
+    &#125;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);
+&#125;
+
+<span class="hljs-title function_">generate</span>();
+<span class="hljs-comment">// a</span>
+<span class="hljs-comment">// b</span>
+<span class="hljs-comment">// c</span>
+<span class="hljs-comment">// abc</span></code></pre>
+
+<h2 id="正则扩展"><a href="#正则扩展" class="headerlink" title="正则扩展"></a>正则扩展</h2><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&#x27;今天是2023-12-23&#x27;</span>
+<span class="hljs-keyword">let</span> reg = <span class="hljs-regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;mounth&gt;\d&#123;1,2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span>
+<span class="hljs-keyword">let</span> reg1 = <span class="hljs-regexp">/(?&lt;year&gt;\d&#123;4&#125;)-(?&lt;mounth&gt;\d&#123;1,2&#125;)-(?&lt;day&gt;\d&#123;2&#125;)/</span>d
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(reg.<span class="hljs-title function_">exec</span>(str))
+<span class="hljs-comment">// [&#x27;2023-12-23&#x27;, &#x27;2023&#x27;, &#x27;12&#x27;, &#x27;23&#x27;, index: 3, input: &#x27;今天是2023-12-23&#x27;, groups: &#123;…&#125;]</span>
+
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(reg1.<span class="hljs-title function_">exec</span>(str))
+<span class="hljs-comment">// [&#x27;2023-12-23&#x27;, &#x27;2023&#x27;, &#x27;12&#x27;, &#x27;23&#x27;, index: 3, input: &#x27;今天是2023-12-23&#x27;, groups: &#123;…&#125;, indices: Array(4)]</span></code></pre>
 
 <h2 id="字符串扩展"><a href="#字符串扩展" class="headerlink" title="字符串扩展"></a>字符串扩展</h2><ol>
 <li><p>includes函数可以判断字符串中是否含有指定字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;helloworld&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">includes</span>(<span class="string">&quot;h&quot;</span>))</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;helloworld&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&quot;h&quot;</span>))
+<span class="hljs-comment">// true</span></code></pre>
 
 
 </li>
 <li><p>startsWith和endsWith方法可以判断字符串是否以指定字符串开头或结尾</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&quot;h&quot;</span>))</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">startsWith</span>(<span class="string">&quot;h&quot;</span>, <span class="number">1</span>))</span><br><span class="line"><span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">endsWith</span>(<span class="string">&quot;o&quot;</span>))</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;h&quot;</span>))
+<span class="hljs-comment">// true</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">startsWith</span>(<span class="hljs-string">&quot;h&quot;</span>, <span class="hljs-number">1</span>))
+<span class="hljs-comment">// false</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">endsWith</span>(<span class="hljs-string">&quot;o&quot;</span>))
+<span class="hljs-comment">// true</span></code></pre>
 
 
 </li>
 <li><p>字符串的repeat方法可以重复字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">3</span>))</span><br><span class="line"><span class="comment">// hellohellohello</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">repeat</span>(<span class="number">0</span>)===<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">repeat</span>(<span class="hljs-number">3</span>))
+<span class="hljs-comment">// hellohellohello</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">repeat</span>(<span class="hljs-number">0</span>)===<span class="hljs-string">&#x27;&#x27;</span>)
+<span class="hljs-comment">// true</span></code></pre>
 
 
 </li>
 <li><p>字符串的padStart和padEnd方法可以对字符串进行填充</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padStart</span>(<span class="number">10</span>, <span class="string">&quot;world&quot;</span>))</span><br><span class="line"><span class="comment">// worldhello</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str.<span class="title function_">padEnd</span>(<span class="number">10</span>, <span class="string">&quot;world&quot;</span>))</span><br><span class="line"><span class="comment">// helloworld</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">padStart</span>(<span class="hljs-number">10</span>, <span class="hljs-string">&quot;world&quot;</span>))
+<span class="hljs-comment">// worldhello</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">padEnd</span>(<span class="hljs-number">10</span>, <span class="hljs-string">&quot;world&quot;</span>))
+<span class="hljs-comment">// helloworld</span></code></pre></li>
 </ol>
-<h2 id="at方法（寻找数组内的元素）"><a href="#at方法（寻找数组内的元素）" class="headerlink" title="at方法（寻找数组内的元素）"></a>at方法（寻找数组内的元素）</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">at</span>(<span class="number">1</span>))</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">at</span>(-<span class="number">1</span>))</span><br><span class="line"><span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
+<h2 id="at方法（寻找数组内的元素）"><a href="#at方法（寻找数组内的元素）" class="headerlink" title="at方法（寻找数组内的元素）"></a>at方法（寻找数组内的元素）</h2><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>]
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">at</span>(<span class="hljs-number">1</span>))
+<span class="hljs-comment">// 2</span>
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr.<span class="hljs-title function_">at</span>(-<span class="hljs-number">1</span>))
+<span class="hljs-comment">// 10</span></code></pre>
 
 
-<div class="article-footer fs14">
+<div class="article-footer slide-up fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -175,14 +389,14 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/10/53/">MongoDB的安装与使用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/10/51/">js基础篇2</a></div></section></div>
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/01/10/53/">MongoDB的安装与使用</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/12/10/51/">js基础篇2</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -323,8 +537,8 @@
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":800,"interval":100,"scale":1});
+  if ('true' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});
