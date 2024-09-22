@@ -70,7 +70,7 @@
 </div>
 <div class="widgets">
 
-<widget class="widget-wrapper slide-up toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E5%8D%8F%E8%AE%AE"><span class="toc-text">websocket协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDws%E6%A8%A1%E5%9D%97"><span class="toc-text">下载ws模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">node服务端代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">前端代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li></ol></div></div></widget>
+<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E5%8D%8F%E8%AE%AE"><span class="toc-text">websocket协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDws%E6%A8%A1%E5%9D%97"><span class="toc-text">下载ws模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#node%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">node服务端代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">前端代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li></ol></div></div></widget>
 
 
 
@@ -78,7 +78,7 @@
 
 
 
-<widget class="widget-wrapper slide-up post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/21/89/"><span class="title">利用node+socket.io搭建一个简单的聊天平台</span></a><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2024/09/21/89/"><span class="title">利用node+socket.io搭建一个简单的聊天平台</span></a><a class="item title" href="/2024/09/17/88/"><span class="title">写给新生的一封信</span></a><a class="item title" href="/2024/09/04/87/"><span class="title">面经</span></a><a class="item title" href="/2024/08/31/86/"><span class="title">压缩3D模型</span></a><a class="item title" href="/2024/08/29/85/"><span class="title">echarts绘制中国地图</span></a><a class="item title" href="/2024/08/11/84/"><span class="title">css巧妙技巧</span></a><a class="item title" href="/2024/07/28/83/"><span class="title">blender插件分享</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -103,7 +103,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content slide-up"><h2 id="websocket协议"><a href="#websocket协议" class="headerlink" title="websocket协议"></a>websocket协议</h2><p><strong>Webscoket是Web浏览器和服务器之间的一种全双工通信协议</strong> ，其中WebSocket协议由IETF定为标准，WebSocket API由W3C定为标准。 一旦Web客户端与服务器建立起连接，之后的全部数据通信都通过这个连接进行。 通信过程中，可互相发送JSON、XML、HTML或图片等任意格式的数据。<br><em>我们将基于这个协议，实现聊天室的功能</em></p>
+  </div><article class="md-text content"><h2 id="websocket协议"><a href="#websocket协议" class="headerlink" title="websocket协议"></a>websocket协议</h2><p><strong>Webscoket是Web浏览器和服务器之间的一种全双工通信协议</strong> ，其中WebSocket协议由IETF定为标准，WebSocket API由W3C定为标准。 一旦Web客户端与服务器建立起连接，之后的全部数据通信都通过这个连接进行。 通信过程中，可互相发送JSON、XML、HTML或图片等任意格式的数据。<br><em>我们将基于这个协议，实现聊天室的功能</em></p>
 <h2 id="下载ws模块"><a href="#下载ws模块" class="headerlink" title="下载ws模块"></a>下载ws模块</h2><pre><code class="hljs sh">npm i ws</code></pre>
 
 <h2 id="node服务端代码"><a href="#node服务端代码" class="headerlink" title="node服务端代码"></a>node服务端代码</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocket</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ws&quot;</span>)
@@ -154,7 +154,7 @@ wss.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27
 <p>在另一个客户端的控制台就能收到hello这个消息了，</p>
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic.imgdb.cn/item/664dd72bd9c307b7e9fc08f1.png"><br> <em>这里其实已经相当一个群聊功能了，只是聊天的用户都是互相不知道的，接下来作者会使用登录验证，让所有用户能够彼此能够认识</em><br> <em>让我们实现私聊功能吧！！</em></p>
 
-<div class="article-footer slide-up fs14">
+<div class="article-footer fs14">
     <section id="license">
       <div class="header"><span>许可协议</span></div>
       <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
@@ -162,14 +162,14 @@ wss.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27
     </section>
     </div>
 </article>
-<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/06/27/">闲聊篇</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/28/25/">hexo博客项目部署至vercel</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/06/27/">闲聊篇</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/05/28/25/">hexo博客项目部署至vercel</a></div></section></div>
 
 
 
 
 
 
-<footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class='float-panel mobile-only blur' style='display:none'>
   <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
@@ -310,8 +310,8 @@ wss.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27
   if ('true' == 'true') {
     stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
   }
-  if ('true' == 'true') {
-    stellar.plugins.scrollreveal = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
+  if ('false' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":false,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
   }
   if ('true' == 'true') {
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});

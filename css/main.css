@@ -5833,9 +5833,6 @@ div.swiper-slide img {
 .swiper-button-next:after {
   transform: translateX(1px);
 }
-.slide-up {
-  visibility: hidden;
-}
 img[data-fancybox] {
   cursor: zoom-in;
 }
