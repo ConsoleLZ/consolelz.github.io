@@ -396,3 +396,18 @@ if (stellar.plugins.copycode) {
 
 
 // 自定义
+// 开往
+const disSelect = document.querySelector('.search-form')
+const tra = document.createElement('div')
+const img = document.createElement('img')
+const name1 = document.createElement('div')
+tra.className = 'tra'
+img.src = '/img/travelling-light.png'
+name1.innerText = '开往'
+tra.appendChild(img)
+tra.appendChild(name1)
+disSelect.after(tra)
+
+tra.onclick = function(){
+  window.open('https://www.travellings.cn/go.html')
+}
