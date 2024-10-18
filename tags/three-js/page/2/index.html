@@ -79,14 +79,12 @@
 
 
 <div class="nav-wrap"><nav class="sub post"><a href="/">近期发布</a><a href="/categories">分类</a><a class="active" href="/tags">标签：three.js</a><a href="/archives">归档</a><a href="/friends/">友链</a><a href="/comments/">留言</a><a href="/about/">关于站长</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2024/06/14/74/">
-<article class="md-text"><h2 class="post-title">three.js常见知识点</h2><div class="excerpt"><p>添加三维坐标const axesHelper = new THREE.AxesHelper(5)
-axesHelper.position.y = 1
-scene.add(axesHelper)
+<div class="post-list post"><a class="post-card post" href="/2024/06/14/73/">
+<article class="md-text"><h2 class="post-title">three.js添加轨道控制器</h2><div class="excerpt"><p>引入import &#123; OrbitControls &#125; from &#x27;three/addons/controls/OrbitControls.js&#x27;;
 
-修改背景颜色scene.background = new THREE.Color(&quot;#9aa7b1&quot;)
+添加轨道控制器const controls = new OrbitControls( camera, renderer.domElement );
 
-雾// 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-13T16:00:00.000Z">2024-06-14</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
+在动画函数中使用function animate( t...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-13T16:00:00.000Z">2024-06-14</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
 </a><a class="post-card post" href="/2024/06/13/72/">
 <article class="md-text"><h2 class="post-title">使用three.js创建一个最基础的3d场景</h2><div class="excerpt"><p>效果图
 代码import * as THREE from &#x27;three&#x27;;
