@@ -1,0 +1,728 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4" theme-name="Stellar" theme-version="1.26.4">
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>webpack基础知识 - 程序猿小哲的博客</title>
+
+  
+    <meta name="description" content="需要安装的模块&#123;   &quot;name&quot;: &quot;webpack&quot;,   &quot;version&quot;: &quot;1.0.0&quot;,   &quot;description&quot;: &quot;&quot;,   &quot;scripts&quot;: &#123;     &quot;serve&quot;: &quot;&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack基础知识">
+<meta property="og:url" content="https://asdgjsad.github.io/2024/04/02/61/index.html">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="需要安装的模块&#123;   &quot;name&quot;: &quot;webpack&quot;,   &quot;version&quot;: &quot;1.0.0&quot;,   &quot;description&quot;: &quot;&quot;,   &quot;scripts&quot;: &#123;     &quot;serve&quot;: &quot;&amp;qu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-07T10:39:43.060Z">
+<meta property="article:author" content="小哲">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="webpack">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.26.4">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
+
+  
+  
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic.imgdb.cn/item/665f06ac5e6d1bfa0573f8c5.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">程序猿小哲</div><div class="sub cap">邮箱：17347187569@163.com</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" class="icon search-icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="小哲的导航网站——WV" target="_blank" rel="noopener" href="https://gogo.maozi.io/" style="color:#1BCDFC"><img no-lazy src="https://gogo.maozi.io/favicon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="动态" href="/dynamic/" style="color:#3DC550"><svg t="1706977986934" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15519" width="200" height="200"><path d="M689.2 339.88c39.864 16.296 164.832 48.136 193.768 31.792 33.248-19.104-61.584-83.624-64.568-112.592-0.76-17.512 8.656-75.344-9.2-83.848-26.744-13.272-69.256 6.168-94.968 20.696-42.888 24.552-69.976-53.44-109.08-24.504-20.768 16.944 50.152 154.656 84.048 168.456z" fill="#FCE000" p-id="15520"></path><path d="M339.296 328.48C376.8 287.456 462.352 57.768 513.912 56.592c49.224-1.168 121.88 194.536 154.696 261.336 69.144 75 319.928 28.128 321.104 107.816 1.168 60.936-189.848 169.928-209.776 219.144-8.2 21.096 0 43.36 3.512 65.624 7.032 41.016 64.456 230.864 12.888 251.96-80.864 32.816-194.536-94.928-283.6-113.672-92.584-18.752-226.176 165.24-304.696 119.536-65.624-38.672 70.312-260.168 26.952-331.648-32.816-52.736-219.144-152.352-199.224-220.32C60.384 328.48 293.592 377.696 339.296 328.48z" fill="#5E5E5E" p-id="15521"></path><path d="M358.4 348.16c32.768-35.84 107.52-236.544 152.576-237.568 43.008-1.024 106.496 169.984 135.168 228.352 60.416 65.536 279.552 24.576 280.576 94.208 1.024 53.248-165.888 148.48-183.296 191.488-7.168 18.432 0 37.888 3.072 57.344 6.144 35.84 56.32 201.728 11.264 220.16-70.656 28.672-169.984-82.944-247.808-99.328-80.896-16.384-197.632 144.384-266.24 104.448-57.344-33.792 61.44-227.328 23.552-289.792-28.672-46.08-191.488-133.12-174.08-192.512 21.504-76.8 225.28-33.792 265.216-76.8z" fill="#FCE000" p-id="15522"></path><path d="M470.352 465.864c12.368-13.528 40.576-89.272 57.584-89.656 16.232-0.384 40.192 64.152 51.008 86.176 22.8 24.736 105.504 9.272 105.888 35.552 0.384 20.096-62.608 56.032-69.176 72.264-2.704 6.96 0 14.296 1.16 21.64 2.32 13.528 21.256 76.128 4.248 83.088-26.664 10.824-64.152-31.304-93.52-37.488-30.528-6.184-74.584 54.488-100.48 39.416-21.64-12.752 23.184-85.792 8.888-109.368-10.824-17.392-72.264-50.24-65.696-72.656 8.12-28.968 85.024-12.736 100.096-28.968z" fill="#606060" p-id="15523"></path></svg></a><a class="nav-item" title="关于站长" href="/about/" style="color:#3DC550"><svg t="1706978133829" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17375" width="200" height="200"><path d="M576.8704 555.6736m-361.6768 0a361.6768 361.6768 0 1 0 723.3536 0 361.6768 361.6768 0 1 0-723.3536 0Z" fill="#56E5BE" p-id="17376"></path><path d="M613.2224 592.0256m-325.3248 0a325.3248 325.3248 0 1 0 650.6496 0 325.3248 325.3248 0 1 0-650.6496 0Z" fill="#50DDB8" p-id="17377"></path><path d="M650.3936 618.5472m-282.88 0a282.88 282.88 0 1 0 565.76 0 282.88 282.88 0 1 0-565.76 0Z" fill="#42D3AD" p-id="17378"></path><path d="M510.976 921.9072c-231.3728 0-419.584-188.2112-419.584-419.584 0-231.3728 188.2112-419.584 419.584-419.584s419.584 188.2112 419.584 419.584c0.0512 231.3728-188.2112 419.584-419.584 419.584z m0-777.728c-197.4784 0-358.144 160.6656-358.144 358.144s160.6656 358.144 358.144 358.144 358.144-160.6656 358.144-358.144-160.6144-358.144-358.144-358.144z" fill="#2E3138" p-id="17379"></path><path d="M394.1376 575.0272c-16.9472 0-30.72-13.7728-30.72-30.72V460.288c0-16.9472 13.7728-30.72 30.72-30.72s30.72 13.7728 30.72 30.72v84.0192c0 16.9984-13.7728 30.72-30.72 30.72zM640.6656 583.424c-6.5536 0-13.2096-2.0992-18.7904-6.4512l-65.8944-51.0464a30.55616 30.55616 0 0 1-11.8784-24.32c0-9.5232 4.4032-18.4832 11.9296-24.2688l64.256-49.7152a30.6944 30.6944 0 0 1 43.1104 5.5296 30.6944 30.6944 0 0 1-5.5296 43.1104l-32.8704 25.3952 34.56 26.7776c13.4144 10.3936 15.872 29.696 5.4784 43.1104a31.0016 31.0016 0 0 1-24.3712 11.8784z" fill="#2E3138" p-id="17380"></path></svg></a><a class="nav-item" title="官方文档" target="_blank" rel="noopener" href="https://xaoxuu.com/wiki/stellar/#start" style="color:#3DC550"><svg t="1706978948097" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20251" width="200" height="200"><path d="M770 512.62q0 49.77-4 99.46a167 167 0 0 1-153.15 153.19q-49.51 4-99.17 4-49.92 0-99.76-4a167 167 0 0 1-153.19-153.19q-4-49.65-4-99.46t4-99.47A167 167 0 0 1 413.92 260q49.65-4 99.46-4h73.44a96.88 96.88 0 0 1 66 26l86.34 80.45A96.85 96.85 0 0 1 770 433.28z" fill="#CAE0FF" p-id="20252"></path><path d="M511.56 888c-45.58 0-91.72-1.84-137.15-5.47a254.11 254.11 0 0 1-233.08-233.06c-3.63-45.43-5.47-91.58-5.47-137.15s1.84-91.72 5.47-137.15a254.13 254.13 0 0 1 233.08-233.09c45.43-3.63 91.58-5.47 137.15-5.47h99.64a158.42 158.42 0 0 1 108.32 42.64l117.16 109.16a159.4 159.4 0 0 1 50.58 116.26v107.65c0 45.57-1.84 91.72-5.47 137.15a254.11 254.11 0 0 1-233.08 233.08C603.42 886.17 557.41 888 512 888z m0-696.41c-44.12 0-88.79 1.79-132.77 5.3a199.12 199.12 0 0 0-182.64 182.66c-3.51 44-5.29 88.65-5.29 132.77s1.78 88.79 5.29 132.77a199.12 199.12 0 0 0 182.64 182.64c44 3.51 88.65 5.29 132.76 5.29h0.45c44 0 88.53-1.79 132.37-5.29A199.12 199.12 0 0 0 827 645.09c3.51-44 5.29-88.65 5.29-132.77V404.67a104.23 104.23 0 0 0-33.07-76L682 219.49a103.62 103.62 0 0 0-70.83-27.88z" fill="#1A5F8E" p-id="20253"></path><path d="M692.8 683H328.85a27.5 27.5 0 0 1 0-55H692.8a27.5 27.5 0 0 1 0 55zM692.8 540.93H328.85a27.5 27.5 0 0 1 0-55H692.8a27.5 27.5 0 1 1 0 55zM590 398.86H328.71a27.5 27.5 0 1 1 0-55H590a27.5 27.5 0 0 1 0 55z" fill="#1A5F8E" p-id="20254"></path></svg></a><a class="nav-item" title="我的多元化世界" target="_blank" rel="noopener" href="https://biofy.cn/consoleLZ" style="color:#3DC550"><img no-lazy src="/img/biofy.ico" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="掘金" target="_blank" rel="noopener" href="https://juejin.cn/user/1295692732053241" style="color:#3DC550"><img no-lazy src="/img/juejin.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+</div>
+<div class="widgets">
+
+<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E5%AE%89%E8%A3%85%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="toc-text">需要安装的模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">基本配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%A4%84%E7%90%86"><span class="toc-text">静态资源处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%84%E7%90%86%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6"><span class="toc-text">1.处理图片文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A4%84%E7%90%86%E7%BA%AF%E6%96%87%E6%9C%AC"><span class="toc-text">2.处理纯文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%84%E7%90%86%E5%AD%97%E4%BD%93%E6%96%87%E4%BB%B6"><span class="toc-text">3.处理字体文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%B6%E5%AE%83%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">4.其它文件的处理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babel-loader"><span class="toc-text">babel-loader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB"><span class="toc-text">代码分离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%8E%B7%E5%8F%96%E5%92%8C%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-text">预获取和预加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93"><span class="toc-text">缓存第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E8%B7%AF%E5%BE%84"><span class="toc-text">公共路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%94%B9%E5%8F%98-mode"><span class="toc-text">动态改变 mode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E6%8B%86%E5%88%86%E4%B8%8E%E5%90%88%E5%B9%B6"><span class="toc-text">配置文件的拆分与合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D"><span class="toc-text">路径别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E6%89%A9%E5%B1%95"><span class="toc-text">外部扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%88%86%E6%9E%90%E5%9B%BE"><span class="toc-text">依赖分析图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-%E7%9A%84%E8%87%AA%E5%8A%A8%E5%85%BC%E5%AE%B9"><span class="toc-text">css 的自动兼容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-text">css 模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-sass"><span class="toc-text">解析 sass</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E7%A6%BB%E4%B8%8E%E5%8E%8B%E7%BC%A9-css"><span class="toc-text">抽离与压缩 css</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9-js"><span class="toc-text">压缩 js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-ts"><span class="toc-text">解析 ts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shimming-%E9%A2%84%E7%BD%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">shimming 预置全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86-this-%E6%8C%87%E5%90%91%E4%B8%BA-window"><span class="toc-text">将 this 指向为 window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%BB%BA%E5%B0%8F%E8%BD%AE%E5%AD%90%E4%B9%8B-library"><span class="toc-text">自建小轮子之 library</span></a></li></ol></div></div></widget>
+
+
+
+
+
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/05/07/103/"><span class="title">ADC两种测量电压方式</span></a><a class="item title" href="/2024/06/14/74/"><span class="title">three.js常见知识点</span></a><a class="item title" href="/2024/06/15/75/"><span class="title">three.js添加gui参数调试工具</span></a><a class="item title" href="/2024/06/16/76/"><span class="title">GSAP基础知识</span></a><a class="item title" href="/2024/06/16/77/"><span class="title">GSAP插件介绍</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2023/04/11/8/"><span class="title">vue-cli创建vue项目</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    
+<div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">前端进阶</a></div>
+<div class="flex-row" id="post-meta"><span class="text created"><time datetime="2024-04-01T16:00:00.000Z">2024-04-02</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-05-07T10:39:43.060Z">2025-05-07</time></span></div></div>
+</div>
+
+    
+    <div class="bottom">
+      <div class="text-area">
+        <h1 class="text title"><span>webpack基础知识</span></h1>
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="需要安装的模块"><a href="#需要安装的模块" class="headerlink" title="需要安装的模块"></a>需要安装的模块</h2><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;webpack&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;serve&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;keywords&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;author&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;license&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;ISC&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;devDependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;@babel/core&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^7.23.9&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;@babel/preset-env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^7.23.9&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;add-asset-html-webpack-plugin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^6.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;autoprefixer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^10.4.17&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;babel-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^9.1.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;css-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^6.10.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;css-minimizer-webpack-plugin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^6.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;csv-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.0.5&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;dart-sass&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.25.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;html-webpack-plugin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.6.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;imports-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;json5&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.2.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;mini-css-extract-plugin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.8.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;postcss-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^8.1.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;sass-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^14.1.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;style-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.3.4&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;terser-webpack-plugin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.3.10&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;toml&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;ts-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^9.5.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;typescript&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.3.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;webpack&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.90.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;webpack-bundle-analyzer&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.10.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;webpack-cli&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.1.4&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;webpack-dev-server&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.15.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;webpack-merge&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^5.10.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;xml-loader&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.2.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;yaml&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^2.3.4&quot;</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;lodash&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^4.17.21&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;rgb-random-lazychild&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^1.0.2&quot;</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;browserslist&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;&gt; 1%&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;last 2 versions&quot;</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
+
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;serve&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;webpack serve --config webpack.config.js&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;webpack --config webpack.config.js&quot;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
+
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><p>webpack 的配置文件为：<code>webpack.config.js</code></p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;path&quot;</span>);
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">HtmlWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;html-webpack-plugin&quot;</span>);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">entry</span>: <span class="hljs-string">&quot;./src/index.js&quot;</span>, <span class="hljs-comment">//以哪个文件为主</span>
+
+  <span class="hljs-attr">output</span>: &#123;
+    <span class="hljs-comment">// filename: &#x27;[name].[contenthash].js&#x27;,</span>
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;index.js&quot;</span>,
+    <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&quot;./dist&quot;</span>), <span class="hljs-comment">//绝对路径</span>
+    <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//清理上次打包的文件</span>
+  &#125;,
+
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;development&quot;</span>, <span class="hljs-comment">// 指定运行模式为开发模式</span>
+
+  <span class="hljs-attr">devtool</span>: <span class="hljs-string">&quot;eval-cheap-module-source-map&quot;</span>,
+
+  <span class="hljs-attr">plugins</span>: [
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">HtmlWebpackPlugin</span>(&#123;
+      <span class="hljs-attr">template</span>: <span class="hljs-string">&quot;./index.html&quot;</span>,
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;app.html&quot;</span>,
+      <span class="hljs-attr">inject</span>: <span class="hljs-string">&quot;body&quot;</span>, <span class="hljs-comment">//在body里面生成script标签</span>
+    &#125;),
+  ],
+
+  <span class="hljs-comment">// 配置热更新服务器</span>
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-attr">static</span>: <span class="hljs-string">&quot;./dist&quot;</span>,
+  &#125;,
+&#125;;</code></pre>
+
+<h2 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h2><h4 id="1-处理图片文件"><a href="#1-处理图片文件" class="headerlink" title="1.处理图片文件"></a>1.处理图片文件</h4><p>asset&#x2F;resource:</p>
+<pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">//处理图片文件</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.png$/</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset/resource&quot;</span>, <span class="hljs-comment">//类型</span>
+      <span class="hljs-comment">// 路径</span>
+      <span class="hljs-attr">generator</span>: &#123;
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;images/[contenthash][ext]&quot;</span>,
+      &#125;,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<p>asset&#x2F;inline:</p>
+<pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">//处理图片文件</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.svg$/</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset/inline&quot;</span>, <span class="hljs-comment">//inline类型,将图片变为base64</span>
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<p>asset:</p>
+<pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">//处理图片文件</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.png$/</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset&quot;</span>, <span class="hljs-comment">//类型：自动选择：默认如果大于8k--&gt;本地资源，否则就是inline类型</span>
+      <span class="hljs-comment">// 自定义</span>
+      <span class="hljs-attr">parser</span>: &#123;
+        <span class="hljs-attr">dataUrlCondition</span>: &#123;
+          <span class="hljs-attr">maxSize</span>: <span class="hljs-number">4</span> * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>, <span class="hljs-comment">//如果图片大于4M，那么就作为本地资源，否则就是inline类型</span>
+        &#125;,
+      &#125;,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h4 id="2-处理纯文本"><a href="#2-处理纯文本" class="headerlink" title="2.处理纯文本"></a>2.处理纯文本</h4><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">//处文本文件</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.txt$/</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset/source&quot;</span>, <span class="hljs-comment">//类型</span>
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h4 id="3-处理字体文件"><a href="#3-处理字体文件" class="headerlink" title="3.处理字体文件"></a>3.处理字体文件</h4><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">// 加载字体</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(woff|woff2|eot|ttf|otf)$/</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;asset/resource&quot;</span>,
+      <span class="hljs-comment">// 路径</span>
+      <span class="hljs-attr">generator</span>: &#123;
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;iconFont/[contenthash][ext]&quot;</span>,
+      &#125;,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h4 id="4-其它文件的处理"><a href="#4-其它文件的处理" class="headerlink" title="4.其它文件的处理"></a>4.其它文件的处理</h4><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+    <span class="hljs-attr">rules</span>: [
+        &#123;
+            <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.toml$/</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;json&#x27;</span>,
+            <span class="hljs-comment">// 指定解析器</span>
+            <span class="hljs-attr">parser</span>: &#123;
+                <span class="hljs-attr">parse</span>: toml.<span class="hljs-property">parse</span>,
+            &#125;
+        &#125;,
+        &#123;
+            <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.yaml$/</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;json&#x27;</span>,
+            <span class="hljs-attr">parser</span>: &#123;
+                <span class="hljs-attr">parse</span>: yaml.<span class="hljs-property">parse</span>,
+            &#125;
+        &#125;,
+        &#123;
+            <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.json5$/</span>,
+            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;json&#x27;</span>,
+            <span class="hljs-attr">parser</span>: &#123;
+                <span class="hljs-attr">parse</span>: json5.<span class="hljs-property">parse</span>,
+            &#125;
+        &#125;,
+        &#123;
+            <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.csv$/</span>,
+            <span class="hljs-attr">use</span>: <span class="hljs-string">&#x27;csv-loader&#x27;</span>
+        &#125;,
+        &#123;
+            <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.xml$/</span>,
+            <span class="hljs-attr">use</span>: <span class="hljs-string">&#x27;xml-loader&#x27;</span>
+        &#125;
+    ],
+&#125;,</code></pre>
+
+<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p>这个可以将 ES6 转 ES5</p>
+<pre><code class="hljs js"><span class="hljs-comment">// 需要安装的库</span>
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * 1. babel-loader: 用于处理es6语法</span>
+<span class="hljs-comment"> * 2. <span class="hljs-doctag">@babel</span>/core: babel核心库</span>
+<span class="hljs-comment"> * 3. <span class="hljs-doctag">@babel</span>/preset-env: babel预设库, 一组babel插件集合</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+      <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/node_modules/</span>,
+      <span class="hljs-attr">use</span>: &#123;
+        <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;babel-loader&quot;</span>,
+        <span class="hljs-attr">options</span>: &#123;
+          <span class="hljs-attr">presets</span>: [<span class="hljs-string">&quot;@babel/preset-env&quot;</span>],
+        &#125;,
+      &#125;,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="代码分离"><a href="#代码分离" class="headerlink" title="代码分离"></a>代码分离</h2><p>防止引入的第三方库重复导出</p>
+<p>内置模块处理：</p>
+<pre><code class="hljs js"><span class="hljs-attr">optimization</span>: &#123;
+  <span class="hljs-attr">splitChunks</span>: &#123;
+    <span class="hljs-attr">chunks</span>: <span class="hljs-string">&quot;all&quot;</span>; <span class="hljs-comment">//对所有模块进行分割</span>
+  &#125;
+&#125;</code></pre>
+
+<p>使用 dependOn:</p>
+<pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-comment">// 多个入口文件</span>
+  <span class="hljs-attr">entry</span>: &#123;
+    <span class="hljs-attr">index</span>: &#123;
+      <span class="hljs-attr">import</span>: <span class="hljs-string">&quot;./src/index.js&quot;</span>,
+      <span class="hljs-attr">dependOn</span>: <span class="hljs-string">&quot;comment&quot;</span>,
+    &#125;,
+    <span class="hljs-attr">another</span>: &#123;
+      <span class="hljs-attr">import</span>: <span class="hljs-string">&quot;./src/another.js&quot;</span>,
+      <span class="hljs-attr">dependOn</span>: <span class="hljs-string">&quot;comment&quot;</span>,
+    &#125;,
+    <span class="hljs-attr">comment</span>: <span class="hljs-string">&quot;lodash&quot;</span>,
+  &#125;,
+&#125;;</code></pre>
+
+<h2 id="预获取和预加载"><a href="#预获取和预加载" class="headerlink" title="预获取和预加载"></a>预获取和预加载</h2><p><strong>预获取</strong> prefetch: 在浏览器加载完必要的资源后，空闲时就会去获取可能需要的资源。 <strong>预加载</strong> preload: 预先加载当前页面可能需要的资源， 它会与必要资源并行请求。</p>
+<pre><code class="hljs js"><span class="hljs-comment">/* webpackPrefetch: true */</span>
+<span class="hljs-comment">/* webpackPreload: true */</span>
+
+btn.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+  <span class="hljs-keyword">import</span>(<span class="hljs-comment">/* webpackPrefetch: true */</span> <span class="hljs-string">&quot;./math&quot;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">&#123; add &#125;</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">add</span>(<span class="hljs-number">4</span>, <span class="hljs-number">8</span>));
+  &#125;);
+&#125;);</code></pre>
+
+<h2 id="缓存第三方库"><a href="#缓存第三方库" class="headerlink" title="缓存第三方库"></a>缓存第三方库</h2><pre><code class="hljs js"><span class="hljs-attr">optimization</span>: &#123;
+    <span class="hljs-attr">splitChunks</span>: &#123;
+        <span class="hljs-attr">cacheGroups</span>: &#123;
+            <span class="hljs-attr">vendor</span>: &#123;
+                <span class="hljs-attr">test</span>: <span class="hljs-regexp">/[\\/]node_modules[\\/]/</span>,
+                    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;vendors&#x27;</span>,
+                        <span class="hljs-attr">chunks</span>: <span class="hljs-string">&#x27;all&#x27;</span>
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<h2 id="公共路径"><a href="#公共路径" class="headerlink" title="公共路径"></a>公共路径</h2><pre><code class="hljs js"><span class="hljs-attr">output</span>: &#123;
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;index.js&#x27;</span>,
+    <span class="hljs-attr">path</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;./dist&#x27;</span>),   <span class="hljs-comment">//绝对路径</span>
+    <span class="hljs-attr">clean</span>: <span class="hljs-literal">true</span>,  <span class="hljs-comment">//清理上次打包的文件</span>
+    <span class="hljs-attr">publicPath</span>: <span class="hljs-string">&#x27;http://127.0.0.1:5500/公共路径/dist/&#x27;</span> <span class="hljs-comment">//设置打包后的文件访问路径</span>
+&#125;,</code></pre>
+
+<h2 id="动态改变-mode"><a href="#动态改变-mode" class="headerlink" title="动态改变 mode"></a>动态改变 mode</h2><pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function">(<span class="hljs-params">env</span>) =&gt;</span> &#123;
+    <span class="hljs-attr">mode</span>: env.<span class="hljs-property">production</span> ? <span class="hljs-string">&#x27;production&#x27;</span> : <span class="hljs-string">&#x27;development&#x27;</span>, <span class="hljs-comment">// 如果要压缩, 则需要生产环境</span>
+&#125;</code></pre>
+
+<h2 id="配置文件的拆分与合并"><a href="#配置文件的拆分与合并" class="headerlink" title="配置文件的拆分与合并"></a>配置文件的拆分与合并</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; merge &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;webpack-merge&quot;</span>);
+
+<span class="hljs-keyword">const</span> configDev = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./webpack.config.dev&quot;</span>);
+<span class="hljs-keyword">const</span> configPro = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./webpack.config.pro&quot;</span>);
+<span class="hljs-keyword">const</span> configCommon = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./webpack.config.common&quot;</span>);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function">(<span class="hljs-params">env</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">switch</span> (<span class="hljs-literal">true</span>) &#123;
+    <span class="hljs-keyword">case</span> env.<span class="hljs-property">development</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title function_">merge</span>(configDev, configCommon);
+    <span class="hljs-keyword">case</span> env.<span class="hljs-property">production</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-title function_">merge</span>(configPro, configCommon);
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&quot;No valid environment&quot;</span>);
+  &#125;
+&#125;;</code></pre>
+
+<h2 id="路径别名"><a href="#路径别名" class="headerlink" title="路径别名"></a>路径别名</h2><pre><code class="hljs js"><span class="hljs-attr">resolve</span>: &#123;
+    <span class="hljs-attr">alias</span>: &#123;
+        <span class="hljs-string">&#x27;@&#x27;</span>: path.<span class="hljs-title function_">resolve</span>(__dirname, <span class="hljs-string">&#x27;./src&#x27;</span>)
+    &#125;
+&#125;</code></pre>
+
+<h2 id="外部扩展"><a href="#外部扩展" class="headerlink" title="外部扩展"></a>外部扩展</h2><pre><code class="hljs js"><span class="hljs-attr">externalsType</span>: <span class="hljs-string">&quot;script&quot;</span>,
+<span class="hljs-attr">externals</span>: &#123;
+    <span class="hljs-attr">jquery</span>: [
+        <span class="hljs-string">&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js&quot;</span>,
+        <span class="hljs-string">&quot;$&quot;</span>
+    ]
+&#125;</code></pre>
+
+<p>这样就可以直接使用了：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">import</span> $ <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;jquery&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>($);</code></pre>
+
+<h2 id="依赖分析图"><a href="#依赖分析图" class="headerlink" title="依赖分析图"></a>依赖分析图</h2><p>使用插件：<code>webpack-bundle-analyzer</code></p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">BundleAnalyzerPlugin</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;webpack-bundle-analyzer&quot;</span>); <span class="hljs-comment">//依赖图插件</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">plugins</span>: [<span class="hljs-keyword">new</span> <span class="hljs-title class_">BundleAnalyzerPlugin</span>()],
+&#125;;</code></pre>
+
+<h2 id="css-的自动兼容"><a href="#css-的自动兼容" class="headerlink" title="css 的自动兼容"></a>css 的自动兼容</h2><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,
+      <span class="hljs-attr">use</span>: [<span class="hljs-string">&quot;style-loader&quot;</span>, <span class="hljs-string">&quot;css-loader&quot;</span>, <span class="hljs-string">&quot;postcss-loader&quot;</span>],
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="css-模块化"><a href="#css-模块化" class="headerlink" title="css 模块化"></a>css 模块化</h2><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,
+      <span class="hljs-attr">use</span>: [
+        <span class="hljs-string">&quot;style-loader&quot;</span>,
+        &#123;
+          <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;css-loader&quot;</span>,
+          <span class="hljs-attr">options</span>: &#123;
+            <span class="hljs-attr">modules</span>: <span class="hljs-literal">true</span>,
+          &#125;,
+        &#125;,
+      ],
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="解析-sass"><a href="#解析-sass" class="headerlink" title="解析 sass"></a>解析 sass</h2><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-comment">// 加载css或者scss文件</span>
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(css|scss)$/</span>,
+      <span class="hljs-attr">use</span>: [
+        <span class="hljs-string">&quot;style-loader&quot;</span>,
+        <span class="hljs-string">&quot;css-loader&quot;</span>,
+        &#123;
+          <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;sass-loader&quot;</span>,
+          <span class="hljs-attr">options</span>: &#123;
+            <span class="hljs-attr">implementation</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;dart-sass&quot;</span>),
+          &#125;,
+        &#125;,
+      ], <span class="hljs-comment">//顺序不能改，，从数组后往前进行加载</span>
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="抽离与压缩-css"><a href="#抽离与压缩-css" class="headerlink" title="抽离与压缩 css"></a>抽离与压缩 css</h2><p>需要生产环境</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">MiniCssExtractPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;mini-css-extract-plugin&quot;</span>); <span class="hljs-comment">//提取css</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">CssMinimizerPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;css-minimizer-webpack-plugin&quot;</span>); <span class="hljs-comment">//压缩css</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">plugins</span>: [
+    <span class="hljs-comment">// 提取css</span>
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">MiniCssExtractPlugin</span>(&#123;
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">&quot;styles/[contenthash].css&quot;</span>, <span class="hljs-comment">//生成的css位置与css文件名字</span>
+    &#125;),
+  ],
+  <span class="hljs-attr">module</span>: &#123;
+    <span class="hljs-attr">rules</span>: [
+      &#123;
+        <span class="hljs-comment">// 加载css或者scss文件</span>
+        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(css|scss)$/</span>,
+        <span class="hljs-attr">use</span>: [
+          <span class="hljs-title class_">MiniCssExtractPlugin</span>.<span class="hljs-property">loader</span>,
+          <span class="hljs-string">&quot;css-loader&quot;</span>,
+          &#123;
+            <span class="hljs-attr">loader</span>: <span class="hljs-string">&quot;sass-loader&quot;</span>,
+            <span class="hljs-attr">options</span>: &#123;
+              <span class="hljs-attr">implementation</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;dart-sass&quot;</span>),
+            &#125;,
+          &#125;,
+        ], <span class="hljs-comment">//顺序不能改，，从数组后往前进行加载</span>
+      &#125;,
+    ],
+  &#125;,
+  <span class="hljs-attr">optimization</span>: &#123;
+    <span class="hljs-attr">minimizer</span>: [<span class="hljs-keyword">new</span> <span class="hljs-title class_">CssMinimizerPlugin</span>()], <span class="hljs-comment">//压缩css</span>
+  &#125;,
+&#125;;</code></pre>
+
+<h2 id="压缩-js"><a href="#压缩-js" class="headerlink" title="压缩 js"></a>压缩 js</h2><p>需要生产环境</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> terserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;terser-webpack-plugin&quot;</span>); <span class="hljs-comment">//压缩js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-comment">// 我们发现在使用了css压缩后，js不能进行自动压缩了，所以需要自己配置</span>
+  <span class="hljs-attr">optimization</span>: &#123;
+    <span class="hljs-attr">minimizer</span>: [
+      <span class="hljs-keyword">new</span> <span class="hljs-title function_">terserPlugin</span>(), <span class="hljs-comment">//压缩js</span>
+    ],
+  &#125;,
+&#125;;</code></pre>
+
+<h2 id="解析-ts"><a href="#解析-ts" class="headerlink" title="解析 ts"></a>解析 ts</h2><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.ts$/</span>,
+      <span class="hljs-attr">use</span>: <span class="hljs-string">&quot;ts-loader&quot;</span>,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="shimming-预置全局变量"><a href="#shimming-预置全局变量" class="headerlink" title="shimming 预置全局变量"></a>shimming 预置全局变量</h2><pre><code class="hljs js"><span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;webpack&quot;</span>);
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-attr">plugins</span>: [
+    <span class="hljs-keyword">new</span> webpack.<span class="hljs-title class_">ProvidePlugin</span>(&#123;
+      <span class="hljs-attr">_</span>: <span class="hljs-string">&quot;lodash&quot;</span>,
+    &#125;),
+  ],
+&#125;;</code></pre>
+
+<p>使用：</p>
+<pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(_.<span class="hljs-title function_">join</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>], <span class="hljs-string">&quot;~&quot;</span>));</code></pre>
+
+<h2 id="将-this-指向为-window"><a href="#将-this-指向为-window" class="headerlink" title="将 this 指向为 window"></a>将 this 指向为 window</h2><pre><code class="hljs js"><span class="hljs-attr">module</span>: &#123;
+  <span class="hljs-attr">rules</span>: [
+    &#123;
+      <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+      <span class="hljs-attr">use</span>: <span class="hljs-string">&quot;imports-loader?wrapper=window&quot;</span>,
+    &#125;,
+  ];
+&#125;</code></pre>
+
+<h2 id="自建小轮子之-library"><a href="#自建小轮子之-library" class="headerlink" title="自建小轮子之 library"></a>自建小轮子之 library</h2><p>因为 webpack 打包后的文件都是一个自执行函数，在库外部的任何位置都访问不到它，所以需要配置 library</p>
+<pre><code class="hljs js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
+  <span class="hljs-comment">// 如果library的type为module时，必须配置</span>
+  <span class="hljs-attr">experiments</span>: &#123;
+    <span class="hljs-attr">outputModule</span>: <span class="hljs-literal">true</span>,
+  &#125;,
+  <span class="hljs-attr">output</span>: &#123;
+    <span class="hljs-attr">library</span>: &#123;
+      <span class="hljs-comment">// type: &quot;umd&quot;</span>
+      <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;module&quot;</span>,
+    &#125;,
+    <span class="hljs-attr">globalObject</span>: <span class="hljs-string">&quot;globalThis&quot;</span>, <span class="hljs-comment">//解决在type: &quot;umd&quot;时，self未定义的问题</span>
+  &#125;,
+&#125;;</code></pre>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/05/20/68/">react易忘知识点</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/03/15/60/">sass基础知识</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg t="1705412886951" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8331" width="200" height="200"><path d="M638.72 970.666667h-256c-118.186667 0-198.272-25.002667-251.946667-78.72S52.053333 758.186667 52.053333 640V384c0-118.186667 25.002667-198.272 78.72-251.946667S264.533333 53.333333 382.72 53.333333h256c118.186667 0 198.272 25.002667 251.946667 78.72S969.386667 265.813333 969.386667 384v256c0 118.186667-25.002667 198.272-78.72 251.946667S756.906667 970.666667 638.72 970.666667z m-256-853.333334c-100.096 0-165.802667 19.2-206.72 59.946667S116.053333 283.904 116.053333 384v256c0 100.096 19.072 165.802667 59.946667 206.72S282.624 906.666667 382.72 906.666667h256c100.096 0 165.802667-19.072 206.72-59.946667S905.386667 740.096 905.386667 640V384c0-100.096-19.072-165.802667-59.946667-206.72S738.816 117.333333 638.72 117.333333z" p-id="8332"></path><path d="M638.72 970.666667a32 32 0 0 1-32-32V85.333333a32 32 0 0 1 32-32 32 32 0 0 1 32 32v853.333334a32 32 0 0 1-32 32zM340.053333 653.226667a31.914667 31.914667 0 0 1-22.613333-9.386667 32 32 0 0 1 0-45.269333L404.053333 512 317.44 425.386667a32 32 0 0 1 0-45.226667 32 32 0 0 1 45.226667 0l109.226666 109.226667a32 32 0 0 1 0 45.269333L362.666667 643.84a31.914667 31.914667 0 0 1-22.613334 9.386667z" p-id="8333"></path></svg>
+  </button>
+</div>
+<div class="main-mask" onclick="sidebar.toggle()"></div></div></div><div class="scripts">
+<script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.26.4';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js","marked":"/js/plugins/marked.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js","transition":"fade"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":false,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js","css":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css","selector":null});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied","toast":"复制成功"});
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.26.4" async></script>
+
+<!-- optional -->
+
+
+
+
+
+
+<!-- inject -->
+
+</div></body></html>

@@ -1,0 +1,602 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4" theme-name="Stellar" theme-version="1.26.4">
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>ws模块实现聊天的一些基本功能 - 程序猿小哲的博客</title>
+
+  
+    <meta name="description" content="本篇文章难度较大哦，小伙伴们👀️本文要讲解的代码作者已上传至云仓库：https:&#x2F;&#x2F;gitee.com&#x2F;xiao-zhe-is-not-lazy&#x2F;chat学习本篇文章之前记得先去看:1.登录鉴权——JWT(前后端分离) | Lazychild&#39;s Blog2. 初始ws模块 | Lazychild&#39;s Blog 先写好一个基本的登录鉴权功能之前文章写过了，小伙伴们自己去看看吧👀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ws模块实现聊天的一些基本功能">
+<meta property="og:url" content="https://asdgjsad.github.io/2023/07/10/28/index.html">
+<meta property="og:site_name" content="程序猿小哲的博客">
+<meta property="og:description" content="本篇文章难度较大哦，小伙伴们👀️本文要讲解的代码作者已上传至云仓库：https:&#x2F;&#x2F;gitee.com&#x2F;xiao-zhe-is-not-lazy&#x2F;chat学习本篇文章之前记得先去看:1.登录鉴权——JWT(前后端分离) | Lazychild&#39;s Blog2. 初始ws模块 | Lazychild&#39;s Blog 先写好一个基本的登录鉴权功能之前文章写过了，小伙伴们自己去看看吧👀">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-05-07T10:39:43.057Z">
+<meta property="article:author" content="小哲">
+<meta property="article:tag" content="node">
+<meta name="twitter:card" content="summary">
+  
+  
+  
+  <meta name="keywords" content="node">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.26.4">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/night-owl.min.css">
+
+  
+
+  
+  
+</head>
+<body><div class="sitebg"><div class="siteblur"></div></div>
+
+<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="sidebar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://pic.imgdb.cn/item/665f06ac5e6d1bfa0573f8c5.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">程序猿小哲</div><div class="sub cap">邮箱：17347187569@163.com</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" class="icon search-icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item" title="小哲的导航网站——WV" target="_blank" rel="noopener" href="https://gogo.maozi.io/" style="color:#1BCDFC"><img no-lazy src="https://gogo.maozi.io/favicon.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="动态" href="/dynamic/" style="color:#3DC550"><svg t="1706977986934" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15519" width="200" height="200"><path d="M689.2 339.88c39.864 16.296 164.832 48.136 193.768 31.792 33.248-19.104-61.584-83.624-64.568-112.592-0.76-17.512 8.656-75.344-9.2-83.848-26.744-13.272-69.256 6.168-94.968 20.696-42.888 24.552-69.976-53.44-109.08-24.504-20.768 16.944 50.152 154.656 84.048 168.456z" fill="#FCE000" p-id="15520"></path><path d="M339.296 328.48C376.8 287.456 462.352 57.768 513.912 56.592c49.224-1.168 121.88 194.536 154.696 261.336 69.144 75 319.928 28.128 321.104 107.816 1.168 60.936-189.848 169.928-209.776 219.144-8.2 21.096 0 43.36 3.512 65.624 7.032 41.016 64.456 230.864 12.888 251.96-80.864 32.816-194.536-94.928-283.6-113.672-92.584-18.752-226.176 165.24-304.696 119.536-65.624-38.672 70.312-260.168 26.952-331.648-32.816-52.736-219.144-152.352-199.224-220.32C60.384 328.48 293.592 377.696 339.296 328.48z" fill="#5E5E5E" p-id="15521"></path><path d="M358.4 348.16c32.768-35.84 107.52-236.544 152.576-237.568 43.008-1.024 106.496 169.984 135.168 228.352 60.416 65.536 279.552 24.576 280.576 94.208 1.024 53.248-165.888 148.48-183.296 191.488-7.168 18.432 0 37.888 3.072 57.344 6.144 35.84 56.32 201.728 11.264 220.16-70.656 28.672-169.984-82.944-247.808-99.328-80.896-16.384-197.632 144.384-266.24 104.448-57.344-33.792 61.44-227.328 23.552-289.792-28.672-46.08-191.488-133.12-174.08-192.512 21.504-76.8 225.28-33.792 265.216-76.8z" fill="#FCE000" p-id="15522"></path><path d="M470.352 465.864c12.368-13.528 40.576-89.272 57.584-89.656 16.232-0.384 40.192 64.152 51.008 86.176 22.8 24.736 105.504 9.272 105.888 35.552 0.384 20.096-62.608 56.032-69.176 72.264-2.704 6.96 0 14.296 1.16 21.64 2.32 13.528 21.256 76.128 4.248 83.088-26.664 10.824-64.152-31.304-93.52-37.488-30.528-6.184-74.584 54.488-100.48 39.416-21.64-12.752 23.184-85.792 8.888-109.368-10.824-17.392-72.264-50.24-65.696-72.656 8.12-28.968 85.024-12.736 100.096-28.968z" fill="#606060" p-id="15523"></path></svg></a><a class="nav-item" title="关于站长" href="/about/" style="color:#3DC550"><svg t="1706978133829" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17375" width="200" height="200"><path d="M576.8704 555.6736m-361.6768 0a361.6768 361.6768 0 1 0 723.3536 0 361.6768 361.6768 0 1 0-723.3536 0Z" fill="#56E5BE" p-id="17376"></path><path d="M613.2224 592.0256m-325.3248 0a325.3248 325.3248 0 1 0 650.6496 0 325.3248 325.3248 0 1 0-650.6496 0Z" fill="#50DDB8" p-id="17377"></path><path d="M650.3936 618.5472m-282.88 0a282.88 282.88 0 1 0 565.76 0 282.88 282.88 0 1 0-565.76 0Z" fill="#42D3AD" p-id="17378"></path><path d="M510.976 921.9072c-231.3728 0-419.584-188.2112-419.584-419.584 0-231.3728 188.2112-419.584 419.584-419.584s419.584 188.2112 419.584 419.584c0.0512 231.3728-188.2112 419.584-419.584 419.584z m0-777.728c-197.4784 0-358.144 160.6656-358.144 358.144s160.6656 358.144 358.144 358.144 358.144-160.6656 358.144-358.144-160.6144-358.144-358.144-358.144z" fill="#2E3138" p-id="17379"></path><path d="M394.1376 575.0272c-16.9472 0-30.72-13.7728-30.72-30.72V460.288c0-16.9472 13.7728-30.72 30.72-30.72s30.72 13.7728 30.72 30.72v84.0192c0 16.9984-13.7728 30.72-30.72 30.72zM640.6656 583.424c-6.5536 0-13.2096-2.0992-18.7904-6.4512l-65.8944-51.0464a30.55616 30.55616 0 0 1-11.8784-24.32c0-9.5232 4.4032-18.4832 11.9296-24.2688l64.256-49.7152a30.6944 30.6944 0 0 1 43.1104 5.5296 30.6944 30.6944 0 0 1-5.5296 43.1104l-32.8704 25.3952 34.56 26.7776c13.4144 10.3936 15.872 29.696 5.4784 43.1104a31.0016 31.0016 0 0 1-24.3712 11.8784z" fill="#2E3138" p-id="17380"></path></svg></a><a class="nav-item" title="官方文档" target="_blank" rel="noopener" href="https://xaoxuu.com/wiki/stellar/#start" style="color:#3DC550"><svg t="1706978948097" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="20251" width="200" height="200"><path d="M770 512.62q0 49.77-4 99.46a167 167 0 0 1-153.15 153.19q-49.51 4-99.17 4-49.92 0-99.76-4a167 167 0 0 1-153.19-153.19q-4-49.65-4-99.46t4-99.47A167 167 0 0 1 413.92 260q49.65-4 99.46-4h73.44a96.88 96.88 0 0 1 66 26l86.34 80.45A96.85 96.85 0 0 1 770 433.28z" fill="#CAE0FF" p-id="20252"></path><path d="M511.56 888c-45.58 0-91.72-1.84-137.15-5.47a254.11 254.11 0 0 1-233.08-233.06c-3.63-45.43-5.47-91.58-5.47-137.15s1.84-91.72 5.47-137.15a254.13 254.13 0 0 1 233.08-233.09c45.43-3.63 91.58-5.47 137.15-5.47h99.64a158.42 158.42 0 0 1 108.32 42.64l117.16 109.16a159.4 159.4 0 0 1 50.58 116.26v107.65c0 45.57-1.84 91.72-5.47 137.15a254.11 254.11 0 0 1-233.08 233.08C603.42 886.17 557.41 888 512 888z m0-696.41c-44.12 0-88.79 1.79-132.77 5.3a199.12 199.12 0 0 0-182.64 182.66c-3.51 44-5.29 88.65-5.29 132.77s1.78 88.79 5.29 132.77a199.12 199.12 0 0 0 182.64 182.64c44 3.51 88.65 5.29 132.76 5.29h0.45c44 0 88.53-1.79 132.37-5.29A199.12 199.12 0 0 0 827 645.09c3.51-44 5.29-88.65 5.29-132.77V404.67a104.23 104.23 0 0 0-33.07-76L682 219.49a103.62 103.62 0 0 0-70.83-27.88z" fill="#1A5F8E" p-id="20253"></path><path d="M692.8 683H328.85a27.5 27.5 0 0 1 0-55H692.8a27.5 27.5 0 0 1 0 55zM692.8 540.93H328.85a27.5 27.5 0 0 1 0-55H692.8a27.5 27.5 0 1 1 0 55zM590 398.86H328.71a27.5 27.5 0 1 1 0-55H590a27.5 27.5 0 0 1 0 55z" fill="#1A5F8E" p-id="20254"></path></svg></a><a class="nav-item" title="我的多元化世界" target="_blank" rel="noopener" href="https://biofy.cn/consoleLZ" style="color:#3DC550"><img no-lazy src="/img/biofy.ico" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="nav-item" title="掘金" target="_blank" rel="noopener" href="https://juejin.cn/user/1295692732053241" style="color:#3DC550"><img no-lazy src="/img/juejin.png" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a></nav>
+</div>
+<div class="widgets">
+
+<widget class="widget-wrapper toc single" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E6%96%87%E7%AB%A0%E9%9A%BE%E5%BA%A6%E8%BE%83%E5%A4%A7%E5%93%A6%EF%BC%8C%E5%B0%8F%E4%BC%99%E4%BC%B4%E4%BB%AC%F0%9F%91%80%EF%B8%8F"><span class="toc-text">本篇文章难度较大哦，小伙伴们👀️</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E8%A6%81%E8%AE%B2%E8%A7%A3%E7%9A%84%E4%BB%A3%E7%A0%81%E4%BD%9C%E8%80%85%E5%B7%B2%E4%B8%8A%E4%BC%A0%E8%87%B3%E4%BA%91%E4%BB%93%E5%BA%93%EF%BC%9Ahttps-gitee-com-xiao-zhe-is-not-lazy-chat"><span class="toc-text">本文要讲解的代码作者已上传至云仓库：https:&#x2F;&#x2F;gitee.com&#x2F;xiao-zhe-is-not-lazy&#x2F;chat</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%9C%AC%E7%AF%87%E6%96%87%E7%AB%A0%E4%B9%8B%E5%89%8D%E8%AE%B0%E5%BE%97%E5%85%88%E5%8E%BB%E7%9C%8B"><span class="toc-text">学习本篇文章之前记得先去看:</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E5%86%99%E5%A5%BD%E4%B8%80%E4%B8%AA%E5%9F%BA%E6%9C%AC%E7%9A%84%E7%99%BB%E5%BD%95%E9%89%B4%E6%9D%83%E5%8A%9F%E8%83%BD"><span class="toc-text">先写好一个基本的登录鉴权功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%B1%95%E7%A4%BA"><span class="toc-text">代码展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%BB%E9%A2%98"><span class="toc-text">进入主题</span></a></div></div></widget>
+
+
+
+
+
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/05/07/103/"><span class="title">ADC两种测量电压方式</span></a><a class="item title" href="/2024/06/14/74/"><span class="title">three.js常见知识点</span></a><a class="item title" href="/2024/06/15/75/"><span class="title">three.js添加gui参数调试工具</span></a><a class="item title" href="/2024/06/16/76/"><span class="title">GSAP基础知识</span></a><a class="item title" href="/2024/06/16/77/"><span class="title">GSAP插件介绍</span></a><a class="item title" href="/2024/06/20/79/"><span class="title">文件上传多种场景(前端+后端)</span></a><a class="item title" href="/2023/04/11/8/"><span class="title">vue-cli创建vue项目</span></a><a class="item title" href="/2024/06/28/80/"><span class="title">three.js结合cannon-es实现3d物理世界</span></a><a class="item title" href="/2024/07/11/82/"><span class="title">blender基础知识</span></a><a class="item title" href="/2024/07/01/81/"><span class="title">three.js加载模型基础代码</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    
+<div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">前端进阶</a></div>
+<div class="flex-row" id="post-meta"><span class="text created"><time datetime="2023-07-09T16:00:00.000Z">2023-07-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-05-07T10:39:43.057Z">2025-05-07</time></span></div></div>
+</div>
+
+    
+    <div class="bottom">
+      <div class="text-area">
+        <h1 class="text title"><span>ws模块实现聊天的一些基本功能</span></h1>
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h3 id="本篇文章难度较大哦，小伙伴们👀️"><a href="#本篇文章难度较大哦，小伙伴们👀️" class="headerlink" title="本篇文章难度较大哦，小伙伴们👀️"></a><em>本篇文章难度较大哦，小伙伴们</em>👀️</h3><h4 id="本文要讲解的代码作者已上传至云仓库：https-gitee-com-xiao-zhe-is-not-lazy-chat"><a href="#本文要讲解的代码作者已上传至云仓库：https-gitee-com-xiao-zhe-is-not-lazy-chat" class="headerlink" title="本文要讲解的代码作者已上传至云仓库：https://gitee.com/xiao-zhe-is-not-lazy/chat"></a>本文要讲解的代码作者已上传至云仓库：<a target="_blank" rel="noopener" href="https://gitee.com/xiao-zhe-is-not-lazy/chat">https://gitee.com/xiao-zhe-is-not-lazy/chat</a></h4><h5 id="学习本篇文章之前记得先去看"><a href="#学习本篇文章之前记得先去看" class="headerlink" title="学习本篇文章之前记得先去看:"></a>学习本篇文章之前记得先去看:</h5><p>1.<a target="_blank" rel="noopener" href="https://www.lazychild.fun/2023/06/04/19/">登录鉴权——JWT(前后端分离) | Lazychild&#39;s Blog</a><br>2. <a target="_blank" rel="noopener" href="https://www.lazychild.fun/2023/07/05/26/">初始ws模块 | Lazychild&#39;s Blog</a></p>
+<h2 id="先写好一个基本的登录鉴权功能"><a href="#先写好一个基本的登录鉴权功能" class="headerlink" title="先写好一个基本的登录鉴权功能"></a>先写好一个基本的登录鉴权功能</h2><p>之前文章写过了，小伙伴们自己去看看吧👀️</p>
+<p>前端一共有两个界面：</p>
+<ul>
+<li>登录界面</li>
+<li>聊天室界面</li>
+</ul>
+<p>到了这一步应该实现前端进行登录，后端进行token校验，成功后跳转至聊天室这个界面（只要跳转就行，后面会讲聊天室界面对于token的校验）</p>
+<h2 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h2><ul>
+<li>登录界面代码</li>
+</ul>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/axios@1.1.2/dist/axios.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">        axios.<span class="hljs-property">interceptors</span>.<span class="hljs-property">response</span>.<span class="hljs-title function_">use</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">response</span>) &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 2xx 范围内的状态码都会触发该函数。</span></span>
+<span class="language-javascript">            <span class="hljs-comment">// 对响应数据做点什么</span></span>
+<span class="language-javascript">            <span class="hljs-keyword">const</span> autorization = response.<span class="hljs-property">headers</span>.<span class="hljs-property">autorization</span></span>
+<span class="language-javascript">            autorization &amp;&amp; <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;token&#x27;</span>, autorization)</span>
+<span class="language-javascript">            <span class="hljs-keyword">return</span> response</span>
+<span class="language-javascript">        &#125;, <span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 超出 2xx 范围的状态码都会触发该函数。</span></span>
+<span class="language-javascript">            <span class="hljs-comment">// 对响应错误做点什么</span></span>
+<span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(error);</span>
+<span class="language-javascript">        &#125;);</span>
+<span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>聊天室登录界面<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>账号：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>密码：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">        btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">            axios.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;http://localhost:3000/login&#x27;</span>, &#123;</span>
+<span class="language-javascript">                <span class="hljs-attr">username</span>: username.<span class="hljs-property">value</span>,</span>
+<span class="language-javascript">                <span class="hljs-attr">password</span>: password.<span class="hljs-property">value</span></span>
+<span class="language-javascript">            &#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;</span>
+<span class="language-javascript">                <span class="hljs-keyword">if</span> (res.<span class="hljs-property">data</span>.<span class="hljs-property">ok</span>) &#123;</span>
+<span class="language-javascript">                    location.<span class="hljs-property">href</span> = <span class="hljs-string">&#x27;/index&#x27;</span></span>
+<span class="language-javascript">                &#125; <span class="hljs-keyword">else</span> &#123;</span>
+<span class="language-javascript">                    <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;账号或密码错误&#x27;</span>)</span>
+<span class="language-javascript">                &#125;</span>
+<span class="language-javascript">            &#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;</span>
+<span class="language-javascript">                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(err)</span>
+<span class="language-javascript">            &#125;)</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<ul>
+<li>基本的路由代码</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
+<span class="hljs-keyword">var</span> jwtObj = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/jsonwebtoken&#x27;</span>)
+<span class="hljs-keyword">const</span> mysql2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mysql2&#x27;</span>)
+<span class="hljs-keyword">var</span> router = express.<span class="hljs-title class_">Router</span>();
+
+<span class="hljs-comment">/* GET home page. */</span>
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) &#123;
+    res.<span class="hljs-title function_">type</span>(<span class="hljs-string">&#x27;html&#x27;</span>);
+    res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&#x27;login&#x27;</span>)
+&#125;)
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/index&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) &#123;
+    res.<span class="hljs-title function_">type</span>(<span class="hljs-string">&#x27;html&#x27;</span>);
+    res.<span class="hljs-title function_">render</span>(<span class="hljs-string">&#x27;index&#x27;</span>)
+&#125;)
+
+<span class="hljs-keyword">let</span> mony, name
+router.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/login&#x27;</span>, <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">req, res</span>) &#123;
+    a = <span class="hljs-string">&#x27;users&#x27;</span>
+    <span class="hljs-comment">// 创建连接池</span>
+    <span class="hljs-keyword">const</span> config = <span class="hljs-title function_">handleConfig</span>()
+    <span class="hljs-keyword">const</span> promisePool = mysql2.<span class="hljs-title function_">createPool</span>(config).<span class="hljs-title function_">promise</span>()
+    <span class="hljs-keyword">let</span> users = <span class="hljs-keyword">await</span> promisePool.<span class="hljs-title function_">query</span>(<span class="hljs-string">`SELECT * FROM <span class="hljs-subst">$&#123;a&#125;</span> WHERE name=&#x27;<span class="hljs-subst">$&#123;req.body.username&#125;</span>&#x27; AND password=&#x27;<span class="hljs-subst">$&#123;req.body.password&#125;</span>&#x27;`</span>)  <span class="hljs-comment">//sql语句</span>
+    <span class="hljs-keyword">if</span> (users[<span class="hljs-number">0</span>].<span class="hljs-property">length</span>) &#123;
+        mony = users[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].<span class="hljs-property">mony</span>
+        name = users[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>].<span class="hljs-property">name</span>
+          <span class="hljs-comment">// 将token放在header中</span>
+          <span class="hljs-keyword">const</span> token = jwtObj.<span class="hljs-title function_">sign</span>(&#123; name, mony &#125;, <span class="hljs-string">&#x27;1h&#x27;</span>)
+          res.<span class="hljs-title function_">header</span>(<span class="hljs-string">&#x27;Autorization&#x27;</span>, token)
+        res.<span class="hljs-title function_">send</span>(&#123;
+            <span class="hljs-attr">ok</span>: <span class="hljs-number">1</span>
+        &#125;)
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        res.<span class="hljs-title function_">send</span>(&#123; <span class="hljs-attr">ok</span>: <span class="hljs-number">0</span> &#125;)
+    &#125;
+&#125;)
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = router;
+
+
+<span class="hljs-comment">// 连接数据库的基本配置</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">handleConfig</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">return</span> &#123;
+        <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;localhost&#x27;</span>,
+        <span class="hljs-attr">port</span>: <span class="hljs-number">3306</span>,
+        <span class="hljs-attr">user</span>: <span class="hljs-string">&quot;root&quot;</span>,
+        <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;&quot;</span>,
+        <span class="hljs-attr">database</span>: <span class="hljs-string">&quot;maizuo&quot;</span>,
+        <span class="hljs-attr">connectLimit</span>: <span class="hljs-number">1</span>
+    &#125;
+&#125;</code></pre>
+
+<ul>
+<li>token加密&#x2F;解密代码</li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> &#123; json &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>)
+<span class="hljs-keyword">const</span> jwt = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;jsonwebtoken&#x27;</span>)
+<span class="hljs-keyword">const</span> key = <span class="hljs-string">&#x27;maizuoc312asdpkj&#x27;</span>  <span class="hljs-comment">//秘钥</span>
+
+<span class="hljs-keyword">const</span> obj=&#123;
+    <span class="hljs-comment">// 加密</span>
+    <span class="hljs-attr">sign</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">data,time</span>)&#123;
+        <span class="hljs-keyword">const</span> token=jwt.<span class="hljs-title function_">sign</span>(data, key, &#123; <span class="hljs-attr">expiresIn</span>: time &#125;)
+        <span class="hljs-keyword">return</span> token
+    &#125;,
+    <span class="hljs-attr">verify</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params">token</span>)&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-keyword">return</span> jwt.<span class="hljs-title function_">verify</span>(token, key)
+        &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>            
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>=obj</code></pre>
+
+<p><font color="red">各种依赖包记得下载</font></p>
+<ul>
+<li>依赖包展示（package.json文件）</li>
+</ul>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nodeapp2-jwt&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;version&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0.0.0&quot;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;private&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;start&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;node ./bin/www&quot;</span>
+  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">&quot;dependencies&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>
+    <span class="hljs-attr">&quot;cookie-parser&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~1.4.4&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;debug&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~2.6.9&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;ejs&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~2.6.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;express&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~4.16.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;http-errors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~1.6.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;jsonwebtoken&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^9.0.0&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;morgan&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~1.9.1&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;mysql2&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^3.3.3&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;ws&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;^8.13.0&quot;</span>
+  <span class="hljs-punctuation">&#125;</span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
+
+<h2 id="进入主题"><a href="#进入主题" class="headerlink" title="进入主题"></a>进入主题</h2><p>ws模块大家之前应该就使用过了吧，这里主要是与之前的登录鉴权实现一些聊天的基本功能，比如群聊，单聊等，站长这里只讲功能，页面的美化得靠大家，<br><strong>直接代码展示</strong><br>node服务端ws代码展示(建议新建一个文件独立写ws的代码，容易维护)：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocket</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ws&quot;</span>)
+<span class="hljs-keyword">const</span> &#123; <span class="hljs-title class_">WebSocketServer</span> &#125; = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;ws&quot;</span>)
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">JWT</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../utils/jsonwebtoken&#x27;</span>)
+
+<span class="hljs-keyword">const</span> wss = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocketServer</span>(&#123; <span class="hljs-attr">port</span>: <span class="hljs-number">8080</span> &#125;);
+
+wss.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;connection&#x27;</span>, <span class="hljs-keyword">function</span> <span class="hljs-title function_">connection</span>(<span class="hljs-params">ws, req</span>) &#123;
+  ws.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;error&#x27;</span>, <span class="hljs-variable language_">console</span>.<span class="hljs-property">error</span>);
+  <span class="hljs-comment">//  验证token</span>
+  <span class="hljs-keyword">const</span> payload = <span class="hljs-variable constant_">JWT</span>.<span class="hljs-title function_">verify</span>(req.<span class="hljs-property">url</span>.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;=&#x27;</span>)[<span class="hljs-number">1</span>])
+  <span class="hljs-keyword">if</span> (payload) &#123;
+    ws.<span class="hljs-property">user</span> = payload
+
+    <span class="hljs-comment">// 通知在线用户的人数</span>
+    <span class="hljs-title function_">sendAll</span>()
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    ws.<span class="hljs-title function_">send</span>(<span class="hljs-title function_">createMessage</span>(<span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">Error</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&quot;登录已过期&quot;</span>))
+  &#125;
+
+  ws.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-keyword">function</span> <span class="hljs-title function_">message</span>(<span class="hljs-params">data, isBinary</span>) &#123;
+    <span class="hljs-comment">// 解析前端发送过来的消息进行判断</span>
+    <span class="hljs-keyword">const</span> msgObj = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(data)
+    <span class="hljs-comment">// 判断，进行逻辑处理</span>
+    <span class="hljs-keyword">switch</span> (msgObj.<span class="hljs-property">type</span>) &#123;
+      <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupList</span>:
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupChat</span>:
+        wss.<span class="hljs-property">clients</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> <span class="hljs-title function_">each</span>(<span class="hljs-params">client</span>) &#123;
+          <span class="hljs-keyword">if</span> (client !== ws &amp;&amp; client.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) &#123;
+            client.<span class="hljs-title function_">send</span>(data, &#123; <span class="hljs-attr">binary</span>: isBinary &#125;);
+          &#125;
+        &#125;);
+        <span class="hljs-keyword">break</span>;
+      <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">singleChat</span>:
+        wss.<span class="hljs-property">clients</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> <span class="hljs-title function_">each</span>(<span class="hljs-params">client</span>) &#123;
+          <span class="hljs-keyword">if</span> (client.<span class="hljs-property">user</span>.<span class="hljs-property">name</span> == msgObj.<span class="hljs-property">to</span> &amp;&amp; client !== ws &amp;&amp; client.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) &#123;
+            client.<span class="hljs-title function_">send</span>(data, &#123; <span class="hljs-attr">binary</span>: isBinary &#125;);
+          &#125;
+        &#125;);
+        <span class="hljs-keyword">break</span>;
+    &#125;
+  &#125;)
+  <span class="hljs-comment">// 当服务器断开时触发</span>
+  ws.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;close&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;
+    wss.<span class="hljs-property">clients</span>.<span class="hljs-title function_">delete</span>(ws.<span class="hljs-property">user</span>)
+    <span class="hljs-title function_">sendAll</span>()
+  &#125;)
+&#125;);
+
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocketType</span> = &#123;
+  <span class="hljs-title class_">Error</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">groupList</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//在线人数</span>
+  <span class="hljs-attr">groupChat</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">//群聊</span>
+  <span class="hljs-attr">singleChat</span>: <span class="hljs-number">3</span> <span class="hljs-comment">//单聊</span>
+&#125;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">createMessage</span>(<span class="hljs-params">type, user, data</span>) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123;
+    type,
+    user,
+    data
+  &#125;)
+&#125;
+
+<span class="hljs-comment">// 给所有的在线用户实时发送当前的用户列表</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">sendAll</span>(<span class="hljs-params"></span>) &#123;
+  wss.<span class="hljs-property">clients</span>.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> <span class="hljs-title function_">each</span>(<span class="hljs-params">client</span>) &#123;
+    <span class="hljs-keyword">if</span> (client.<span class="hljs-property">readyState</span> === <span class="hljs-title class_">WebSocket</span>.<span class="hljs-property">OPEN</span>) &#123;
+      client.<span class="hljs-title function_">send</span>(<span class="hljs-title function_">createMessage</span>(<span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupList</span>, <span class="hljs-literal">null</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(wss.<span class="hljs-property">clients</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.<span class="hljs-property">user</span>))))
+    &#125;
+  &#125;);
+&#125;</code></pre>
+
+<p>前端聊天室代码展示：</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>聊天室<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/axios@1.1.2/dist/axios.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>聊天室<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;message&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;onlineUsers&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>发送<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span>
+<span class="language-javascript">        <span class="hljs-comment">// to字段主要是在单聊时，知道要发给谁</span></span>
+<span class="language-javascript">        <span class="hljs-keyword">function</span> <span class="hljs-title function_">createMessage</span>(<span class="hljs-params">type, data, to</span>) &#123;</span>
+<span class="language-javascript">            <span class="hljs-keyword">return</span> <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(&#123;</span>
+<span class="language-javascript">                type,</span>
+<span class="language-javascript">                data,</span>
+<span class="language-javascript">                to</span>
+<span class="language-javascript">            &#125;)</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        <span class="hljs-keyword">let</span> btn = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#btn&#x27;</span>)</span>
+<span class="language-javascript">        <span class="hljs-keyword">let</span> message = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.message&#x27;</span>)</span>
+<span class="language-javascript">        <span class="hljs-keyword">let</span> onlineUsers = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;#onlineUsers&#x27;</span>)</span>
+<span class="language-javascript">        <span class="hljs-keyword">const</span> <span class="hljs-title class_">WebSocketType</span> = &#123;</span>
+<span class="language-javascript">            <span class="hljs-title class_">Error</span>: <span class="hljs-number">0</span>,</span>
+<span class="language-javascript">            <span class="hljs-attr">groupList</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//在线人数</span></span>
+<span class="language-javascript">            <span class="hljs-attr">groupChat</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">//群聊</span></span>
+<span class="language-javascript">            <span class="hljs-attr">singleChat</span>: <span class="hljs-number">3</span> <span class="hljs-comment">//单聊</span></span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        <span class="hljs-keyword">const</span> ws = <span class="hljs-keyword">new</span> <span class="hljs-title class_">WebSocket</span>(<span class="hljs-string">`ws://localhost:8080?token=<span class="hljs-subst">$&#123;<span class="hljs-variable language_">localStorage</span>.getItem(<span class="hljs-string">&#x27;token&#x27;</span>)&#125;</span>`</span>)</span>
+<span class="language-javascript"></span>
+<span class="language-javascript">        ws.<span class="hljs-property">onopen</span> = <span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;服务器已连接&quot;</span>)</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        ws.<span class="hljs-property">onmessage</span> = <span class="hljs-function">(<span class="hljs-params">msgObj</span>) =&gt;</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 解析后端传过来的值，进行判断</span></span>
+<span class="language-javascript">            <span class="hljs-keyword">let</span> dataObj = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(msgObj.<span class="hljs-property">data</span>)</span>
+<span class="language-javascript">            <span class="hljs-keyword">switch</span> (dataObj.<span class="hljs-property">type</span>) &#123;</span>
+<span class="language-javascript">                <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">Error</span>:</span>
+<span class="language-javascript">                    location.<span class="hljs-property">href</span> = <span class="hljs-string">&#x27;/login&#x27;</span></span>
+<span class="language-javascript">                    <span class="hljs-keyword">break</span>;</span>
+<span class="language-javascript">                <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupList</span>:</span>
+<span class="language-javascript">                    <span class="hljs-comment">// 获取用户列表</span></span>
+<span class="language-javascript">                    onlineUsers.<span class="hljs-property">innerHTML</span> =<span class="hljs-string">&#x27;&lt;option value=&quot;all&quot;&gt;群发&lt;/option&gt;&#x27;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(dataObj.<span class="hljs-property">data</span>).<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span><span class="hljs-string">`&lt;option value=&quot;<span class="hljs-subst">$&#123;item.name&#125;</span>&quot;&gt;<span class="hljs-subst">$&#123;item.name&#125;</span>&lt;/option&gt;`</span>)</span>
+<span class="language-javascript">                    <span class="hljs-keyword">break</span>;</span>
+<span class="language-javascript">                <span class="hljs-comment">//群聊 </span></span>
+<span class="language-javascript">                <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupChat</span>:</span>
+<span class="language-javascript">                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;群聊&#x27;</span>, dataObj)</span>
+<span class="language-javascript">                    <span class="hljs-keyword">break</span>;</span>
+<span class="language-javascript">                <span class="hljs-comment">//单聊</span></span>
+<span class="language-javascript">                <span class="hljs-keyword">case</span> <span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">singleChat</span>:</span>
+<span class="language-javascript">                    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;单聊&#x27;</span>, dataObj)</span>
+<span class="language-javascript">                    <span class="hljs-keyword">break</span>;</span>
+<span class="language-javascript">            &#125;</span>
+<span class="language-javascript">            <span class="hljs-comment">// 发送消息</span></span>
+<span class="language-javascript">            btn.<span class="hljs-property">onclick</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;</span>
+<span class="language-javascript">                <span class="hljs-keyword">if</span> (onlineUsers.<span class="hljs-property">value</span> == <span class="hljs-string">&#x27;all&#x27;</span>) &#123;</span>
+<span class="language-javascript">                    <span class="hljs-comment">// 群发</span></span>
+<span class="language-javascript">                    ws.<span class="hljs-title function_">send</span>(<span class="hljs-title function_">createMessage</span>(<span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">groupChat</span>, message.<span class="hljs-property">value</span>))</span>
+<span class="language-javascript">                &#125;<span class="hljs-keyword">else</span>&#123;</span>
+<span class="language-javascript">                    <span class="hljs-comment">// 单聊</span></span>
+<span class="language-javascript">                    ws.<span class="hljs-title function_">send</span>(<span class="hljs-title function_">createMessage</span>(<span class="hljs-title class_">WebSocketType</span>.<span class="hljs-property">singleChat</span>, message.<span class="hljs-property">value</span>, onlineUsers.<span class="hljs-property">value</span>))</span>
+<span class="language-javascript">                &#125;</span>
+<span class="language-javascript">            &#125;</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">        ws.<span class="hljs-property">onerror</span> = <span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="language-javascript">            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;error&quot;</span>)</span>
+<span class="language-javascript">        &#125;</span>
+<span class="language-javascript">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<p><strong>能够看到这里的小伙伴给自己鼓鼓掌吧，未来的前端是你们的🎉️</strong></p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2023/07/15/29/">使用nvm对node进行版本管理</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2023/07/06/27/">闲聊篇</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">小哲</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4">Stellar 1.26.4</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg t="1705412886951" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8331" width="200" height="200"><path d="M638.72 970.666667h-256c-118.186667 0-198.272-25.002667-251.946667-78.72S52.053333 758.186667 52.053333 640V384c0-118.186667 25.002667-198.272 78.72-251.946667S264.533333 53.333333 382.72 53.333333h256c118.186667 0 198.272 25.002667 251.946667 78.72S969.386667 265.813333 969.386667 384v256c0 118.186667-25.002667 198.272-78.72 251.946667S756.906667 970.666667 638.72 970.666667z m-256-853.333334c-100.096 0-165.802667 19.2-206.72 59.946667S116.053333 283.904 116.053333 384v256c0 100.096 19.072 165.802667 59.946667 206.72S282.624 906.666667 382.72 906.666667h256c100.096 0 165.802667-19.072 206.72-59.946667S905.386667 740.096 905.386667 640V384c0-100.096-19.072-165.802667-59.946667-206.72S738.816 117.333333 638.72 117.333333z" p-id="8332"></path><path d="M638.72 970.666667a32 32 0 0 1-32-32V85.333333a32 32 0 0 1 32-32 32 32 0 0 1 32 32v853.333334a32 32 0 0 1-32 32zM340.053333 653.226667a31.914667 31.914667 0 0 1-22.613333-9.386667 32 32 0 0 1 0-45.269333L404.053333 512 317.44 425.386667a32 32 0 0 1 0-45.226667 32 32 0 0 1 45.226667 0l109.226666 109.226667a32 32 0 0 1 0 45.269333L362.666667 643.84a31.914667 31.914667 0 0 1-22.613334 9.386667z" p-id="8333"></path></svg>
+  </button>
+</div>
+<div class="main-mask" onclick="sidebar.toggle()"></div></div></div><div class="scripts">
+<script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.26.4';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.26.4';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js","memos":"/js/plugins/memos.js","marked":"/js/plugins/marked.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js","transition":"fade"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":false,"js":"https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js","distance":"16px","duration":500,"interval":100,"scale":0.8});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","flying_pages":"https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js","css":"https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css","selector":null});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied","toast":"复制成功"});
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.26.4" async></script>
+
+<!-- optional -->
+
+
+
+
+
+
+<!-- inject -->
+
+</div></body></html>
