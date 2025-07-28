@@ -79,7 +79,14 @@
 
 
 <div class="nav-wrap"><nav class="sub post"><a href="/">近期发布</a><a class="active" href="/categories">分类：服务器</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/friends/">友链</a><a href="/comments/">留言</a><a href="/about/">关于站长</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2025/01/04/99/">
+<div class="post-list post"><a class="post-card post" href="/2025/01/04/98/">
+<article class="md-text"><h2 class="post-title">mysql允许局域网内的远程连接</h2><div class="excerpt"><p>平台：termux-app服务器版本: 8.0.40-0ubuntu0.20.04.1
+修改配置文件默认在：&#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf
+bind-address改为0.0.0.0即可
+执行一堆命令mysql&gt;use mysql;
+
+mysql&gt;select host from user where ...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2025-01-03T16:00:00.000Z">2025-01-04</time></span><span class="cap breadcrumb">服务器</span></div></article>
+</a><a class="post-card post" href="/2025/01/04/99/">
 <article class="md-text"><h2 class="post-title">ubuntu安装redis并配置远程连接</h2><div class="excerpt"><p>安装sudo apt update
 sudo apt upgrade
 sudo apt install redis-server
@@ -91,13 +98,6 @@ vim /etc/redis/redis.conf
 # bind 127.0.0.1 ::1
 
 #取消注释requirepass 启动密码认证，并设置访问密码...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2025-01-03T16:00:00.000Z">2025-01-04</time></span><span class="cap breadcrumb">服务器</span></div></article>
-</a><a class="post-card post" href="/2025/01/04/98/">
-<article class="md-text"><h2 class="post-title">mysql允许局域网内的远程连接</h2><div class="excerpt"><p>平台：termux-app服务器版本: 8.0.40-0ubuntu0.20.04.1
-修改配置文件默认在：&#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf
-bind-address改为0.0.0.0即可
-执行一堆命令mysql&gt;use mysql;
-
-mysql&gt;select host from user where ...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2025-01-03T16:00:00.000Z">2025-01-04</time></span><span class="cap breadcrumb">服务器</span></div></article>
 </a><a class="post-card post" href="/2025/01/01/97/">
 <article class="md-text"><h2 class="post-title">安卓安装ubuntu环境和mysql</h2><div class="excerpt"><p>摘自文章：https://blog.csdn.net/m0_49073940/article/details/127779168
 下载termux-app地址：https://github.com/termux/termux-app/releases

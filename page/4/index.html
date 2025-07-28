@@ -77,7 +77,15 @@
 
 
 <div class="nav-wrap"><nav class="sub post"><a class="active" href="/">近期发布</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/archives">归档</a><a href="/friends/">友链</a><a href="/comments/">留言</a><a href="/about/">关于站长</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2024/06/20/79/">
+<div class="post-list post"><a class="post-card post" href="/2024/06/28/80/">
+<article class="md-text"><h2 class="post-title">three.js结合cannon-es实现3d物理世界</h2><div class="excerpt"><p>说明这里主要实现物理世界中的自由落体和物体间的碰撞
+学习本篇文章前，请事先了解或者学习一下three的内容，方便理解，这里不会教大家创建一个基础的three3d场景，直接就是进行物理世界的搭建
+下载依赖包npm i cannon-es
+
+引入依赖包import * as CANNON from &quot;cannon-es&quot;;
+
+搭建物理世界1.实例化一个物理世界,并且设置重力加...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-27T16:00:00.000Z">2024-06-28</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
+</a><a class="post-card post" href="/2024/06/20/79/">
 <article class="md-text"><h2 class="post-title">文件上传多种场景(前端+后端)</h2><div class="excerpt"><p>input进行文件上传时有关的属性
 
 
@@ -162,6 +170,12 @@ gsap.registerPlugin(Scrol...</p></div><div class="meta cap"><span class="cap" id
 
     // 创建gui调试面板
  ...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-14T16:00:00.000Z">2024-06-15</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
+</a><a class="post-card post" href="/2024/06/14/73/">
+<article class="md-text"><h2 class="post-title">three.js添加轨道控制器</h2><div class="excerpt"><p>引入import &#123; OrbitControls &#125; from &#x27;three/addons/controls/OrbitControls.js&#x27;;
+
+添加轨道控制器const controls = new OrbitControls( camera, renderer.domElement );
+
+在动画函数中使用function animate( t...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-13T16:00:00.000Z">2024-06-14</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
 </a><a class="post-card post" href="/2024/06/14/74/">
 <article class="md-text"><h2 class="post-title">three.js常见知识点</h2><div class="excerpt"><p>添加三维坐标const axesHelper = new THREE.AxesHelper(5)
 axesHelper.position.y = 1
@@ -170,20 +184,6 @@ scene.add(axesHelper)
 修改背景颜色scene.background = new THREE.Color(&quot;#9aa7b1&quot;)
 
 雾// 第一个参数是雾的颜色，第二个是雾的最小距离，第三个是雾的最大距离...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-13T16:00:00.000Z">2024-06-14</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
-</a><a class="post-card post" href="/2024/06/14/73/">
-<article class="md-text"><h2 class="post-title">three.js添加轨道控制器</h2><div class="excerpt"><p>引入import &#123; OrbitControls &#125; from &#x27;three/addons/controls/OrbitControls.js&#x27;;
-
-添加轨道控制器const controls = new OrbitControls( camera, renderer.domElement );
-
-在动画函数中使用function animate( t...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-13T16:00:00.000Z">2024-06-14</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
-</a><a class="post-card post" href="/2024/06/13/71/">
-<article class="md-text"><h2 class="post-title">使用docker镜像nginx进行项目部署</h2><div class="excerpt"><p>准备阶段
-准备任意一个项目，或者直接一个html文件
-下载docker，自行前往官网进行下载
-可以提前了解一下docker的数据卷挂载，可以将宿主机文件与docker容器中的文件进行一个同步，方便对nginx进行配置与日志查看
-
-这篇教程不适合对docker完全不懂的人，不然你很难理解，甚至难以感受到docker进行项目部署的方便
-我这里使用的是windows11操作系统进行演示，虽然doc...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-12T16:00:00.000Z">2024-06-13</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
 </a><a class="post-card post" href="/2024/06/13/72/">
 <article class="md-text"><h2 class="post-title">使用three.js创建一个最基础的3d场景</h2><div class="excerpt"><p>效果图
 代码import * as THREE from &#x27;three&#x27;;
@@ -195,18 +195,14 @@ const height = document.documentElement.clientHeight
 const scene = new THREE.Scene()
 
 ...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-12T16:00:00.000Z">2024-06-13</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
-</a><a class="post-card post" href="/2024/06/12/70/">
-<article class="md-text"><h2 class="post-title">Dockerfile介绍</h2><div class="excerpt"><p>介绍类似一个构建镜像的清单，docker可以根据这个清单进行镜像的自动化构建
-保留字1. FROM指定基础镜像，并且必须是第一条指令
-FROM &lt;image&gt;
-FROM &lt;image&gt;:&lt;tag&gt;
+</a><a class="post-card post" href="/2024/06/13/71/">
+<article class="md-text"><h2 class="post-title">使用docker镜像nginx进行项目部署</h2><div class="excerpt"><p>准备阶段
+准备任意一个项目，或者直接一个html文件
+下载docker，自行前往官网进行下载
+可以提前了解一下docker的数据卷挂载，可以将宿主机文件与docker容器中的文件进行一个同步，方便对nginx进行配置与日志查看
 
-2. MAINTAINER指定作者
-MAINTAINER &lt;name&gt;
-
-3. RUN在构建镜像时需要运行的命令
-例如：
-RUN yum -y i...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
+这篇教程不适合对docker完全不懂的人，不然你很难理解，甚至难以感受到docker进行项目部署的方便
+我这里使用的是windows11操作系统进行演示，虽然doc...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-12T16:00:00.000Z">2024-06-13</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
 </a></div>
 
   <div class='paginator-wrap dis-select'>

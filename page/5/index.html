@@ -86,6 +86,18 @@
 docker pull mysql
 
 启动mysqldocker run -d -p 3306:3306 --privileged=true -v /root/mysql/log:/var/log/mysql -v /root/mysql/data:/...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
+</a><a class="post-card post" href="/2024/06/12/70/">
+<article class="md-text"><h2 class="post-title">Dockerfile介绍</h2><div class="excerpt"><p>介绍类似一个构建镜像的清单，docker可以根据这个清单进行镜像的自动化构建
+保留字1. FROM指定基础镜像，并且必须是第一条指令
+FROM &lt;image&gt;
+FROM &lt;image&gt;:&lt;tag&gt;
+
+2. MAINTAINER指定作者
+MAINTAINER &lt;name&gt;
+
+3. RUN在构建镜像时需要运行的命令
+例如：
+RUN yum -y i...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
 </a><a class="post-card post" href="/2024/06/04/67/">
 <article class="md-text"><h2 class="post-title">Docker常用命令</h2><div class="excerpt"><p>docker 基础命令
 启动docker
@@ -167,18 +179,6 @@ function App()&#123;
   &quot;description&quot;: &quot;&quot;,
   &quot;scripts&quot;: &#123;
     &quot;serve&quot;: &quot;...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-04-01T16:00:00.000Z">2024-04-02</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
-</a><a class="post-card post" href="/2024/03/15/60/">
-<article class="md-text"><h2 class="post-title">sass基础知识</h2><div class="excerpt"><p>sass中的变量$color: var(--color, red);
-
-.box&#123;
-    color: $color;
-&#125;
-
-数据类型
-数字，1rem、2vh、13、 10px；
-字符串，分有引号字符串与无引号字符串，&quot;foo&quot;、 &#39;bar&#39;、baz；
-颜色，blue, #04a3f9, rgba(255,0,0,0.5)；
-布尔型，...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-03-14T16:00:00.000Z">2024-03-15</time></span><span class="cap breadcrumb">前端进阶</span></div></article>
 </a></div>
 
   <div class='paginator-wrap dis-select'>
