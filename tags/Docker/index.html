@@ -87,15 +87,6 @@
 
 这篇教程不适合对docker完全不懂的人，不然你很难理解，甚至难以感受到docker进行项目部署的方便
 我这里使用的是windows11操作系统进行演示，虽然doc...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-12T16:00:00.000Z">2024-06-13</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
-</a><a class="post-card post" href="/2024/06/12/69/">
-<article class="md-text"><h2 class="post-title">Docker安装mysql</h2><div class="excerpt"><p>要达到的目的
-实现mysql安装，并且能让外部进行连接
-实现数据卷的挂载，让容器被删除时，数据不会丢失
-解决无法插入中文数据，或者中文乱码
-
-docker pull mysql
-
-启动mysqldocker run -d -p 3306:3306 --privileged=true -v /root/mysql/log:/var/log/mysql -v /root/mysql/data:/...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
 </a><a class="post-card post" href="/2024/06/12/70/">
 <article class="md-text"><h2 class="post-title">Dockerfile介绍</h2><div class="excerpt"><p>介绍类似一个构建镜像的清单，docker可以根据这个清单进行镜像的自动化构建
 保留字1. FROM指定基础镜像，并且必须是第一条指令
@@ -108,6 +99,15 @@ MAINTAINER &lt;name&gt;
 3. RUN在构建镜像时需要运行的命令
 例如：
 RUN yum -y i...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
+</a><a class="post-card post" href="/2024/06/12/69/">
+<article class="md-text"><h2 class="post-title">Docker安装mysql</h2><div class="excerpt"><p>要达到的目的
+实现mysql安装，并且能让外部进行连接
+实现数据卷的挂载，让容器被删除时，数据不会丢失
+解决无法插入中文数据，或者中文乱码
+
+docker pull mysql
+
+启动mysqldocker run -d -p 3306:3306 --privileged=true -v /root/mysql/log:/var/log/mysql -v /root/mysql/data:/...</p></div><div class="meta cap"><span class="cap" id="post-meta"><time datetime="2024-06-11T16:00:00.000Z">2024-06-12</time></span><span class="cap breadcrumb">全栈工程师</span></div></article>
 </a><a class="post-card post" href="/2024/06/04/67/">
 <article class="md-text"><h2 class="post-title">Docker常用命令</h2><div class="excerpt"><p>docker 基础命令
 启动docker
